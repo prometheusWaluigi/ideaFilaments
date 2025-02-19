@@ -1,0 +1,59 @@
+{
+  "entities": [
+    {
+      "type": "entity",
+      "name": "Time_Crystal_Dynamics",
+      "entityType": "Phenomenon",
+      "observations": [
+        "Period doubling in erbium-ion ensembles",
+        "40-minute coherence protected by dipolar interactions",
+        "Matches consciousness-linked EEG rhythms",
+        "Neural networks sample Ruliad through crystalline attractors"
+      ]
+    },
+    {
+      "type": "entity",
+      "name": "Topological_Defects",
+      "entityType": "Structure",
+      "observations": [
+        "Disclinations stabilize through Frank elasticity",
+        "Schrödinger kinks propagate via spin-orbit coupling",
+        "Act as quantum routers for morphogenetic signals",
+        "Density profiles follow power-law scaling"
+      ]
+    },
+    {
+      "type": "entity",
+      "name": "Information_Transfer",
+      "entityType": "Process",
+      "observations": [
+        "Multi-quantum coherence reveals entanglement",
+        "Ion-acoustic waves couple neurons to Schumann resonances",
+        "Mutual information peaks at phase boundaries",
+        "Enhanced by geometric frustration"
+      ]
+    },
+    {
+      "type": "entity",
+      "name": "Tissue_Mechanics",
+      "entityType": "System",
+      "observations": [
+        "Stress tensors drive morphogenetic flows",
+        "ATP-driven microtubule contractions generate force",
+        "Piezoelectric resonance enables scale bridging",
+        "Coordinates millimeter-scale from nanometer events"
+      ]
+    },
+    {
+      "type": "entity",
+      "name": "Photosynthetic_Quantum",
+      "entityType": "System",
+      "observations": [
+        "Circuit breaker proteins protect coherence",
+        "Excitons route through topological networks",
+        "Coherence times reveal error handling",
+        "Reality's resilience measured in femtoseconds"
+      ]
+    }
+  ]
+}

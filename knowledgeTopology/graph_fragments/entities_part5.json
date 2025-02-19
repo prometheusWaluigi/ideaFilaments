@@ -1,0 +1,59 @@
+{
+  "entities": [
+    {
+      "type": "entity",
+      "name": "Planetary_Shield",
+      "entityType": "Structure",
+      "observations": [
+        "Magnetosphere deflects 99% of solar wind",
+        "Ionospheric resonance modulates biological rhythms",
+        "Lightning-induced pulses trigger nitrogen fixation",
+        "Magnetic pulses influence viral evolution"
+      ]
+    },
+    {
+      "type": "entity",
+      "name": "Ionospheric_Circuit",
+      "entityType": "Network",
+      "observations": [
+        "Global electrical system between surface and space",
+        "Modulates cloud formation and ozone production",
+        "Channels Schumann resonances through plasma",
+        "Links biological and planetary rhythms"
+      ]
+    },
+    {
+      "type": "entity",
+      "name": "Plasma_Computation",
+      "entityType": "Mechanism",
+      "observations": [
+        "Neuromorphic devices utilize magnetic bubbles",
+        "Outperforms silicon memory by orders of magnitude",
+        "Achieves brain-like adaptability",
+        "Bridges synthetic and cosmic memory"
+      ]
+    },
+    {
+      "type": "entity",
+      "name": "Quantum_Coherence_Detection",
+      "entityType": "Method",
+      "observations": [
+        "NMR zero quantum coherence protocols detect consciousness",
+        "Signal correlates with heartbeat-evoked potentials",
+        "Immune to magnetization transfer artifacts",
+        "Confirms nonlocal quantum correlations"
+      ]
+    },
+    {
+      "type": "entity",
+      "name": "Symmetry_Breaking",
+      "entityType": "Process",
+      "observations": [
+        "Hierarchical cascade from quantum to classical",
+        "SU(2) breaks to U(1) via spin measurements",
+        "O(2) transforms to D6 through defect unbinding",
+        "D6 becomes D2 via orientational ordering"
+      ]
+    }
+  ]
+}

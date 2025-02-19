@@ -1,0 +1,59 @@
+{
+  "entities": [
+    {
+      "type": "entity",
+      "name": "Planetary_Healing",
+      "entityType": "Process",
+      "observations": [
+        "Plasma resonance maintains ecosystem homeostasis",
+        "Forest canopies interact with ionospheric fields",
+        "Energy medicine manipulates bio-plasma coherence",
+        "Consciousness directs healing through field modulation"
+      ]
+    },
+    {
+      "type": "entity",
+      "name": "Zero_Point_Field",
+      "entityType": "Medium",
+      "observations": [
+        "Quantum vacuum electromagnetic fluctuations",
+        "Interacts with glutamatergic neurons",
+        "Generates synchronized neural oscillations",
+        "Projects holographic conscious states"
+      ]
+    },
+    {
+      "type": "entity",
+      "name": "Toroidal_Dynamics",
+      "entityType": "Pattern",
+      "observations": [
+        "Universal motif in plasma systems",
+        "Enables bi-directional information flow",
+        "Links individual and cosmic intelligence",
+        "Supports nested consciousness models"
+      ]
+    },
+    {
+      "type": "entity",
+      "name": "Magnetic_Memory",
+      "entityType": "System",
+      "observations": [
+        "Magnetars encode information in crustal fields",
+        "Birkeland currents archive cosmic histories",
+        "Plasma bubbles mimic synaptic plasticity",
+        "Magnetic domains shift with quantum precision"
+      ]
+    },
+    {
+      "type": "entity",
+      "name": "Plasma_Intelligence",
+      "entityType": "Phenomenon",
+      "observations": [
+        "Self-assembling crystal lattices display swarm behavior",
+        "Helical vortices solve maze-like configurations",
+        "Synchronized oscillations mirror neural waves",
+        "Decision-making patterns emerge spontaneously"
+      ]
+    }
+  ]
+}

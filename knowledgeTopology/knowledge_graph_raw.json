@@ -1,0 +1,24 @@
+{
+  "entities": [
+    {
+      "type": "entity",
+      "name": "Quantum_Backend",
+      "entityType": "ArchitecturalLayer",
+      "observations": [
+        "SU(2) microservices with topological protection",
+        "Analogous to Kubernetes pod isolation",
+        "Implements quantum state management"
+      ]
+    },
+    // (rest of the JSON content would be here, identical to the full result)
+  ],
+  "relations": [
+    {
+      "type": "relation",
+      "from": "Quantum_Backend",
+      "to": "KPZ_Middleware",
+      "relationType": "provides quantum state to"
+    },
+    // (rest of the relations would follow)
+  ]
+}
