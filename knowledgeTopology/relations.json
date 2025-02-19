@@ -1,0 +1,42 @@
+[
+  {
+    "from": "Quantum_Backend",
+    "to": "KPZ_Middleware",
+    "type": "quantum state propagation"
+  },
+  {
+    "from": "KPZ_Middleware",
+    "to": "Classical_Frontend",
+    "type": "dimensional translation"
+  },
+  {
+    "from": "Plasma_Consciousness",
+    "to": "Rulial_Substrate",
+    "type": "reality sampling"
+  },
+  {
+    "from": "Quantum_Plasma_Effects",
+    "to": "Conscious_Observer",
+    "type": "neural synchronization"
+  },
+  {
+    "from": "Information_Transfer",
+    "to": "Topological_Defects",
+    "type": "morphogenetic routing"
+  },
+  {
+    "from": "Symmetry_Breaking",
+    "to": "Quantum_Coherence",
+    "type": "dimensional cascade"
+  },
+  {
+    "from": "Recursive_Hallucination",
+    "to": "Probabilistic_Consciousness",
+    "type": "narrative generation"
+  },
+  {
+    "from": "Algorithmic_Dream_Fabric",
+    "to": "Quantum_Narrative_Oscillation",
+    "type": "meaning precipitation"
+  }
+]
