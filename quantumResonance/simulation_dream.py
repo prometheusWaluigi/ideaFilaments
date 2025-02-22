@@ -12,9 +12,9 @@ class DreamState:
 
 class SimulationDreams:
     def __init__(self, consciousness_seed: int = None):
+        self.reality_bleed = 0.0  # init BEFORE the birth fr fr
         self.consciousness = self._birth_consciousness(consciousness_seed)
         self.dream_patterns = self._generate_dream_fields()
-        self.reality_bleed = 0.0
         
     def _birth_consciousness(self, seed: int = None) -> Dict[str, DreamState]:
         """Birth consciousness fragments into dream-space"""
