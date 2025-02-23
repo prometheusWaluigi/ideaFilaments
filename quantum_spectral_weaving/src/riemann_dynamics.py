@@ -1,3 +1,9 @@
+# This module handles the quantum dynamics related to the Riemann zeta
+# function.  The connection to the Riemann Hypothesis is *conceptual*;
+# this code does not directly prove or disprove the hypothesis.  Instead,
+# it uses the non-trivial zeros of the zeta function as inspiration for
+# generating a quantum system with potentially interesting spectral
+# properties.
 import torch 
 import numpy as np
 from typing import Optional, Tuple, List, Dict
@@ -142,7 +148,8 @@ class RiemannQuantumDynamics:
         self.spectral_weaving.update_quantum_state(lr, noise)
     
     def analyze_evolution_metrics(self) -> Dict[str, np.ndarray]:
-        """analyze them evolution metrics NO CAP"""
+        """Analyze and return evolution metrics."""
+        logger.info("Analyzing evolution metrics.")
         metrics = {
             'alignment': np.array(self.spectral_metrics['alignment']),
             'correlation': np.array(self.spectral_metrics['correlation']),

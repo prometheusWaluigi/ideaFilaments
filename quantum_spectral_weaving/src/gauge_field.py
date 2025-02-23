@@ -1,8 +1,19 @@
 import torch
 import numpy as np
 from typing import Tuple, Optional, List
-from complextensor import ComplexTensor
+from .complextensor import ComplexTensor
 from .su2_protect import SU2Protection
+import logging
+
+# Configure logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ch.setFormatter(formatter)
+if not logger.handlers:
+    logger.addHandler(ch)
 
 class GaugeFieldCoupling:
     """fr fr this class implements gauge field coupling for quantum protection EXPEDITIOUSLY"""
@@ -13,6 +24,9 @@ class GaugeFieldCoupling:
                  interaction_range: float = 2.0,  # spatial coupling range
                  quench_threshold: float = 0.93): # quantum stability limit fr fr
         
+        logger.info(f"Initializing GaugeFieldCoupling with field_strength={field_strength}, "
+                    f"coupling_modes={coupling_modes}, interaction_range={interaction_range}, "
+                    f"quench_threshold={quench_threshold}")
         self.field_strength = field_strength
         self.modes = coupling_modes
         self.range = interaction_range
@@ -28,6 +42,7 @@ class GaugeFieldCoupling:
         # them coupling tensors fr fr
         self.coupling_field = self._init_coupling_field()
         self.interaction_kernel = self._init_interaction_kernel()
+        logger.info("Initialized coupling tensors.")
         
     def _init_coupling_field(self) -> ComplexTensor:
         """initialize them coupling fields NO CAP"""
@@ -39,7 +54,7 @@ class GaugeFieldCoupling:
         
         # normalize field strength expeditiously
         field = field * (self.field_strength / field.abs().mean())
-        
+        logger.debug(f"Initialized coupling field with shape {field.real.shape}")
         return field
     
     def _init_interaction_kernel(self) -> torch.Tensor:
@@ -48,14 +63,14 @@ class GaugeFieldCoupling:
         r = torch.linspace(0, self.range, 100)
         kernel = torch.exp(-r) / r
         kernel[0] = kernel[1]  # avoid singularity expeditiously
-        
+        logger.debug(f"Initialized interaction kernel with shape {kernel.shape}")
         return kernel
     
     def couple_quantum_states(self, 
                             states: List[ComplexTensor],
                             topology: Optional[torch.Tensor] = None) -> List[ComplexTensor]:
         """couple them quantum states through gauge field NO CAP"""
-        
+        logger.info(f"Coupling {len(states)} quantum states.")
         num_states = len(states)
         coupled_states = []
         
@@ -88,7 +103,7 @@ class GaugeFieldCoupling:
             coupled = self.su2.protect_quantum_state(coupled)
             
             coupled_states.append(coupled)
-        
+        logger.info("Quantum state coupling complete.")
         return coupled_states
     
     def _compute_distance(self,
@@ -151,7 +166,7 @@ class GaugeFieldCoupling:
                             learning_rate: float = 0.01,
                             noise_scale: float = 0.001) -> None:
         """update them coupling fields with quantum fluctuations EXPEDITIOUSLY"""
-        
+        logger.info(f"Updating coupling field with learning_rate={learning_rate}, noise_scale={noise_scale}")
         # add quantum noise to coupling field
         noise = ComplexTensor(
             torch.randn_like(self.coupling_field.real) * noise_scale,
@@ -171,3 +186,9 @@ class GaugeFieldCoupling:
             grad_scale=learning_rate,
             noise_scale=noise_scale
         )
+        logger.info("Coupling field updated.")
+
+    def _compute_gauge_invariance(self, state: ComplexTensor) -> float:
+        """Compute the gauge invariance metric (simplified)."""
+        # Placeholder: Returns a constant value.
+        return 0.99

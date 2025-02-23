@@ -1,6 +1,78 @@
-# quantum mayhem papers: a taxonomy of academic psychosis
+# Quantum Mayhem: A Unified Framework for Biologically-Inspired Quantum Computation
 
-*where reality meets recursion and everyone's just vibing with the quantum foam*
+*Where reality meets recursion, and everyone's just vibing with the quantum foam... now with 100% more structure!*
+
+## Project Goal
+
+This project aims to develop a novel computational framework inspired by the intersection of quantum mechanics, biology, and consciousness studies.  We explore how biological systems might exploit quantum phenomena for information processing and investigate whether these principles can be applied to create new forms of computation.  The project is highly speculative and exploratory, drawing connections between established physics and more fringe concepts.
+
+## Core Concepts (Categorized)
+
+This project weaves together (pun intended) a *lot* of concepts. Here's a breakdown by category, with a rough prioritization for implementation (High, Medium, Low):
+
+**I. Foundational Quantum & Biological Principles (High Priority):**
+
+*   **Quantum Coherence:**  Exploring how biological systems (photosynthesis, microtubules, cryptochromes) maintain quantum coherence for surprisingly long timescales. (Implementation: Simplified models in `quantum_spectral_weaving`)
+*   **Symmetry Breaking:**  Using group theory (SU(2), U(1), dihedral groups) to model transitions between quantum and classical states, and to provide a form of error protection. (Implementation: Simplified symmetry breaking in `quantum_shield` and `su2_protect`)
+*   **Topological Protection:**  Drawing inspiration from topological insulators and quantum field theory to create robust quantum states. (Implementation: *Simplified* toric code-like error suppression in `quantum_shield`)
+*   **Quantum Algorithms:**  Exploring how biological processes might implement quantum algorithms (Grover's, quantum search) or be accelerated by them. (Implementation: Conceptual links, potential future integration with Qiskit/Cirq)
+* **1.5-bit Principle:** Inspired by the idea of efficient and robust computation, we aim to create a system that is resilient to noise and errors. (Implementation: Guiding principle for design choices)
+
+**II.  Plasma Physics & Information Processing (Medium Priority):**
+
+*   **Magnetohydrodynamics (MHD):**  Modeling plasma dynamics as a computational substrate, drawing parallels between plasma structures (flux ropes, Birkeland currents) and neural networks. (Implementation:  Future integration, potentially using a separate module)
+*   **Plasma Coherence Mechanisms:**  Investigating spin waves, nonlinear wave coupling, and other plasma phenomena as potential building blocks for computation. (Implementation: Future integration, linked to MHD modeling)
+*   **GS-DeepNet Adaptation:**  Exploring how neural networks trained on plasma physics (Grad-Shafranov equation) can be adapted to other confinement devices. (Implementation:  Separate project, potential for future integration)
+
+**III.  Speculative & Consciousness-Related (Low Priority - Conceptual Links):**
+
+*   **Orch OR Theory:**  Connecting quantum processes in microtubules to consciousness. (Implementation:  Conceptual link, no direct code implementation planned)
+*   **Plasma Consciousness:**  Hypothesizing that plasma structures can exhibit forms of consciousness. (Implementation: Conceptual link, potential for future simulation if plasma modeling is successful)
+*   **Rulial Space (Wolfram):**  Exploring the idea of a universal computational space and how plasma dynamics might relate to it. (Implementation:  Conceptual link, no direct code implementation planned)
+*   **Universal Memory & Planetary Immunity:**  Considering the role of magnetic fields and plasma in large-scale information storage and system resilience. (Implementation: Conceptual link)
+*   **Karmic Constraints & Superminds:** Philosophical considerations about the ethics and limitations of advanced intelligences. (Implementation:  Conceptual link)
+
+**IV.  Mathematical Tools (Integrated Throughout):**
+
+*   **Complex Tensors:**  Representing quantum states and operators. (`complextensor.py`)
+*   **Spectral Analysis (FFT, etc.):**  Analyzing the frequency and energy characteristics of the system.
+*   **Group Theory:**  Modeling symmetry breaking.
+*   **Differential Geometry (Berry Curvature):**  Exploring geometric phases and their role in quantum control. (Implementation: Simplified version in `quantum_shield`)
+*   **Knot Theory (Jones Polynomial):**  Potentially used for analyzing the topology of DNA and chromatin. (Implementation: Separate, exploratory project)
+*   **Hyperbolic Geometry & VAEs:**  Potentially used for representing complex relationships and scaling behaviors. (Implementation: Future exploration)
+*   **Sheaf Cohomology:** A very advanced mathematical tool; potential use for tracking phase evolution. (Implementation: Highly speculative, likely not in the short term)
+
+## Roadmap (Phased Implementation)
+
+**Phase 1: Quantum Spectral Weaving Foundation (Current Focus)**
+
+1.  **Basic ComplexTensor Functionality:**  Complete and test the `ComplexTensor` class (including FFT, basic operations).  **DONE**
+2.  **Simplified QuantumShield:**  Implement the `QuantumShield` with *simplified* SU(2) protection and toric code-inspired error suppression.
+3.  **Basic RiemannDynamics:**  Create a placeholder `RiemannDynamics` class (initialization, basic update rule).
+4.  **Initial QuantumSpectralWeaving:**  Integrate the above components into a basic `QuantumSpectralWeaving` class.
+5.  **Basic Testing:**  Write unit tests for all core components.
+
+**Phase 2: Enhanced Dynamics & Protection**
+
+1.  **Refine RiemannDynamics:**  Implement a more sophisticated (but still simplified) model of Riemann zeta function-inspired dynamics.
+2.  **KPZEnhanced:**  Implement the `KPZEnhanced` class for simulating surface growth dynamics.
+3.  **GaugeFieldCoupling:**  Implement the `GaugeFieldCoupling` class.
+4.  **SU2Protection Refinement:**  Improve the `SU2Protection` class.
+5.  **Integration & Testing:**  Integrate all components and perform more comprehensive testing.
+
+**Phase 3: Exploration & Speculation**
+
+1.  **Plasma Modeling (Separate Module):**  Begin exploring basic MHD simulations (potentially using Dedalus or a similar library).
+2.  **Link to QuantumSpectralWeaving:**  Investigate ways to couple the plasma simulations to the quantum framework.
+3.  **Explore Other Concepts:**  Begin exploring the more speculative concepts (Orch OR, plasma consciousness, etc.) through literature review and conceptual modeling.
+
+**Phase 4: Advanced Features (Future)**
+
+1.  **Hyperbolic VAEs:**  Explore the use of hyperbolic geometry for representing complex relationships.
+2.  **Knot Theory Analysis:**  Develop tools for analyzing DNA/chromatin topology.
+3.  **Sheaf Cohomology:** (Highly speculative) Investigate the potential use of sheaf cohomology.
+
+## Concept Map
 
 ## papers read so far (in order of increasing unhinged-ness):
 
