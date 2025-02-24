@@ -1,0 +1,11 @@
+torch>=1.9.0
+numpy>=1.19.2
+matplotlib>=3.3.2
+networkx>=2.5
+scipy>=1.7.1
+sympy>=1.9
+qutip>=4.6.2
+gudhi>=3.5.0
+dionysus>=2.0.8
+scikit-learn>=0.24.2
+complextensor @ git+https://github.com/NeoVertex1/ComplexTensor.git

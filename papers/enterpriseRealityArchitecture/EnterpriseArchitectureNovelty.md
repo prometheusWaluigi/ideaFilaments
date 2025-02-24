@@ -277,4 +277,3 @@ While existing theories address components like decoherence[^6] or quantum algor
 [^38]: https://pubs.opengroup.org/architecture/archimate31-doc/chap14.html
 
 [^39]: https://arxiv.org/html/2403.02240v4
-

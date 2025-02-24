@@ -22,16 +22,16 @@ $$) for maximal adaptability
 
 *Implementation*:
 
-```python  
-class PlasmaLayer(nn.Module):  
-    def __init__(self):  
-        super().__init__()  
-        self.quasi_neutral = nn.Parameter(torch.rand(256,256)) # Electron-ion charge balance  
-        self.mhd_attention = MHDMultiHeadAttention() # Magnetohydrodynamic attention  
+```python
+class PlasmaLayer(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.quasi_neutral = nn.Parameter(torch.rand(256,256)) # Electron-ion charge balance
+        self.mhd_attention = MHDMultiHeadAttention() # Magnetohydrodynamic attention
 
-    def forward(self, x):  
-        x = self.lorentz_transform(x)  
-        return self.mhd_attention(self.quasi_neutral, x)  
+    def forward(self, x):
+        x = self.lorentz_transform(x)
+        return self.mhd_attention(self.quasi_neutral, x)
 ```
 
 ---
@@ -249,4 +249,3 @@ As PPPL's experiments demonstrate ([^11],[^16]), this approach reduces unethical
 [^49]: https://www.pnas.org/doi/10.1073/pnas.0901077106
 
 [^50]: https://arxiv.org/abs/2311.16275
-

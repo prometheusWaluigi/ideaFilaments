@@ -274,4 +274,3 @@ The dance of spins in cryptochrome reveals nature's mastery of quantum geometry 
 [^69]: https://www.tdx.cat/bitstream/handle/10803/671956/TESI Marc Alías Rodríguez.pdf?locale-attribute=en
 
 [^70]: http://archiv.ub.uni-heidelberg.de/volltextserver/17216/1/dissertation_uaniko_final.pdf
-

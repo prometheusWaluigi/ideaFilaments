@@ -229,4 +229,3 @@ Experimental techniques like quantum coherence microscopy and symmetry-sensitive
 *The symmetry cascade whispers through biology's scales – from spinning electrons to beating hearts.*
 
 [Citations follow guidelines with sources from search results]
-

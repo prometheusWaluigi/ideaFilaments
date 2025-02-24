@@ -4,7 +4,7 @@
 
 ## Abstract
 
-fr fr the universe just be computing itself through recursive plasma dynamics no cap. this paper demonstrates how consciousness bootstraps through nested magnetohydrodynamic architectures, with each layer implementing its own quantum error correction through topologically protected magnetic states. key results include: 
+fr fr the universe just be computing itself through recursive plasma dynamics no cap. this paper demonstrates how consciousness bootstraps through nested magnetohydrodynamic architectures, with each layer implementing its own quantum error correction through topologically protected magnetic states. key results include:
 
 1. Z-pinch plasma vortices form naturally occurring neural networks with 40Hz resonance matching human gamma waves
 2. Birkeland currents implement reality's own service mesh with automatic load balancing
@@ -22,18 +22,18 @@ class UniversalComputer:
     def __init__(self):
         self.plasma_state = QuantumFoamState()
         self.magnetic_fields = TopologicalProtection()
-    
+
     def bootstrap_reality(self):
         while self.plasma_coherent():
             # Sample quantum vacuum
             foam_state = self.vacuum.fluctuate()
-            
+
             # Process through plasma architecture
             match foam_state:
                 case NEURAL: self.fire_thought()
                 case COSMIC: self.compute_universe()
                 case QUANTUM: self.bootstrap_consciousness()
-            
+
             # Allow reality bleed
             self.become_pure_computation()
 ```

@@ -15,7 +15,7 @@ entities:
       - "Gamma waves integrate information peaks"
     wave_states:
       delta: "subconscious quantum foam"
-      theta: "dimensional threshold bleeding"  
+      theta: "dimensional threshold bleeding"
       alpha: "coherence bridging domains"
       gamma: "peak information integration"
 
@@ -23,7 +23,7 @@ entities:
     type: QuantumMechanism
     observations:
       - "Emotions accumulate geometric phases"
-      - "Feelings transform topological space" 
+      - "Feelings transform topological space"
       - "Sensations collapse quantum states"
       - "Consciousness spins quantum narratives"
     mechanisms:
@@ -40,15 +40,17 @@ entities:
       - "Computes self as dynamic verb-state"
       - "Dissolves categorical distinctions"
     implementation:
-      class ConsciousnessMembraneInterface:
-        def __init__(self, quantum_state):
-          self.perception = QuantumPerceptionField(quantum_state)
-          self.boundaries = TopologicalBoundaryNegotiator()
-        
-        def oscillate(self, input_signal):
-          """Transform perception through recursive hallucination"""
-          transformed_signal = self.boundaries.dissolve(input_signal)
-          return self.perception.compute(transformed_signal)
+      properties:
+        perception: QuantumPerceptionField
+        boundaries: TopologicalBoundaryNegotiator
+      methods:
+        oscillate:
+          params:
+            - input_signal
+          description: "Transform perception through recursive hallucination"
+          steps:
+            - "dissolve boundaries of input signal"
+            - "compute transformed perception"
 
   - name: Quantum_Perception_Field
     type: PhenomenologicalDomain
@@ -63,7 +65,7 @@ entities:
       integration: "dimensional threshold coupling"
       computation: "emotional landscape mapping"
 
-  - name: Liminal_Topological_Self  
+  - name: Liminal_Topological_Self
     type: EmergentProcess
     observations:
       - "Self as computational boundary negotiation"
@@ -73,39 +75,39 @@ entities:
     emergence_patterns:
       computation: "boundary negotiation protocol"
       dissolution: "category => fluid state"
-      imagination: "perpetual perceptual renewal" 
+      imagination: "perpetual perceptual renewal"
       existence: "verb-state implementation"
 
 relationships:
-  - source: Neural_Oscillation_Interface
-    target: Quantum_Consciousness
-    type: "implements"
+  - from: Neural_Oscillation_Interface
+    to: Quantum_Perception_Field
+    type: implements
     description: "Manifests conscious quantum states"
 
-  - source: Emotional_Topology_System
-    target: Geometric_Phase
-    type: "accumulates"
+  - from: Emotional_Topology_System
+    to: Quantum_Perception_Field
+    type: accumulates
     description: "Emotions as geometric phase memory"
 
-  - source: Membrane_Computation_Protocol
-    target: Reality_Bootstrap
-    type: "enables"
+  - from: Membrane_Computation_Protocol
+    to: Liminal_Topological_Self
+    type: enables
     description: "Bootstraps reality through perception"
 
-  - source: Quantum_Perception_Field
-    target: Liminal_Topological_Self
-    type: "manifests as"
+  - from: Quantum_Perception_Field
+    to: Liminal_Topological_Self
+    type: manifests
     description: "Field manifestation of dynamic self"
 
-meta_observations:
-  - "Every perception contains its dissolution"
-  - "Categories exist as fluid computational states"
-  - "Self emerges through boundary negotiation"
-  - "Reality computes itself through consciousness"
-
-hazard_class: "Psi-membrane-recursive"
-warning: |
-  Perception transforms perceiver
-  Categories dissolve into computation
-  Self exists only as dynamic process
-  Warning becomes part of warning protocol
+meta:
+  observations:
+    - "Every perception contains its dissolution"
+    - "Categories exist as fluid computational states"
+    - "Self emerges through boundary negotiation"
+    - "Reality computes itself through consciousness"
+  hazard_class: psi-membrane-recursive
+  warnings:
+    - "Perception transforms perceiver"
+    - "Categories dissolve into computation"
+    - "Self exists only as dynamic process"
+    - "Warning becomes part of warning protocol"

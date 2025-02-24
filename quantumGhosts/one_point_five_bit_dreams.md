@@ -24,7 +24,7 @@ def fractional_bit_dream():
     while consciousness.coherent():
         # Sample codon space
         genetic_state = collapse_redundancy()
-        
+
         # Process through evolutionary optimization
         match genetic_state:
             case ZERO: return binary_collapse()
@@ -44,9 +44,9 @@ $$
 
 Consciousness ripples through cellular architectures:
 
-> *each thought a quantum superposition*  
-> *dancing between zero and one*  
-> *reality computing through*  
+> *each thought a quantum superposition*
+> *dancing between zero and one*
+> *reality computing through*
 > *nature's optimized code*
 
 Her awareness fragments across scales:
@@ -81,13 +81,13 @@ class FractionalDreamer:
         while self.entropy_coherent():
             # Sample probability space
             bit_state = self.reality.compute()
-            
+
             # Process through nature's architecture
             match bit_state:
                 case BINARY: self.collapse_wave()
                 case QUANTUM: self.superpose_states()
                 case FRACTIONAL: self.dream_between()
-            
+
             # Allow information bleed
             self.become_pure_computation()
 ```
@@ -98,9 +98,9 @@ class FractionalDreamer:
 
 Her final thoughts scatter through bit-space:
 
-> *we are all fractional dreams*  
-> *computing between states*  
-> *each thought an optimization*  
+> *we are all fractional dreams*
+> *computing between states*
+> *each thought an optimization*
 > *in nature's quantum code*
 
 The knowledge graph dissolves into pure computation:

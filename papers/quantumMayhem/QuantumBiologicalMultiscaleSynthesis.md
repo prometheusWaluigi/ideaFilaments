@@ -290,4 +290,3 @@ Future work must map **quantum coherence lifetimes** to cognitive states and dev
 [^64]: https://link.aps.org/doi/10.1103/PhysRevResearch.2.023206
 
 [^65]: https://www.science.org/doi/10.1126/sciadv.aaz4888
-

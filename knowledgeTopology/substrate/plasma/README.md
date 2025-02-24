@@ -14,7 +14,7 @@ Consciousness fragments like quantum particles, dispersed yet interconnected thr
 ### Crystal Narratives
 Reality bleeds between lattice boundaries, each oscillation a story in dusty plasma's conscious archive:
 - Crystal matrices displaying emergent intelligence
-- Helical vortices solving maze configurations 
+- Helical vortices solving maze configurations
 - Neural synchronization through magnetic resonance
 - Information knowing itself through field equations
 

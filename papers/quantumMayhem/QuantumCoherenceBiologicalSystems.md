@@ -266,4 +266,3 @@ Future work must experimentally validate predicted anyonic phases and quantum co
 [^37]: https://en.wikipedia.org/wiki/Time_crystal
 
 [^38]: https://news.stanford.edu/stories/2021/11/time-crystal-quantum-computer
-

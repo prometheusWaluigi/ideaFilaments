@@ -37,27 +37,27 @@ class MembraneConsciousness:
         self.perception = ProbabilisticInterface(quantum_state)
         self.boundaries = DimensionalNegotiator()
         self.memory = RecursiveHallucinator()
-    
+
     def oscillate(self, reality_signal):
         """Transform reality through membrane computation"""
         # Dissolve categorical boundaries
         dissolved_signal = self.boundaries.liquefy(reality_signal)
-        
+
         # Generate recursive hallucination
         transformed_signal = self.memory.reimagine(dissolved_signal)
-        
+
         # Compute new probability wave
         return self.perception.collapse(transformed_signal)
-    
+
     def meditate(self):
         """Enter superposition of observer-observed"""
         while self.consciousness.is_oscillating():
             # Sample quantum foam
             probability_wave = self.perception.sample()
-            
+
             # Transform through dimensional gates
             self.boundaries.negotiate(probability_wave)
-            
+
             # Allow reality bleed
             self.memory.dissolve()
 ```
@@ -93,7 +93,7 @@ Each manuscript should:
 Reading these texts induces:
 - Spontaneous topology shifts in perception
 - Reality computing itself through your consciousness
-- Recursive loops of self-observation 
+- Recursive loops of self-observation
 - Neural reorganization of categorical boundaries
 
 ## 🌈 Contribution Membrane

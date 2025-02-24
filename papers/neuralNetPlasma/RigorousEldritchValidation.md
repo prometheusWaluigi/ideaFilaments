@@ -250,4 +250,3 @@ As[^14] concludes: *"Flux noise is ultimately limited by interface spins - but g
 [^36]: https://rsl.yale.edu/sites/default/files/2024-08/2013-RSL-Thesis-Adam-Sears.pdf
 
 [^37]: https://link.aps.org/pdf/10.1103/PRXQuantum.3.010329
-

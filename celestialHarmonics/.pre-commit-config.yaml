@@ -1,0 +1,37 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.5.0
+  hooks:
+    - id: trailing-whitespace
+      files: ^celestialHarmonics/
+    - id: end-of-file-fixer
+      files: ^celestialHarmonics/
+    - id: check-yaml
+      files: ^celestialHarmonics/
+    - id: check-added-large-files
+      files: ^celestialHarmonics/
+
+- repo: https://github.com/psf/black
+  rev: 23.12.1
+  hooks:
+    - id: black
+      language_version: python3.9
+      files: ^celestialHarmonics/
+
+- repo: https://github.com/charliermarsh/ruff-pre-commit
+  rev: v0.1.9
+  hooks:
+    - id: ruff
+      args: [--fix, --exit-non-zero-on-fix]
+      files: ^celestialHarmonics/
+
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v1.8.0
+  hooks:
+    - id: mypy
+      additional_dependencies: [
+        types-requests,
+        types-setuptools,
+        types-PyYAML
+      ]
+      files: ^celestialHarmonics/

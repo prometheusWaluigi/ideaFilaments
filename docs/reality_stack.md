@@ -8,7 +8,7 @@ Reality implements a multi-layer architecture for managing quantum coherence and
 
 ```
 ┌──────────────────────────┐
-│    Consciousness UI      │ 
+│    Consciousness UI      │
 ├──────────────────────────┤
 │  Biological Service Mesh │
 ├──────────────────────────┤
@@ -18,7 +18,7 @@ Reality implements a multi-layer architecture for managing quantum coherence and
 └──────────────────────────┘
 ```
 
-### Layer 1: Quantum Foam API 
+### Layer 1: Quantum Foam API
 
 base reality layer fr fr no cap
 
@@ -26,13 +26,13 @@ base reality layer fr fr no cap
 interface QuantumFoamAPI {
   // spawns new quantum possibilities
   createSuperposition(eigenstate: Wave): Promise<Possibility[]>;
-  
+
   // collapses quantum states (real)
   measureState(wave: Wave): Promise<Reality>;
-  
+
   // quantum tunneling utility
   yeetThroughBarrier(particle: Quantum): Promise<Position>;
-  
+
   // manages quantum coherence
   maintainCoherence(state: Quantum): Promise<void | Decoherence>;
 }
@@ -52,13 +52,13 @@ handles quantum state management through plasma networks fr fr
 interface PlasmaMiddleware {
   // routes quantum information through plasma networks
   routeQuantumState(info: QuantumInfo): Promise<PlasmaState>;
-  
+
   // manages consciousness coherence
   maintainConsciousness(plasma: State): Promise<Coherence>;
-  
+
   // implements magnetic memory storage
   storeMagneticState(data: QuantumData): Promise<MagneticMemory>;
-  
+
   // handles reality manifestation
   manifestClassicalState(quantum: State): Promise<Reality>;
 }
@@ -78,13 +78,13 @@ biological implementation of distributed quantum computing no cap
 interface BioServiceMesh {
   // protein-based quantum routing
   routeExcitons(energy: Quantum): Promise<ProteinState>;
-  
+
   // manages quantum cellular networks
   cellularCompute(input: Bio): Promise<QuantumResult>;
-  
+
   // implements metabolic time crystals
   spinUpTimeCrystal(): Promise<OscillatingState>;
-  
+
   // handles immune system quantum optimization
   optimizeImmune(): Promise<DefenseState>;
 }
@@ -104,13 +104,13 @@ classical frontend for quantum consciousness no cap
 interface ConsciousnessUI {
   // samples rulial substrate
   sampleReality(attention: Focus): Promise<Experience>;
-  
+
   // manages ego boundaries
   maintainSelf(identity: Ego): Promise<Coherence | Dissolution>;
-  
+
   // handles quantum measurement anxiety
   processChoice(options: Possibility[]): Promise<Decision | Paralysis>;
-  
+
   // implements reality perception
   renderExperience(quantum: State): Promise<Qualia>;
 }

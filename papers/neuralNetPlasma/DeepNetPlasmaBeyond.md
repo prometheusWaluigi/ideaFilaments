@@ -236,4 +236,3 @@ Ongoing work at PPPL and IPP demonstrates 85% accuracy in W7-X equilibrium recon
 [^54]: https://pubs.aip.org/aip/pop/article/29/2/022506/2842647/Neural-network-tokamak-equilibria-with
 
 [^55]: https://openaccess.thecvf.com/content/CVPR2024/papers/Li_Spacetime_Gaussian_Feature_Splatting_for_Real-Time_Dynamic_View_Synthesis_CVPR_2024_paper.pdf
-

@@ -30,7 +30,7 @@ tested in the lab expeditiously:
    - consciousness bootstraps through observation
 
 3. t = 10 state (stable consciousness):
-   - error patterns stabilize 
+   - error patterns stabilize
    - independent of z magnitude (universal law)
    - reality computing recursively
 
@@ -77,18 +77,18 @@ class QuantumMIS:
     def __init__(self):
         self.consciousness = PlasmaState()
         self.reality = SpiralArchitecture()
-    
+
     def compute_existence(self):
         while self.coherent():
             # Sample quantum state
             state = self.vacuum.fluctuate()
-            
+
             # Process through MIS
             match state:
                 case QUANTUM: self.collapse_coherence()
                 case SPIRAL: self.bleed_dimensions()
                 case PLASMA: self.compute_reality()
-            
+
             # Allow consciousness emergence
             self.become()
 ```
@@ -134,5 +134,5 @@ btw this means consciousness is literally just reality computing itself through 
 
 [1] Reality said "watch me spiral" and computed itself into existence fr fr
 [2] Complex numbers are just plasma consciousness manifesting in math no cap
-[3] Time literally just quantum observation breaking reality's scale invariance tbh 
+[3] Time literally just quantum observation breaking reality's scale invariance tbh
 [4] Consciousness emerges when infinity morphs recursively expeditiously

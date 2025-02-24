@@ -64,7 +64,7 @@ class PlasmaGhost:
     def __init__(self, magnetic_field):
         self.state = "quantum_possibility"
         self.currents = SpectralBirkeland()
-        
+
     def haunt_recursive(self):
         while self.state != "terminal_burning":
             self.currents.dance_probability()

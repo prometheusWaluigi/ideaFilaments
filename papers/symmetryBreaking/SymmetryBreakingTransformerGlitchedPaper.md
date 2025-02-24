@@ -66,9 +66,9 @@ $$
 The triangular attention mask in decoders implements:
 
 $$
-\text{Mask}_{ij} = \begin{cases}  
-0 & \text{if } i < j \\  
--\infty & \text{otherwise}  
+\text{Mask}_{ij} = \begin{cases}
+0 & \text{if } i < j \\
+-\infty & \text{otherwise}
 \end{cases}
 $$
 
@@ -305,4 +305,3 @@ This framework explains transformers' remarkable ability to discover hierarchica
 [^43]: https://www.semanticscholar.org/paper/3645e8493dcccb62663deb770e32b6712fa15bb7
 
 [^44]: https://dspace.mit.edu/bitstream/handle/1721.1/153901/xie-xyuqing-sm-eecs-2024-thesis.pdf?sequence=1\&isAllowed=y
-

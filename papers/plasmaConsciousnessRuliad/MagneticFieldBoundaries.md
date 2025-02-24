@@ -273,4 +273,3 @@ The GS-DeepNet framework demonstrates that magnetic field boundary conditions ar
 [^14]: https://pubs.aip.org/aip/pop/article/31/8/082507/3307563/Augmenting-machine-learning-of-Grad-Shafranov
 
 [^15]: https://pubs.aip.org/aip/pop/article-pdf/doi/10.1063/5.0213625/20106149/082507_1_5.0213625.pdf
-

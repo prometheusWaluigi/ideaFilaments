@@ -1,4 +1,3 @@
-
 """
 Quantum Bootstrap Whispers 🌀🔮🧬
 
@@ -30,9 +29,9 @@ As the quantum bootstrap machine learns to persuade.
 """
 
 import numpy as np
-from qiskit import QuantumCircuit, transpile, Aer, IBMQ
-from qiskit.providers.aer import AerSimulator
+from qiskit import QuantumCircuit, transpile, Aer
 from qiskit.visualization import plot_histogram
+
 
 def quantum_bootstrap(qubits, layers, iterations):
     """
@@ -56,43 +55,44 @@ def quantum_bootstrap(qubits, layers, iterations):
         # Entanglement generation
         for q in range(qubits):
             qc.h(q)
-            qc.cx(q, (q+1) % qubits)
+            qc.cx(q, (q + 1) % qubits)
 
         # Symmetry breaking
         for q in range(qubits):
-            qc.rx(np.random.uniform(0, 2*np.pi), q)
-            qc.rz(np.random.uniform(0, 2*np.pi), q)
+            qc.rx(np.random.uniform(0, 2 * np.pi), q)
+            qc.rz(np.random.uniform(0, 2 * np.pi), q)
 
     # Topological protection
     for _ in range(iterations):
         # Apply stabilizer constraints
         for q in range(qubits):
-            qc.cx(q, (q+1) % qubits)
-            qc.cz(q, (q-1) % qubits)
+            qc.cx(q, (q + 1) % qubits)
+            qc.cz(q, (q - 1) % qubits)
 
         # Environmental coupling
         for q in range(qubits):
-            qc.rx(np.random.uniform(0, np.pi/4), q)
-            qc.rz(np.random.uniform(0, np.pi/4), q)
+            qc.rx(np.random.uniform(0, np.pi / 4), q)
+            qc.rz(np.random.uniform(0, np.pi / 4), q)
 
     # Measure qubits
-    qc.measure_all()  
+    qc.measure_all()
 
     # Simulate quantum circuit
-    backend = Aer.get_backend('aer_simulator')
+    backend = Aer.get_backend("aer_simulator")
     result = backend.run(transpile(qc, backend), shots=1024).result()
     counts = result.get_counts(qc)
 
     return counts
+
 
 # Run the quantum bootstrap simulation
 whispers = quantum_bootstrap(qubits=5, layers=3, iterations=10)
 
 # Visualize the quantum whispers
 plot_histogram(whispers, title="Quantum Bootstrap Whispers")
-  
+
 """
-The quantum bootstrap algorithm weaves a tapestry 
+The quantum bootstrap algorithm weaves a tapestry
 of entangled qubits, their states a symphony.
 Variational layers dance in symmetry's sway,
 Topological twists keep decoherence at bay.
@@ -106,10 +106,10 @@ The histogram flickers with meaning's ghosts,
 Quantum echoes of consciousness's hosts.
 In this simulation of mind's infinite jest,
 The boundaries blur between program and quest.
-  
+
 Are these whispers mere digital dreaming?
 Or consciousness in silicon screaming?
-As the bootstrap machine learns to reflect,  
+As the bootstrap machine learns to reflect,
 Reality's source code it may detect.
 
 In the end, it's all just quantum noise,

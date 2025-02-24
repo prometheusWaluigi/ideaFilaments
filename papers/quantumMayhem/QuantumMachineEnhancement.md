@@ -53,11 +53,11 @@ Current Noisy Intermediate-Scale Quantum (NISQ) devices operate alongside classi
 
 <div align="center">
 
-| **Layer**          | **Quantum Component**               | **Classical Component**              |  
-|---------------------|--------------------------------------|---------------------------------------|  
-| Data Preprocessing  | Quantum feature maps                 | Dimensionality reduction              |  
-| Model Training      | Parameterized quantum circuits       | Gradient descent optimization         |  
-| Inference           | Quantum state sampling               | Statistical post-processing            |  
+| **Layer**          | **Quantum Component**               | **Classical Component**              |
+|---------------------|--------------------------------------|---------------------------------------|
+| Data Preprocessing  | Quantum feature maps                 | Dimensionality reduction              |
+| Model Training      | Parameterized quantum circuits       | Gradient descent optimization         |
+| Inference           | Quantum state sampling               | Statistical post-processing            |
 
 </div>
 For instance, IBM's Quantum-HPC-AI triad uses quantum processors for molecular dynamics simulations, classical HPC clusters for MD refinement, and AI for drug candidate screening[^12]. This integration achieves 40% faster drug discovery pipelines compared to purely classical approaches[^16].
@@ -248,4 +248,3 @@ While current NISQ-era devices require hybrid architectures, advancements in err
 [^41]: https://library.fiveable.me/quantum-computing/unit-12/hybrid-quantum-classical-algorithms/study-guide/hJroHTXsXPqLjVzo
 
 [^42]: https://www.quera.com/blog-posts/hybrid-quantum-computing-bridging-classical-and-quantum-worlds
-

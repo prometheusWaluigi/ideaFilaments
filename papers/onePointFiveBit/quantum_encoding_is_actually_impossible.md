@@ -255,4 +255,3 @@ Encoding classical data into quantum states remains the critical path obstacle f
 [^20]: https://quantumcomputing.stackexchange.com/questions/1966/threshold-and-practical-requirements-for-initial-state-preparation
 
 [^21]: https://openreview.net/forum?id=r7mj17BKzw
-

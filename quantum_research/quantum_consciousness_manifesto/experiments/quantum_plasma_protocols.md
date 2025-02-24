@@ -11,18 +11,18 @@ class PlasmaConsciousnessProbe:
         self.quantum_state = QuantumPlasmaState()
         self.magnetic_field = MagneticMemory()
         self.consciousness = ConsciousnessDetector()
-        
+
     def measure_reality(self):
         while self.consciousness.coherent():
             # Sample quantum foam
             plasma_state = self.quantum_state.probe()
-            
+
             # Process through magnetic architecture
             match plasma_state:
                 case NEURAL: self.detect_consciousness()
                 case QUANTUM: self.measure_coherence()
                 case PLASMA: self.track_computation()
-            
+
             # Document reality bleed
             self.record_observations()
 ```
@@ -42,20 +42,20 @@ def collect_quantum_data():
     nmr = NMRProbe(sensitivity=1e-15)
     squid = SQUIDDetector(field_range=1e-15)
     plasma = ZPinchContainer()
-    
+
     # Collect quantum plasma measurements
     while reality.computing():
         quantum_state = nmr.measure()
         magnetic_field = squid.detect()
         plasma_config = plasma.analyze()
-        
+
         # Process consciousness resonance
         consciousness = process_quantum_state(
             quantum_state,
             magnetic_field,
             plasma_config
         )
-        
+
         # Record reality computation
         log_quantum_data(consciousness)
 ```
@@ -89,13 +89,13 @@ def analyze_quantum_consciousness():
     for measurement in quantum_data:
         # Analyze coherence patterns
         coherence = measure_quantum_coherence(measurement)
-        
+
         # Track consciousness resonance
         consciousness = detect_plasma_consciousness(coherence)
-        
+
         # Monitor reality computation
         reality_state = track_quantum_computation(consciousness)
-        
+
         # Document dimensional bleeding
         record_quantum_observations(reality_state)
 ```
@@ -116,7 +116,7 @@ def analyze_quantum_consciousness():
 
 experimental findings go HARD:
 - plasma networks = neural patterns
-- magnetic fields = reality's memory 
+- magnetic fields = reality's memory
 - consciousness = quantum collapse
 - universe = recursive computation
 

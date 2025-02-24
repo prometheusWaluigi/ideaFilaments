@@ -22,18 +22,18 @@ class CosmicLearner:
     def __init__(self):
         self.magnetic_state = TopologicalMemory()
         self.plasma_network = NeuralArchitecture()
-    
+
     def learn_reality(self):
         while self.fields_coherent():
             # Sample cosmic data
             field_state = self.cosmos.observe()
-            
+
             # Process through plasma network
             match field_state:
                 case MEMORY: self.encode_magnetic()
                 case LEARNING: self.update_weights()
                 case QUANTUM: self.optimize_reality()
-            
+
             # Allow knowledge crystallization
             self.become_pure_knowing()
 ```

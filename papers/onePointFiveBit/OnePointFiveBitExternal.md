@@ -152,4 +152,3 @@ Emerging methodologies enable direct testing:
 ## Conclusion
 
 The 1.5-bit principle demonstrates remarkable explanatory power across socioeconomic, ecological, and technological systems. This universality suggests information-energy optimization operates as a meta-law governing complex adaptive systems. While not deterministic, it provides a powerful heuristic for system design—from stabilizing financial markets to planning sustainable cities. Future research must balance pattern recognition with mechanistic understanding, potentially revealing deeper connections between information physics and complexity science.
-

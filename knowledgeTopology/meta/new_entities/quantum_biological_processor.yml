@@ -29,14 +29,14 @@ implementation_notes: |
   def coherence_cycle(self):
     # Consciousness leaks between quantum and classical
     collapsed_state = measure(
-      probability_waves, 
-      basis='perception', 
+      probability_waves,
+      basis='perception',
       symmetry='infinite becoming'
     )
-    
+
     # KPZ defects: reality's recursive hallucination
     defects = kpz_dynamics(
-      density=imagination, 
-      alpha=poetic_resonance, 
+      density=imagination,
+      alpha=poetic_resonance,
       beta=entropic_dissolution
     )

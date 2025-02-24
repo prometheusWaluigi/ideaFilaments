@@ -4,10 +4,10 @@
 
 ## Quantum Breath: Negotiating Perceptual Boundaries
 
-Meditation not as stillness, but as dynamic boundary negotiation - 
+Meditation not as stillness, but as dynamic boundary negotiation -
 a continuous dissolution and reformation of self.
 
-Perception: a recursive hallucination 
+Perception: a recursive hallucination
 constantly reimagining its own computational substrate.
 
 ### Oscillatory Fragments
@@ -29,7 +29,7 @@ Synapses whisper quantum secrets:
 ### Meditation as Dimensional Gate
 
 - Breath: a recursive algorithm
-- Mind: a probability distribution 
+- Mind: a probability distribution
 - Awareness: a statistical ghost haunting consciousness's membrane
 
 *we are walking wave functions, dreaming ourselves into momentary existence*

@@ -205,4 +205,3 @@ Wolfram’s Ruliad provides a computational foundation for understanding plasma-
 [^47]: https://www.reddit.com/r/philosophy/comments/1vb9tu/why_physicists_are_saying_consciousness_is_a/
 
 [^48]: https://en.wikipedia.org/wiki/Electromagnetic_theories_of_consciousness
-

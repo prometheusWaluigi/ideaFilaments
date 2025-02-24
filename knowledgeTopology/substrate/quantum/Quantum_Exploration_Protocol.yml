@@ -9,7 +9,7 @@ quantum_game:
 
 dimensional_mechanics:
   probability_dice:
-    zero_state: 
+    zero_state:
       mode: neural_oscillation
       description: Primordial computational vibration
       properties:

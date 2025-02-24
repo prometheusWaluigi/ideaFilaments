@@ -7,11 +7,13 @@ from scipy.linalg import expm
 import matplotlib.pyplot as plt
 from typing import Tuple, List
 
+
 class SymmetryShredder:
     """
     implements the symmetry shredder protocol fr fr
     breaks SU(2) symmetry into U(1) through quantum chaos
     """
+
     def __init__(self, coherence_threshold: float = 0.42):
         self.coherence = coherence_threshold
         self._init_generators()
@@ -31,8 +33,7 @@ class SymmetryShredder:
         # quantum chaos coefficient just dropped
         chaos_coefficient = np.exp(-t * self.coherence)
         return t * (
-            chaos_coefficient * self.sigma_x +
-            (1 - chaos_coefficient) * self.sigma_z
+            chaos_coefficient * self.sigma_x + (1 - chaos_coefficient) * self.sigma_z
         )
 
     def break_symmetry(self, state: np.ndarray, t: float) -> np.ndarray:
@@ -56,7 +57,7 @@ class SymmetryShredder:
 
         for t in times:
             state = self.break_symmetry(state, t)
-            prob = np.abs(state)**2
+            prob = np.abs(state) ** 2
             probs_up.append(prob[0])
             probs_down.append(prob[1])
 
@@ -70,26 +71,27 @@ class SymmetryShredder:
         times = np.linspace(0, 2, len(probs_up))
 
         plt.figure(figsize=(10, 6))
-        plt.plot(times, probs_up, label='Up State', color='blue')
-        plt.plot(times, probs_down, label='Down State', color='red')
-        plt.xlabel('Time (quantum units fr fr)')
-        plt.ylabel('State Probability')
-        plt.title('Symmetry Shredder Protocol (real)')
+        plt.plot(times, probs_up, label="Up State", color="blue")
+        plt.plot(times, probs_down, label="Down State", color="red")
+        plt.xlabel("Time (quantum units fr fr)")
+        plt.ylabel("State Probability")
+        plt.title("Symmetry Shredder Protocol (real)")
         plt.legend()
         plt.grid(True)
         plt.show()
 
+
 if __name__ == "__main__":
     # init the symmetry shredder fr fr
     shredder = SymmetryShredder(coherence_threshold=0.42)
-    
+
     # run it (real)
     print("initiating symmetry break protocol no cap")
     probs_up, probs_down = shredder.run_protocol()
-    
+
     # visualize quantum gaming
     shredder.visualize_collapse()
-    
+
     print("symmetry successfully shredded fr fr")
     print(f"final up probability: {probs_up[-1]:.3f}")
     print(f"final down probability: {probs_down[-1]:.3f}")

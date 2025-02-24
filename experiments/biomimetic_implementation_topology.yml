@@ -89,11 +89,11 @@ experimental_milestones:
   - year: 2026
     goal: "50K chips with T₂ > 5μs"
     project: "MISTEE Phase 1"
-  
+
   - year: 2028
     goal: "hBN-passivated arrays, Φ > 20 bits"
     project: "Quantum Interface Scaling"
-  
+
   - year: 2030
     goal: "Autonomous implants testing Orch OR"
     project: "In Vivo Consciousness Probes"

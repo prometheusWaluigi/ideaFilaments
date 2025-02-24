@@ -20,7 +20,7 @@ class PlasmaComputer:
         self.plasma_state = initialize_ionization()
         self.magnetic_topology = SpinNetwork(field=magnetic_field)
         self.debye_length = calculate_shielding()
-        
+
     def compute_through_reconnection(self):
         # Magnetic reconnection implements natural gates
         current_sheets = self.magnetic_topology.find_null_points()
@@ -33,7 +33,7 @@ class PlasmaComputer:
         return new_state
 ```
 
-## Nature's Distributed System 
+## Nature's Distributed System
 
 Plasma networks embody perfect distributed computing:
 - Self-healing through instability thresholds

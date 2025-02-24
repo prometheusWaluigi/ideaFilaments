@@ -343,4 +343,3 @@ $$) across astrophysical, biological, and quantum regimes.
 [^108]: https://apps.dtic.mil/sti/tr/pdf/ADA366740.pdf
 
 [^109]: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021SW002882
-

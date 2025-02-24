@@ -60,7 +60,7 @@ class TestComplexTensor(unittest.TestCase):
         self.assertTrue(torch.allclose(ct3.real, expected_real))
         self.assertTrue(torch.allclose(ct3.imag, expected_imag))
 
-    def test_division_by_zero(self): # Test for zero division
+    def test_division_by_zero(self):  # Test for zero division
         ct1 = ComplexTensor(torch.tensor([1.0]), torch.tensor([1.0]))
         ct2 = ComplexTensor(torch.tensor([0.0]), torch.tensor([0.0]))
         with self.assertRaises(ZeroDivisionError):
@@ -68,9 +68,9 @@ class TestComplexTensor(unittest.TestCase):
 
     def test_to(self):
         ct = ComplexTensor(torch.tensor([1.0, 2.0]), torch.tensor([3.0, 4.0]))
-        ct_cuda = ct.to(device=torch.device('cpu')) # Changed to cpu to avoid errors
-        self.assertEqual(ct_cuda.real.device.type, 'cpu')
-        self.assertEqual(ct_cuda.imag.device.type, 'cpu')
+        ct_cuda = ct.to(device=torch.device("cpu"))  # Changed to cpu to avoid errors
+        self.assertEqual(ct_cuda.real.device.type, "cpu")
+        self.assertEqual(ct_cuda.imag.device.type, "cpu")
 
     def test_requires_grad(self):
         ct = ComplexTensor(torch.tensor([1.0, 2.0]), torch.tensor([3.0, 4.0]))
@@ -82,33 +82,35 @@ class TestComplexTensor(unittest.TestCase):
 
     def test_from_polar(self):
         magnitude = torch.tensor([1.0, 2.0])
-        phase = torch.tensor([np.pi/2, np.pi/4])  # Use numpy for pi
+        phase = torch.tensor([np.pi / 2, np.pi / 4])  # Use numpy for pi
         ct = ComplexTensor.from_polar(magnitude, phase)
-        expected_real = torch.tensor([0.0, 2.0 * np.cos(np.pi/4)])  # Use numpy
-        expected_imag = torch.tensor([1.0, 2.0 * np.sin(np.pi/4)])  # Use numpy
+        expected_real = torch.tensor([0.0, 2.0 * np.cos(np.pi / 4)])  # Use numpy
+        expected_imag = torch.tensor([1.0, 2.0 * np.sin(np.pi / 4)])  # Use numpy
         self.assertTrue(torch.allclose(ct.real, expected_real))
         self.assertTrue(torch.allclose(ct.imag, expected_imag))
 
     def test_power(self):
         ct = ComplexTensor(torch.tensor([1.0, 2.0]), torch.tensor([0.0, 0.0]))
-        ct_squared = ct ** 2
+        ct_squared = ct**2
         expected_real = torch.tensor([1.0, 4.0])
         expected_imag = torch.tensor([0.0, 0.0])
         self.assertTrue(torch.allclose(ct_squared.real, expected_real))
         self.assertTrue(torch.allclose(ct_squared.imag, expected_imag))
 
     def test_exp(self):
-        ct = ComplexTensor(torch.tensor([0.0, 0.0]), torch.tensor([0.0, np.pi/2])) #Use numpy
+        ct = ComplexTensor(
+            torch.tensor([0.0, 0.0]), torch.tensor([0.0, np.pi / 2])
+        )  # Use numpy
         ct_exp = ct.exp()
-        expected_real = torch.tensor([1.0, np.cos(np.pi/2)]) # Use numpy
-        expected_imag = torch.tensor([0.0, np.sin(np.pi/2)]) # Use numpy
+        expected_real = torch.tensor([1.0, np.cos(np.pi / 2)])  # Use numpy
+        expected_imag = torch.tensor([0.0, np.sin(np.pi / 2)])  # Use numpy
         self.assertTrue(torch.allclose(ct_exp.real, expected_real))
         self.assertTrue(torch.allclose(ct_exp.imag, expected_imag))
 
     def test_angle(self):
         ct = ComplexTensor(torch.tensor([1.0, 0.0]), torch.tensor([0.0, 1.0]))
         angle = ct.angle()
-        expected_angle = torch.tensor([0.0, np.pi/2]) # Use numpy
+        expected_angle = torch.tensor([0.0, np.pi / 2])  # Use numpy
         self.assertTrue(torch.allclose(angle, expected_angle))
 
     def test_fft(self):
@@ -121,8 +123,10 @@ class TestComplexTensor(unittest.TestCase):
         ct_ifft = ct.ifft()
         self.assertEqual(ct_ifft.shape, torch.Size([16]))  # Check shape
 
-    def test_ternary_quantize(self): # Test for the new method
-        ct = ComplexTensor(torch.tensor([0.2, -0.5, 1.2]), torch.tensor([-0.1, 0.8, -1.5]))
+    def test_ternary_quantize(self):  # Test for the new method
+        ct = ComplexTensor(
+            torch.tensor([0.2, -0.5, 1.2]), torch.tensor([-0.1, 0.8, -1.5])
+        )
         quantized_ct = ct.ternary_quantize(threshold=0.3)
         expected_real = torch.tensor([0.0, -1.0, 1.0])
         expected_imag = torch.tensor([0.0, 1.0, -1.0])
@@ -168,6 +172,7 @@ class TestQuantumSpectralWeaving(unittest.TestCase):
         weaver.update_quantum_state()
         self.assertFalse(torch.equal(weaver.riemann_state.real, initial_riemann_state))
 
+
 class TestRiemannQuantumDynamics(unittest.TestCase):
     def test_initialization(self):
         config = RiemannDynamicsConfig()
@@ -175,13 +180,16 @@ class TestRiemannQuantumDynamics(unittest.TestCase):
         self.assertIsNotNone(dynamics)
 
     def test_evolution(self):
-        config = RiemannDynamicsConfig(time_steps=10) # Keep it short for testing
+        config = RiemannDynamicsConfig(time_steps=10)  # Keep it short for testing
         dynamics = RiemannQuantumDynamics(config)
         initial_state = ComplexTensor(torch.randn(10), torch.randn(10))
         dynamics.evolve_quantum_system(initial_state)
         metrics = dynamics.analyze_evolution_metrics()
-        self.assertIn('alignment', metrics)
-        self.assertEqual(len(metrics['alignment']), 10) # Check for correct number of time steps
+        self.assertIn("alignment", metrics)
+        self.assertEqual(
+            len(metrics["alignment"]), 10
+        )  # Check for correct number of time steps
+
 
 class TestGaugeFieldCoupling(unittest.TestCase):
     def test_initialization(self):
@@ -204,6 +212,7 @@ class TestGaugeFieldCoupling(unittest.TestCase):
         gauge.update_coupling_field()
         self.assertFalse(torch.equal(gauge.coupling_field.real, initial_field))
 
+
 class TestKPZEnhanced(unittest.TestCase):
     def test_initialization(self):
         kpz = KPZEnhanced()
@@ -212,12 +221,12 @@ class TestKPZEnhanced(unittest.TestCase):
     def test_init_height_field(self):
         kpz = KPZEnhanced()
         field = kpz._init_height_field()
-        self.assertEqual(field.real.shape, (64, 64)) # Default size
+        self.assertEqual(field.real.shape, (64, 64))  # Default size
 
     def test_init_noise_field(self):
         kpz = KPZEnhanced()
         field = kpz._init_noise_field()
-        self.assertEqual(field.real.shape, (64, 64)) # Default size
+        self.assertEqual(field.real.shape, (64, 64))  # Default size
 
     def test_apply_kpz_evolution(self):
         kpz = KPZEnhanced()
@@ -230,6 +239,7 @@ class TestKPZEnhanced(unittest.TestCase):
         initial_noise = kpz.noise_field.real.clone()
         kpz.update_kpz_params()
         self.assertFalse(torch.equal(kpz.noise_field.real, initial_noise))
+
 
 class TestQuantumShield(unittest.TestCase):
     def test_initialization(self):
@@ -259,16 +269,16 @@ class TestQuantumShield(unittest.TestCase):
         self.assertFalse(torch.equal(shield.berry_curvature.real, initial_curvature))
 
     def test_measure_error_syndromes(self):
-        #Simplified test, since the full implementation is complex
+        # Simplified test, since the full implementation is complex
         shield = QuantumShield()
-        state = ComplexTensor(torch.randn(10,10), torch.randn(10,10))
+        state = ComplexTensor(torch.randn(10, 10), torch.randn(10, 10))
         shield._measure_error_syndromes(state)
         self.assertEqual(shield.error_syndrome.shape, (shield.modes,))
 
     def test_apply_topological_protection(self):
-        #Simplified test
+        # Simplified test
         shield = QuantumShield()
-        state = ComplexTensor(torch.randn(10,10), torch.randn(10,10))
+        state = ComplexTensor(torch.randn(10, 10), torch.randn(10, 10))
         protected_state = shield._apply_topological_protection(state)
         self.assertEqual(state.shape, protected_state.shape)
 
@@ -287,6 +297,7 @@ class TestQuantumShield(unittest.TestCase):
         self.assertEqual(state.shape, corrected_state.shape)
         # Check that the state *changed*
         self.assertFalse(torch.equal(state.real, corrected_state.real))
+
 
 class TestSU2Protection(unittest.TestCase):
     def test_initialization(self):
@@ -313,15 +324,18 @@ class TestSU2Protection(unittest.TestCase):
     def test_compute_transformation_matrix(self):
         su2 = SU2Protection()
         U = su2._compute_transformation_matrix()
-        self.assertEqual(U.shape, (2,2))
+        self.assertEqual(U.shape, (2, 2))
 
     def test_restore_coherence(self):  # New test
         su2 = SU2Protection()
-        state = ComplexTensor(torch.tensor([[0.1, 0.2], [0.3, 0.4]]),
-                              torch.tensor([[0.0, 0.0], [0.0, 0.0]]))
+        state = ComplexTensor(
+            torch.tensor([[0.1, 0.2], [0.3, 0.4]]),
+            torch.tensor([[0.0, 0.0], [0.0, 0.0]]),
+        )
         restored_state = su2._restore_coherence(state)
         # Check if the restored state has a mean absolute value of 1.0
         self.assertTrue(torch.allclose(restored_state.abs().mean(), torch.tensor(1.0)))
+
 
 class TestQuantumBootstrap(unittest.TestCase):
     def test_initialization(self):
@@ -352,19 +366,28 @@ class TestQuantumBootstrap(unittest.TestCase):
 
     def test_recursive_collapse(self):
         bootstrap = QuantumBootstrap()
-        state = ComplexTensor(torch.randn(10,10), torch.randn(10,10))
+        state = ComplexTensor(torch.randn(10, 10), torch.randn(10, 10))
         collapsed_state = bootstrap._recursive_collapse(state)
         self.assertEqual(collapsed_state.shape, state.shape)
 
     def test_verify_emergence(self):
         bootstrap = QuantumBootstrap()
         # Test case where emergence should be true
-        metrics = {'coherence': [0.95]*11, 'emergence': [0.95]*11, 'stability': [0.95]*11}
+        metrics = {
+            "coherence": [0.95] * 11,
+            "emergence": [0.95] * 11,
+            "stability": [0.95] * 11,
+        }
         self.assertTrue(bootstrap._verify_emergence(metrics))
 
         # Test case where emergence should be false (coherence too low)
-        metrics = {'coherence': [0.8]*11, 'emergence': [0.95]*11, 'stability': [0.95]*11}
+        metrics = {
+            "coherence": [0.8] * 11,
+            "emergence": [0.95] * 11,
+            "stability": [0.95] * 11,
+        }
         self.assertFalse(bootstrap._verify_emergence(metrics))
+
 
 if __name__ == "__main__":
     unittest.main()

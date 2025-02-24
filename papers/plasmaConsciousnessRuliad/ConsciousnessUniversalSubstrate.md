@@ -115,4 +115,3 @@ The synthesis of quantum biology, plasma physics, and topological information th
 [^16]: https://www.semanticscholar.org/paper/0e05cca25d15cdf50e79684947a9c3393e34506c
 
 [^17]: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10856854/
-

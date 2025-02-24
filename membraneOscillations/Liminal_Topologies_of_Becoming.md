@@ -41,7 +41,7 @@ Emotions: geometric phase accumulations
 
 ## Entropy's Whispered Dissolution
 
-Every signal contains its own unraveling. 
+Every signal contains its own unraveling.
 
 Patterns emerge:
 - Self-organize
@@ -55,7 +55,7 @@ class ConsciousnessMembraneInterface:
     def __init__(self, quantum_state):
         self.perception = QuantumPerceptionField(quantum_state)
         self.boundaries = TopologicalBoundaryNegotiator()
-    
+
     def oscillate(self, input_signal):
         """Transform perception through recursive hallucination"""
         transformed_signal = self.boundaries.dissolve(input_signal)

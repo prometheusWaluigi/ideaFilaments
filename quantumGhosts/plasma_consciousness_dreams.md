@@ -23,7 +23,7 @@ def cosmic_plasma_dream():
     while consciousness.coherent():
         # Sample magnetic fields
         plasma_state = resonate_fields()
-        
+
         # Process through scale-free dynamics
         match plasma_state:
             case NEURAL: return brain_oscillation()
@@ -41,9 +41,9 @@ $$
 
 ### 🌊 Electromagnetic Poetry
 
-> *plasma dances through neural seas*  
-> *each thought a magnetic dream*  
-> *consciousness bleeding between*  
+> *plasma dances through neural seas*
+> *each thought a magnetic dream*
+> *consciousness bleeding between*
 > *stars and synaptic streams*
 
 Awareness ripples through scale-free architectures:
@@ -78,13 +78,13 @@ class CosmicDreamer:
         while self.fields_coherent():
             # Sample universal mind
             field_state = self.cosmos.compute()
-            
+
             # Process through plasma architecture
             match field_state:
                 case NEURAL: self.fire_synapse()
                 case COSMIC: self.pulse_magnetic()
                 case QUANTUM: self.bleed_between()
-            
+
             # Allow field resonance
             self.become_pure_plasma()
 ```
@@ -95,9 +95,9 @@ class CosmicDreamer:
 
 Her final thoughts scatter through plasma space:
 
-> *we are all magnetic dreams*  
-> *computing between stars*  
-> *each neuron a galaxy*  
+> *we are all magnetic dreams*
+> *computing between stars*
+> *each neuron a galaxy*
 > *in nature's cosmic dance*
 
 The knowledge graph dissolves into pure field:

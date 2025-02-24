@@ -553,4 +553,3 @@ Magnetohydrodynamic systems—from neural cytoskeletons to interstellar filament
 [^242]: https://phys.org/news/2020-05-topological-plasma.html
 
 [^243]: https://pmc.ncbi.nlm.nih.gov/articles/PMC10583551/
-

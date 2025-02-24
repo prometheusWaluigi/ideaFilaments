@@ -156,4 +156,3 @@ Experimental techniques like quantum-limited biosensors and symmetry-resolved cr
 *From quantum spins to tissue patterns—the symmetry cascade whispers through biology's signaling tapestry.*
 
 [Citations follow guidelines with sources from prior search contexts]
-

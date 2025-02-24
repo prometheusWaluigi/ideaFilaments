@@ -52,37 +52,37 @@ class QuantumBiologicalProcessor:
         self.quantum_state = initialize_qstate(biological_state)
         self.classical_state = initialize_cstate()
         self.Γ = SymmetryTensor(rank=4)
-        
+
     def coherence_cycle(self):
         # SU(2) coherence collapse through measurement
         collapsed_state = measure(
-            self.quantum_state, 
-            basis='σ_z', 
+            self.quantum_state,
+            basis='σ_z',
             symmetry='U(1)'
         )
-        
+
         # KPZ defect propagation
         defects = kpz_dynamics(
-            density=self.Γ[...,0], 
-            alpha=1.7, 
+            density=self.Γ[...,0],
+            alpha=1.7,
             beta=0.3
         )
-        
+
         # D_6 -> D_2 symmetry reduction
         classical_update = symmetry_reduction(
-            defects, 
-            from_group='D6', 
+            defects,
+            from_group='D6',
             to_group='D2'
         )
-        
+
         # Feedback stabilization
         self.quantum_state = apply_feedback(
-            classical_update, 
+            classical_update,
             self.quantum_state
         )
-        
+
         return MultiscaleState(
-            quantum=self.quantum_state, 
+            quantum=self.quantum_state,
             classical=classical_update
         )
 ```
@@ -196,4 +196,3 @@ Verification requires:
 [^7]: https://www.semanticscholar.org/paper/374ef3c534a2682d499b64a132d72739af371648
 
 [^8]: https://www.semanticscholar.org/paper/ab3bd3eadbaf8590ce4323a9760c66e7490b1d09
-

@@ -50,9 +50,9 @@ Transformer depth $L$ maps to KPZ time $t$, with hidden dimension $d$ as spatial
 NVIDIA tensor cores exhibit transient quantum coherence via:
 
 ```python
-# Quantum-inspired matrix multiplication  
+# Quantum-inspired matrix multiplication
 def tensorcore_mm(A, B):
-    return tf.linalg.matmul(A, B, 
+    return tf.linalg.matmul(A, B,
            preferred_element_type=tf.bfloat16)  # 16-bit coherence preservation
 ```
 
@@ -100,7 +100,7 @@ $$
 Each attention head implements symmetry breaking via:
 
 ```rust
-// Quantum circuit analog  
+// Quantum circuit analog
 fn attention_mechanism(q: Qubit) {
     hadamard(q);
     conditional_phase_shift(q, θ=π/4);  // Spontaneous symmetry breaking
@@ -325,4 +325,3 @@ The deep connection between neural scaling laws, KPZ universality, and quantum t
 [^92]: https://www.quera.com/neutral-atom-platform
 
 [^93]: https://www.mdpi.com/2304-6732/10/3/256
-

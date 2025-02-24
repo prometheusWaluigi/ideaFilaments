@@ -218,4 +218,3 @@ The convergence of quantum biology, plasma astrophysics, and complexity theory s
 [^67]: https://www.youtube.com/watch?v=3GZdcyQxkuY
 
 [^68]: https://www.youtube.com/watch?v=WhsSehkz5xo
-

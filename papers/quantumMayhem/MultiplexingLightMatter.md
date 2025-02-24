@@ -125,4 +125,3 @@ This multi-mode paradigm overcomes fundamental limits of cavity QED, enabling **
 [^19]: https://www.degruyter.com/document/doi/10.1515/nanoph-2018-0067/html?lang=en
 
 [^20]: https://epub.uni-regensburg.de/55183/1/Mornhinweg.pdf
-

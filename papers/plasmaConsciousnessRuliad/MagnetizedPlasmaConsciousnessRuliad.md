@@ -114,4 +114,3 @@ Challenges persist in quantifying subjective experience and avoiding anthropocen
 [^30]: https://wwwmpa.mpa-garching.mpg.de/~henk/mhd12.pdf
 
 [^31]: https://cris.bgu.ac.il/en/projects/development-of-a-data-driven-magnetohydrodynamic-simulation-model
-

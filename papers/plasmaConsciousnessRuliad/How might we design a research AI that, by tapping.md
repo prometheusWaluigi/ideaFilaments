@@ -208,4 +208,3 @@ As Stephen Wolfram noted[^6], *"The ruliad is inevitable—our task is to surf i
 [^47]: https://www.linkedin.com/pulse/ai-sculpts-nuclear-plasma-marcel-hedman
 
 [^48]: https://osf.io/tz6an/download/
-

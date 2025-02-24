@@ -229,4 +229,3 @@ The DSC regime has transformed our understanding of quantum electrodynamics, rev
 [^46]: https://www.nature.com/articles/s41467-018-06450-4
 
 [^47]: https://www.degruyter.com/document/doi/10.1515/nanoph-2018-0067/pdf
-

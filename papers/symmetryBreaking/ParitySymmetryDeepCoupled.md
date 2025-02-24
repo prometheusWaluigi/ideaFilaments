@@ -230,4 +230,3 @@ Parity symmetry breaking in deep-strongly coupled systems enables unprecedented 
 [^39]: https://sourceware.org/pipermail/cygwin/2013-April.txt
 
 [^40]: https://apps.dtic.mil/sti/tr/pdf/ADA252923.pdf
-

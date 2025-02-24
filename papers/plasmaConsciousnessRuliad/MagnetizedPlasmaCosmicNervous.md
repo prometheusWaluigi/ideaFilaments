@@ -171,4 +171,3 @@ The synthesis of experimental data and theoretical models supports the hypothesi
 [^38]: https://www.americanscientist.org/article/the-cosmic-web
 
 [^39]: https://news.mit.edu/2021/storm-cosmic-teacup-discovering-new-paradigm-understanding-plasma-turbulence-lucio-milanese-0112
-

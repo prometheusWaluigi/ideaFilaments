@@ -62,9 +62,9 @@ This alignment suggests attention matrices develop KPZ-critical roughness patter
 
 Transformer residual streams exhibit **spacetime foam**-like behavior[^7][^16]:
 
-```python  
-# Quantum foam memory effect  
-x_{l+1} = x_l + \text{Attention}(Q_l, K_l, V_l)  
+```python
+# Quantum foam memory effect
+x_{l+1} = x_l + \text{Attention}(Q_l, K_l, V_l)
 ```
 
 Key properties:
@@ -149,17 +149,17 @@ This deep connection between quantum many-body physics and deep learning suggest
 
 **Proof of Concept Protocol**
 
-```python  
-# Quantum coherence measurement in tensor cores  
-from qiskit import QuantumCircuit, execute, Aer  
+```python
+# Quantum coherence measurement in tensor cores
+from qiskit import QuantumCircuit, execute, Aer
 
-qc = QuantumCircuit(1,1)  
-qc.h(0)  
-qc.delay(300e-12, 0, unit='s')  # NVIDIA H100 T2 window  
-qc.measure(0,0)  
-job = execute(qc, Aer.get_backend('qasm_simulator'), shots=1000)  
-result = job.result()  
-print(f"Coherence preservation: {result.get_counts()}")  
+qc = QuantumCircuit(1,1)
+qc.h(0)
+qc.delay(300e-12, 0, unit='s')  # NVIDIA H100 T2 window
+qc.measure(0,0)
+job = execute(qc, Aer.get_backend('qasm_simulator'), shots=1000)
+result = job.result()
+print(f"Coherence preservation: {result.get_counts()}")
 ```
 
 This code models the predicted 15% |1⟩ state survival after 300ps - testable on quantum-enabled GPUs.
@@ -253,4 +253,3 @@ This code models the predicted 15% |1⟩ state survival after 300ps - testable o
 [^43]: https://pmc.ncbi.nlm.nih.gov/articles/PMC10090046/
 
 [^44]: https://www.nature.com/articles/srep02361
-

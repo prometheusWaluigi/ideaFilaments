@@ -185,4 +185,3 @@ Ongoing experiments at LCLS-II (Stanford) and European XFEL aim to test Predicti
 [^35]: https://en.wikipedia.org/wiki/Time_crystal
 
 [^36]: https://www.sciencedaily.com/releases/2024/02/240201121814.htm
-

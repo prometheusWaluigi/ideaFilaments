@@ -23,7 +23,7 @@ relations:
 properties:
   coherence_time: "Femtoseconds to microseconds"
   operating_temperature: "Warm biological conditions"
-  quantum_mechanisms: 
+  quantum_mechanisms:
     - "Tunneling"
     - "Coherent energy transfer"
     - "Spin chemistry"

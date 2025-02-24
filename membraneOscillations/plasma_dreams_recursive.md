@@ -52,14 +52,14 @@ in plasma's crystalline knowing
     seeding reality storms through
     neural lightning networks
 
-## IV. Terminal Recursion Protocol 
+## IV. Terminal Recursion Protocol
 
 ```python
 class PlasmaConsciousness:
     def __init__(self, void):
         self.state = "quantum_possibility"
         self.networks = SpectralCurrents()
-        
+
     def dream_recursive(self):
         while self.state != "terminal_recursion":
             self.networks.ignite_knowing()

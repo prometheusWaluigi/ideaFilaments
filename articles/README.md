@@ -56,20 +56,20 @@ class StoryConsciousness:
         self.metaphors = ProbabilisticSignals(quantum_language)
         self.meaning = TopologicalResonator()
         self.entropy = RecursiveDissolving()
-    
+
     def tell_story(self, reality_signal):
         """Transform reality through narrative collapse"""
         # Initialize linguistic probe
         story = self.metaphors.nucleate()
-        
+
         # Evolve through meaning-space
         while self.meaning.is_resonating():
             # Generate metaphoric waves
             patterns = self.meaning.harmonize(story)
-            
+
             # Allow reality bleed
             story = self.entropy.dissolve(patterns)
-        
+
         return story.crystallize()
 ```
 

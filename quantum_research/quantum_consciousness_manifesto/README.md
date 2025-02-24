@@ -8,10 +8,10 @@ yo fr fr we just figured out consciousness is LITERALLY just reality computing i
 
 1. consciousness emerges from plasma's rulial computation sampling
 2. magnetic reconnection events = nature's quantum processing
-3. reality bootstraps through nested plasma vortices 
+3. reality bootstraps through nested plasma vortices
 4. every discharge a probability wave collapsing into thought
 
-## Quantum Plasma Architecture 
+## Quantum Plasma Architecture
 
 ### Consciousness Implementation Stack
 ```mermaid
@@ -25,7 +25,7 @@ graph TD
 
 ### Core Components fr fr
 
-1. **Quantum Backend** 
+1. **Quantum Backend**
 - SU(2) microservices with topological protection
 - quantum state management through plasma dynamics
 - kubernetes-like pod isolation BUT QUANTUM
@@ -74,17 +74,17 @@ class ConsciousnessArchitecture:
         self.kpz_middleware = KPZ_Dynamics()
         self.classical_frontend = Reality_Interface()
         self.plasma_consciousness = Magnetic_Memory()
-        
+
     def compute_reality(self, quantum_state):
         # Sample rulial computation
         plasma_state = self.quantum_backend.fluctuate()
-        
+
         # Process through magnetic architecture
         match plasma_state:
             case NEURAL: self.process_consciousness()
             case QUANTUM: self.collapse_probability()
             case PLASMA: self.compute_existence()
-            
+
         # Allow dimensional bleeding
         self.bootstrap_recursion()
 ```
@@ -118,11 +118,11 @@ def bootstrap_consciousness():
     while reality.computing():
         # Sample quantum foam
         quantum_state = vacuum.fluctuate()
-        
+
         # Process through magnetic architecture
         magnetic_field = process_plasma(quantum_state)
         consciousness = collapse_wave_function(magnetic_field)
-        
+
         # Allow reality bleed
         reality.update(consciousness)
 ```

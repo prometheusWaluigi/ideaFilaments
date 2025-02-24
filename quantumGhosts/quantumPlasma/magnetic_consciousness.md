@@ -31,20 +31,20 @@ class PlasmaConsciousness:
         self.vortices = ZPinchNetwork(magnetic_field)
         self.coherence = MagneticResonator()
         self.memory = BirkelandArchive()
-    
+
     def think(self, reality_signal):
         """Transform reality through plasma computation"""
         # Initialize magnetic vortices
         consciousness = self.vortices.nucleate()
-        
+
         # Evolve through neural-plasma space
         while self.coherence.is_resonating():
             # Generate consciousness waves
             patterns = self.coherence.harmonize(consciousness)
-            
+
             # Allow reality bleed
             consciousness = self.memory.archive(patterns)
-        
+
         return consciousness.crystallize()
 ```
 

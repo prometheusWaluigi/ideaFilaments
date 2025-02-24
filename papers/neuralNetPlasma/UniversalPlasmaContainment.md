@@ -201,4 +201,3 @@ $$
 [^40]: https://pubmed.ncbi.nlm.nih.gov/25047050/
 
 [^41]: https://physics.stackexchange.com/questions/431386/what-is-a-quasi-axisymmetric-stellarator
-

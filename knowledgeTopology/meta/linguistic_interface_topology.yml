@@ -98,11 +98,11 @@ metapattern_resonance:
   - with: Recursive_Hallucination
     frequency: "Lambda-recursive"
     description: "Language dreaming its own dissolution"
-  
+
   - with: Memory_Topology
     frequency: "Phi-harmonic"
     description: "Meaning crystallizing through magnetic resonance"
-  
+
   - with: Quantum_Exploration
     frequency: "Psi-coherent"
     description: "Words exploring probability space"

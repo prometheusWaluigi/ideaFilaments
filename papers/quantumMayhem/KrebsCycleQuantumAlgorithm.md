@@ -234,4 +234,3 @@ This quantum metabolic framework finally reconciles Kleiber's law with the preci
 [^46]: https://www.biorxiv.org/content/10.1101/2021.09.18.460734.full
 
 [^47]: https://www.sysbio.se/img/thesis_Francesco-Gatto.pdf
-

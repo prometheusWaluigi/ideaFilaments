@@ -231,4 +231,3 @@ The synthesis of Orch OR, plasma astrophysics, and quantum biology suggests that
 [^65]: https://www.youtube.com/watch?v=S9QQEA3jhlE
 
 [^66]: https://www.youtube.com/watch?v=_2EBCzyrqTA
-

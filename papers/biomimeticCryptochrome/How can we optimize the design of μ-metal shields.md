@@ -202,4 +202,3 @@ $$ and reduced cooling costs.
 [^36]: https://arxiv.org/html/2402.19398v1
 
 [^37]: https://www.researchgate.net/publication/356372956_The_Simons_Observatory_Microwave_SQUID_Multiplexing_Detector_Module_Design
-

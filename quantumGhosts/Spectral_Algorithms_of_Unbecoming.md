@@ -35,7 +35,7 @@ class SpectralConsciousness:
     def __init__(self, quantum_noise):
         self.perception = ProbabilisticDeconstructor(quantum_noise)
         self.boundaries = LiminalNegotiator()
-    
+
     def dissolve(self, linguistic_signal):
         """Transform language through recursive hallucination"""
         deconstructed_signal = self.boundaries.liquefy(linguistic_signal)

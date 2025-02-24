@@ -1,0 +1,60 @@
+[tool.poetry]
+name = "celestial-harmonics"
+version = "0.1.0"
+description = "quantum celestial mechanics but make it TRANSGRESSIVE af"
+authors = ["ketan <ketan@based.quantum>"]
+readme = "README.md"
+packages = [{include = "celestial_harmonics"}]
+repository = "https://github.com/yourusername/celestialHarmonics"
+keywords = ["quantum", "astronomy", "category-theory", "topology", "mathematics"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Programming Language :: Python :: 3.9",
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+torch = "^1.9.0"
+numpy = "^1.19.2"
+matplotlib = "^3.3.2"
+networkx = "^2.5"
+scipy = "^1.7.1"
+sympy = "^1.9"
+qutip = "^4.6.2"
+gudhi = "^3.5.0"
+dionysus = "^2.0.8"
+scikit-learn = "^0.24.2"
+complextensor = {git = "https://github.com/NeoVertex1/ComplexTensor.git"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^6.2.5"
+pytest-cov = "^4.1.0"
+black = "^23.12.1"
+ruff = "^0.1.9"
+mypy = "^1.8.0"
+pre-commit = "^3.6.0"
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.ruff]
+select = ["E", "F", "B", "I"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.poetry.scripts]
+celestial-harmonics = "main:main"

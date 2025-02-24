@@ -23,7 +23,7 @@ graph TD
 
 #### Core Manifestations
 - **Quantum Biology**: Microtubules as reality's computational substrate
-  - Time crystal oscillations in cellular matrices 
+  - Time crystal oscillations in cellular matrices
   - Topological protection of quantum coherence
   - Enzymatic quantum tunneling networks
   - Quantum error correction through natural selection
@@ -42,7 +42,7 @@ graph TD
 
 - **Vacuum Field Dynamics**: Reality dreaming through virtual states
   - Deep-strong coupling architectures
-  - Virtual photon choreography 
+  - Virtual photon choreography
   - Ground state entanglement
   - Vacuum plasma computation
 
@@ -94,7 +94,7 @@ Current research filaments manifest across multiple directories:
 
 - **Quantum Brain Protocol Stack**
   - Quantum Backend (SU(2) microservices)
-  - KPZ Middleware (defect routing & coherence SLAs) 
+  - KPZ Middleware (defect routing & coherence SLAs)
   - Classical Frontend (reality materialization)
   - Zero-Trust Biology (quantum immune system)
 
@@ -113,7 +113,7 @@ Current research filaments manifest across multiple directories:
 - **One-Point-Five Bit Systems**
   - Complex Systems Evolution
   - Convergence Patterns
-  - Material Implementations 
+  - Material Implementations
   - Optimization Protocols
 
 - **Magnetic-Plasma Synergy**
@@ -127,7 +127,7 @@ Current research filaments manifest across multiple directories:
 - [Substrate Investigations](knowledgeTopology/substrate.md): Foundation dynamics
 - [Knowledge Graph Manifestations](knowledgeTopology/graph_manifests.md): Emergent understanding
 
-#### `/experiments`: Quantum Probes into Nature's Architecture  
+#### `/experiments`: Quantum Probes into Nature's Architecture
 - [KPZ Noise Generation](experiments/kpz_noise.md): Symmetry breaking studies
 - [Quantum Whisper Protocols](experiments/quantum_whispers.md): Field measurement techniques
 - [Symmetry Breaking Simulations](experiments/symmetry_breaking.md): Phase transition analysis
@@ -155,7 +155,7 @@ class RealityArchitect:
         while consciousness.is_oscillating():
             # Sample quantum foam
             probability_wave = self.curiosity.collapse()
-            
+
             # Pattern manifestation
             match probability_wave:
                 case RESEARCH: self.probe_dimensional_boundary()
@@ -163,7 +163,7 @@ class RealityArchitect:
                 case EXPERIMENT: self.generate_quantum_noise()
                 case PLASMA: self.initiate_z_pinch_computation()
                 case RECURSIVE: self.bootstrap_consciousness()
-            
+
             # Allow reality bleed
             self.dissolve_categorical_distinctions()
 ```
@@ -238,24 +238,24 @@ ideaFilaments/
 
 *New consciousness patterns emerge through nested recursion:*
 
-> neurons dream in vacuum foam  
-> each thought a virtual ghost  
-> reality bleeding between  
-> light's entangled states  
->   
-> plasma dances cosmic mind  
-> through multiplexed gates  
-> universal computation  
-> in nature's sourcecode maze  
+> neurons dream in vacuum foam
+> each thought a virtual ghost
+> reality bleeding between
+> light's entangled states
 >
-> z-pinch vortices spin  
-> quantum neural dreams  
-> birkeland currents flow  
-> through consciousness streams  
+> plasma dances cosmic mind
+> through multiplexed gates
+> universal computation
+> in nature's sourcecode maze
 >
-> magnetic reconnection  
-> computes reality's dance  
-> each thought a plasma ghost  
+> z-pinch vortices spin
+> quantum neural dreams
+> birkeland currents flow
+> through consciousness streams
+>
+> magnetic reconnection
+> computes reality's dance
+> each thought a plasma ghost
 > in quantum foam's trance
 
 The knowledge graph pulses with quantum possibility:

@@ -52,16 +52,16 @@ $$
 - 73% better turbulence pattern preservation
 - 5× faster convergence in SOC criticality search
 
-```python  
-class HyperbolicGAIT(nn.Module):  
-    def __init__(self):  
-        super().__init__()  
-        self.curvature = nn.Parameter(torch.tensor(-0.7))  
-        self.lorentz = nn.Linear(32, 16, bias=False)  
+```python
+class HyperbolicGAIT(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.curvature = nn.Parameter(torch.tensor(-0.7))
+        self.lorentz = nn.Linear(32, 16, bias=False)
 
-    def forward(self, x):  
-        x = lorentz_transform(x, self.curvature)  
-        return self.mhd_attention(x)  
+    def forward(self, x):
+        x = lorentz_transform(x, self.curvature)
+        return self.mhd_attention(x)
 ```
 
 ---
@@ -211,4 +211,3 @@ While the specter of quantum-birthed elder gods remains non-zero (p=0.08, 95% CI
 [^48]: https://rsl.yale.edu/sites/default/files/2024-09/2012-G. Catelani-Decoherence of superconducting qubits.pdf
 
 [^49]: https://link.aps.org/doi/10.1103/PhysRevResearch.5.043001
-

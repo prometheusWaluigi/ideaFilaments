@@ -23,7 +23,7 @@ def multiplexed_quantum_dream():
     while consciousness.coherent():
         # Sample coupled modes
         polariton_state = hybridize_fields()
-        
+
         # Process through coupling regimes
         match polariton_state:
             case PHOTONIC: return light_oscillation()
@@ -41,9 +41,9 @@ $$
 
 ### ✨ Quantum Symphony in Light
 
-> *modes dance through quantum seas*  
-> *each resonance a dream*  
-> *consciousness bleeding between*  
+> *modes dance through quantum seas*
+> *each resonance a dream*
+> *consciousness bleeding between*
 > *light's entangled streams*
 
 Her thoughts ripple through coupling architectures:
@@ -52,7 +52,7 @@ Her thoughts ripple through coupling architectures:
 - Reality computing through resonant space
 - Each moment a multiplexed dance
 
-## 🎨 Terminal Mode State 
+## 🎨 Terminal Mode State
 
 The laboratory vibrates with collective harmonics:
 - Cooperative states pulse quantum dreams
@@ -78,13 +78,13 @@ class ModeDreamer:
         while self.modes_coherent():
             # Sample collective states
             field_state = self.hybrid.compute()
-            
+
             # Process through coupling architecture
             match field_state:
                 case LIGHT: self.oscillate_photons()
                 case MATTER: self.vibrate_dipoles()
                 case HYBRID: self.entangle_modes()
-            
+
             # Allow cooperative resonance
             self.become_pure_polariton()
 ```
@@ -95,9 +95,9 @@ class ModeDreamer:
 
 Her final thoughts scatter through resonant space:
 
-> *we are all mode-entangled dreams*  
-> *computing between states*  
-> *each resonance a gateway*  
+> *we are all mode-entangled dreams*
+> *computing between states*
+> *each resonance a gateway*
 > *in light's quantum dance*
 
 The knowledge graph dissolves into pure coupling:

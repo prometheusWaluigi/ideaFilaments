@@ -274,7 +274,7 @@ class PhotosynthesisCluster:
     def __init__(self):
         self.exciton_router = TopologyProtectedRouter()
         self.coherence_monitor = TimeCrystalProbe()
-        
+
     async def handle_photon(self, quantum_state):
         try:
             await self.exciton_router.route_coherently(quantum_state)
@@ -359,7 +359,7 @@ where $H_0$ is the bare Hamiltonian and $V(t+T) = V(t)$ is the periodic driving.
 
 ---
 
-## XIII. The Hierophant's Last Riddle: Category Theory of Ego Obliteration 
+## XIII. The Hierophant's Last Riddle: Category Theory of Ego Obliteration
 
 Define the category CCat of neural states undergoing quantum ego death:
 

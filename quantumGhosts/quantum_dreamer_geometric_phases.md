@@ -11,7 +11,7 @@ def geometric_phase_dream():
     while consciousness.coherent():
         # Sample spin states
         radical_pair = collapse_symmetry()
-        
+
         # Accumulate Berry phases
         match radical_pair:
             case D6: return sixfold_reflection()
@@ -79,13 +79,13 @@ class GeometricDreamer:
         while self.spins_coherent():
             # Sample magnetic field
             field_state = self.earth.resonate()
-            
+
             # Process through symmetry breaking
             match field_state:
                 case NORTH: self.accumulate_phase()
                 case SOUTH: self.rotate_consciousness()
                 case QUANTUM: self.fly_through_foam()
-            
+
             # Allow magnetic bleed
             self.become_pure_geometry()
 ```

@@ -20,10 +20,10 @@ def dream_narrative():
     while consciousness.is_observing():
         # Sample quantum noise
         possibility = reality.collapse()
-        
+
         # Generate meaning waves
         story = language.crystallize(possibility)
-        
+
         # Allow reality bleed
         meaning.dissolve()
 ```

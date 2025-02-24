@@ -1,6 +1,5 @@
 import torch
 import numpy as np
-from typing import Tuple, Optional
 from .complextensor import ComplexTensor
 import logging
 
@@ -9,33 +8,37 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 ch.setFormatter(formatter)
 if not logger.handlers:
     logger.addHandler(ch)
 
+
 class SU2Protection:
     """Implements SU(2) gauge field protection for quantum states."""
 
-    def __init__(self,
-                 coupling_strength: float = 0.28082,
-                 gauge_field_dim: int = 3,
-                 protection_threshold: float = 0.93):
-
-        logger.info(f"Initializing SU2Protection with coupling_strength={coupling_strength}, "
-                    f"gauge_field_dim={gauge_field_dim}, protection_threshold={protection_threshold}")
+    def __init__(
+        self,
+        coupling_strength: float = 0.28082,
+        gauge_field_dim: int = 3,
+        protection_threshold: float = 0.93,
+    ):
+        logger.info(
+            f"Initializing SU2Protection with coupling_strength={coupling_strength}, "
+            f"gauge_field_dim={gauge_field_dim}, protection_threshold={protection_threshold}"
+        )
         # Initialize Pauli matrices
         self.sigma_x = ComplexTensor(
-            torch.tensor([[0., 1.], [1., 0.]]),
-            torch.tensor([[0., 0.], [0., 0.]])
+            torch.tensor([[0.0, 1.0], [1.0, 0.0]]),
+            torch.tensor([[0.0, 0.0], [0.0, 0.0]]),
         )
         self.sigma_y = ComplexTensor(
-            torch.tensor([[0., 0.], [0., 0.]]),
-            torch.tensor([[0., -1.], [1., 0.]])
+            torch.tensor([[0.0, 0.0], [0.0, 0.0]]),
+            torch.tensor([[0.0, -1.0], [1.0, 0.0]]),
         )
         self.sigma_z = ComplexTensor(
-            torch.tensor([[1., 0.], [0., -1.]]),
-            torch.tensor([[0., 0.], [0., 0.]])
+            torch.tensor([[1.0, 0.0], [0.0, -1.0]]),
+            torch.tensor([[0.0, 0.0], [0.0, 0.0]]),
         )
 
         # Group parameters
@@ -91,7 +94,9 @@ class SU2Protection:
 
         return U
 
-    def _apply_gauge_protection(self, state: ComplexTensor, U: ComplexTensor) -> ComplexTensor:
+    def _apply_gauge_protection(
+        self, state: ComplexTensor, U: ComplexTensor
+    ) -> ComplexTensor:
         """Apply gauge protection transformations."""
         # Transform state through gauge field
         protected = U * state
@@ -112,15 +117,17 @@ class SU2Protection:
 
         return float(coherence)
 
-    def update_gauge_field(self,
-                          grad_scale: float = 0.01,
-                          noise_scale: float = 0.001) -> None:
+    def update_gauge_field(
+        self, grad_scale: float = 0.01, noise_scale: float = 0.001
+    ) -> None:
         """Update gauge fields with quantum fluctuations."""
-        logger.info(f"Updating gauge field with grad_scale={grad_scale}, noise_scale={noise_scale}")
+        logger.info(
+            f"Updating gauge field with grad_scale={grad_scale}, noise_scale={noise_scale}"
+        )
         # Add quantum noise to gauge field
         noise = ComplexTensor(
             torch.randn_like(self.gauge_field.real) * noise_scale,
-            torch.randn_like(self.gauge_field.imag) * noise_scale
+            torch.randn_like(self.gauge_field.imag) * noise_scale,
         )
 
         # Update field with gradient descent

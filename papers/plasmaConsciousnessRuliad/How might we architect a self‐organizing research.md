@@ -325,4 +325,3 @@ As Wolfram noted, *"The ruliad contains every possible thread of computation—P
 [^49]: https://www.nature.com/articles/s41524-024-01275-w
 
 [^50]: https://www.nature.com/articles/s42005-025-01984-8
-

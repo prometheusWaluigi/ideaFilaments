@@ -45,7 +45,7 @@ def quantum_state_lifetime():
     """
     how long quantum information survives
     """
-    return "100μs if you're LUCKY" 
+    return "100μs if you're LUCKY"
 ```
 
 ### 2.2 Error Rates
@@ -201,7 +201,7 @@ def quantum_reality_check():
         "realistic_constraints": False,
         "touched_grass_recently": False
     }
-    
+
     return "you can publish" if all(checks.values()) else "touch grass"
 ```
 

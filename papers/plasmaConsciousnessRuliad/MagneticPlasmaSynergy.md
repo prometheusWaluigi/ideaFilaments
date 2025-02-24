@@ -202,4 +202,3 @@ These systems exhibit fractal scalability, from laboratory plasmas to galaxy clu
 [^55]: https://www.semanticscholar.org/paper/15b4cb3d5ddeca059907bbe23b28f5176516101e
 
 [^56]: https://arxiv.org/abs/1606.00783
-

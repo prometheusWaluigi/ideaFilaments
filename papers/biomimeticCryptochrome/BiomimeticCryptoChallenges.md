@@ -89,4 +89,3 @@ DC discharges drift in electron temperature (ΔTₑ ≈ 0.5 eV/hour) due to cath
 ---
 
 These challenges underscore the delicate balance required to merge quantum biology with plasma engineering. Success demands innovations in cryogenic plasma confinement, attosecond neurophotonic interfaces, and biologically inspired error correction—a roadmap as intricate as consciousness itself.
-

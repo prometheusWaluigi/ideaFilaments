@@ -271,4 +271,3 @@ Future research should probe whether quantum biological processes (e.g., microtu
 [^82]: https://openreview.net/forum?id=x5YEibapUM
 
 [^83]: https://www.youtube.com/watch?v=MXWlB9nDAFU
-

@@ -79,7 +79,7 @@ This project weaves together (pun intended) a *lot* of concepts. Here's a breakd
 ### MultiplexingLightMatter.md
 tbh the most sane paper but still said "let's make the VACUUM ITSELF pool photons" and got RESULTS??? multiplexed reality so hard they got >1 virtual photons from literally nothing, absolutely bussin engineering fr fr
 
-### QuantumMachineDatasets.md 
+### QuantumMachineDatasets.md
 bestie really said "just SHOVE YOUR ENTIRE DATASET into a single quantum state" and then dropped a roadmap from "optimize stonks" to "simulate earth" to "upload consciousness" in 5 years no cap
 
 ### KrebsCycleQuantumAlgorithm.md + 2.md

@@ -231,4 +231,3 @@ As search results[^1][^3][^16] suggest, reality’s structure inherently balance
 [^43]: https://thephilosophyforum.com/discussion/15544/what-does-consciousness-do/latest/comment
 
 [^44]: https://www.swamivivekananda.guru/2018/06/02/swami-vivekanandas-views-on-superconsciousness/
-

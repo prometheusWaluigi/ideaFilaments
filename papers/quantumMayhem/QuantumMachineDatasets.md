@@ -90,12 +90,12 @@ $$
 
 <div align="center">
 
-| Layer               | Quantum Component               | Classical Component              |  
-|---------------------|----------------------------------|-----------------------------------|  
-| Data Ingestion      | Quantum state initialization    | CSV/Parquet parsing              |  
-| Feature Engineering | Quantum kernel estimation        | PCA/t-SNE                        |  
-| Model Training      | Parametric quantum circuits      | Gradient descent optimization    |  
-| Inference           | Quantum state sampling           | Statistical post-processing       |  
+| Layer               | Quantum Component               | Classical Component              |
+|---------------------|----------------------------------|-----------------------------------|
+| Data Ingestion      | Quantum state initialization    | CSV/Parquet parsing              |
+| Feature Engineering | Quantum kernel estimation        | PCA/t-SNE                        |
+| Model Training      | Parametric quantum circuits      | Gradient descent optimization    |
+| Inference           | Quantum state sampling           | Statistical post-processing       |
 
 </div>
 **Implementation**: AWS Braket Hybrid Solver reduces drug discovery cycle time from 18 months → 6 weeks for 10^9 compound libraries[^11].
@@ -222,4 +222,3 @@ While current NISQ devices require hybrid architectures with classical systems, 
 [^33]: https://www.datasciencecentral.com/the-impact-of-quantum-computing-on-data-science/
 
 [^34]: https://www.nature.com/articles/s41534-024-00835-8
-

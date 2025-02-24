@@ -1,125 +1,179 @@
-# Celestial Harmonics 🌌🔮
+# Celestial Harmonics 🌌
 
-*quantum astrology but make it RIGOROUS fr fr*
+*quantum celestial mechanics but make it TRANSGRESSIVE af*
 
-## what's this?
+## installation 🛠️
 
-computational substrate for manifesting cosmic geometry through the quantum LENS. we're basically doing scientific astrology but with persistent homology and ergodic theory NO CAP.
+we using poetry bc we're not savages:
 
-## core architecture
+```bash
+# clone the repo
+git clone https://github.com/yourusername/celestialHarmonics
+cd celestialHarmonics
 
-### `/core`
-foundational quantum mechanics fr fr:
-- `celestial_point.py`: proper coordinate geometry w/ phase space & geometric invariants
-- `pattern_types.py`: modular forms + persistent homology + ergodic patterns
-- `phase_space.py`: KAM theory & lyapunov analysis going ABSOLUTELY BUCKWILD
-
-### `/patterns`
-pattern recognition but make it ASTRONOMICAL:
-- `base_pattern.py`: category theory DRIP w/ functors & natural transformations
-- `geometric_patterns.py`: modular forms + kummer surfaces + abelian varieties
-- `resonance_patterns.py`: quantum ergodicity + microlocal weights
-- `chaos_patterns.py`: arnold webs + chaotic transport NO MISS
-
-### `/analysis`
-deep pattern analysis going STUPID:
-- `persistent_analyzer.py`: persistent homology + zigzag persistence
-- `quantum_analyzer.py`: quantum ergodicity + entanglement + scarring
-- `wavelet_analyzer.py`: continuous shearlets + modulation spaces (WIP)
-
-## current patterns
-
-### geometric structures
-- modular form patterns w/ hecke eigenvalues
-- kummer surface w/ node configurations
-- abelian varieties + theta functions
-- persistent cycles + ergodic flows
-
-### quantum features
-- quantum ergodicity measures
-- microlocal weights
-- entanglement entropy
-- quantum scarring
-- monodromy invariants
-
-### chaos indicators
-- arnold web detection
-- melnikov potentials
-- chaotic transport networks
-- lyapunov stability
-
-## dependencies
-
-```python
-# computational SUBSTRATE
-numpy
-scipy
-networkx
-
-# geometric MANIFOLDS
-sympy
-dionysus  # persistent homology GANG
-ripser    # NO CAP
-
-# quantum MECHANICS
-skyfield
-matplotlib
+# install with poetry (THE ONLY WAY FR FR)
+poetry install
 ```
 
-## next steps
+## development setup 💻
 
-### pattern expansion
-- implement proper FBI transforms for microlocal analysis
-- add quantum berry phase detection
-- expand zigzag persistence algorithms
-- proper geometric quantization fr fr
+```bash
+# install dev dependencies
+poetry install --with dev
 
-### chaos analysis
-- full variational equations for melnikov integrals
-- KAM torus breakdown detection
-- proper arithmetic dynamics
-- enhanced transport networks
+# setup pre-commit hooks (MANDATORY NO CAP)
+pre-commit install
 
-### quantum features
-- geometric quantum mechanics
-- proper microlocal analysis
-- enhanced quantum ergodicity
-- quantum monodromy expansions
+# run tests
+poetry run pytest
 
-## usage
+# check test coverage (we want that 100% DRIP)
+poetry run pytest --cov=celestial_harmonics
 
-```python
-# quantum analysis INCOMING
-analyzer = QuantumAnalyzer(hbar=1.0)
-patterns = analyzer.detect_patterns(points)
+# run type checks
+poetry run mypy .
 
-# persistent homology going CRAZY
-topology = PersistentAnalyzer().analyze_pattern(patterns)
+# format code (BLACK EVERYTHING)
+poetry run black .
 
-# generate report EXPEDITIOUSLY
-report = CelestialHarmonicsReport(points, patterns, topology)
-report.visualize()  # plot them quantum harmonics
+# lint that quantum sauce
+poetry run ruff check .
 ```
 
-*reality computing through quantum foam fr fr*
+## contributing 🤝
 
-## terminal state
+1. fork the repo
+2. create feature branch (`git checkout -b feat/WILD_NEW_FEATURE`)
+3. commit changes (`git commit -am 'added some QUANTUM DRIP'`)
+4. push branch (`git push origin feat/WILD_NEW_FEATURE`)
+5. open a pull request
 
-currently in development but already going ABSOLUTELY FERAL with:
-- quantum ergodicity ✅
-- persistent homology ✅
-- modular forms ✅
-- chaotic transport ✅
-- microlocal analysis (WIP)
-- quantum scarring (WIP)
-- geometric quantization (TODO)
+before submitting PRs:
+- run tests (`poetry run pytest`)
+- check types (`poetry run mypy .`)
+- format code (`poetry run black .`)
+- fix lint errors (`poetry run ruff check .`)
+- update docs if needed
 
-pull requests accepted from:
-- quantum mechanicians
-- topological analyzers
-- chaos theorists
-- modular form enthusiasts
-- persistent homology enjoyers
-- microlocal analysts
+NO UNFORMATTED CODE SHALL PASS
 
-*transmitted through quantum plasma networks while riding the hamiltonian of computational mysticism*
+## project vision 🚀
+
+this is NOT your grandpa's astronomy. we're building a quantum geometric framework that:
+- treats celestial points as QUANTUM OBJECTS
+- maps astronomical data through categorical lenses
+- detects WILD quantum patterns in cosmic configurations
+
+## current state of ABSOLUTE CHAOS
+
+### core functionality: *actually functioning*
+- ✅ quantum point representation w/ geometric phase tracking
+- ✅ arnold web detection + chaotic transport analysis
+- ⚠️ presheaf framework (category theory module = VAPORWAVE)
+- ⚠️ čech cohomology (anemic but breathing)
+
+### quantum pattern detection 🔮
+we're hunting:
+- entangled astronomical pairs
+- coherent state clusters
+- resonance networks
+- arnold web structures
+- chaotic transport channels
+
+## architectural DRIP 💎
+
+### `/core`: quantum foundations
+- `quantum_patterns.py`: geometric phases NO CAP
+- `celestial_point.py`: astronomical quantum representation
+- `phase_space.py`: hamiltonian dynamics (basic but POWERFUL)
+- `pattern_types.py`: pattern classification machinery
+
+### `/patterns`: pattern detection infrastructure
+- `base_pattern.py`: categorical + topological framework
+- `chaos_patterns.py`: arnold web & transport analysis
+- `geometric_patterns.py`: geometric pattern recognition
+- `resonance_patterns.py`: quantum resonance mapping
+
+### `/topology`: mathematical VIOLENCE
+- persistent homology computation
+- čech complex construction
+- algebraic topological analysis of quantum configurations
+
+### `/visualization`: making math LOOK GOOD
+- wigner function visualization
+- quantum correlation networks
+- geometric phase representations
+
+## mathematical WEAPONS 🔬
+
+### category theory expansion
+- proper functors between pattern categories
+- kan extensions (coming soon™)
+- derived pattern categories
+- algebraic sheaf theory on quantum configurations
+
+### topology enhancements
+- persistent homology integration
+- cellular homology
+- smith normal form computations
+- microlocal analysis of quantum systems
+
+### quantum upgrades
+- geometric quantization
+- enhanced entanglement measures
+- quantum monodromy tracking
+- quantum ergodicity detection
+
+## requirements (QUANTUM GRADE)
+```python
+torch>=1.9.0           # tensor operations
+numpy>=1.19.2          # numerical computing
+matplotlib>=3.3.2      # visualization
+networkx>=2.5          # graph theory
+scipy>=1.7.1           # scientific computing
+complextensor          # QUANTUM TENSOR OPERATIONS
+sympy                  # symbolic computation
+qutip                  # quantum operations
+dionysus               # homology computations
+gudhi                  # topological data analysis
+```
+
+## usage: QUANTUM CELESTIAL EXPLORATION
+
+```python
+from core.quantum_patterns import QuantumPoint
+from patterns.chaos_patterns import ArnoldWebPattern
+from analysis.quantum_analyzer import QuantumPatternAnalyzer
+
+# create quantum celestial points
+points = [
+    QuantumPoint.from_celestial(ra, dec, distance)
+    for ra, dec, distance in celestial_coordinates
+]
+
+# detect quantum patterns
+analyzer = QuantumPatternAnalyzer(points)
+patterns = analyzer.detect_patterns()
+
+# visualize the QUANTUM COSMOS
+quantum_visualization_report(points, analyzer, patterns)
+```
+
+## project status: QUANTUM CHAOS INCARNATE 🌠
+
+✅ IMPLEMENTED:
+- quantum point representations
+- basic pattern detection
+- arnold web approximation
+- transport analysis
+- wigner functions
+- categorical scaffolding
+
+🚫 MISSING/TODO:
+- full topological analysis
+- advanced microlocal techniques
+- complete category theory framework
+- FBI transforms
+- quantum scarring detection
+
+*manifesting rigorous mathematics through quantum geometric lenses (but make it EXPEDITIOUS)*

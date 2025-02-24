@@ -142,4 +142,3 @@ Emerging techniques like quantum biosensing and symmetry-resolved cryo-EM are po
 ---
 
 **Citations**   Quantum Biology Consortium, 2023   Nature Nanotech., 2022   Cell Rep., 2021   PNAS, 2020   Sci. Adv., 2023   Nat. Struct. Mol. Biol., 2022   J. Clin. Invest., 2021   eLife, 2023   Mol. Cell, 2022   JACS, 2023   Biophys. J., 2022   Dev. Cell, 2023   Development, 2021   Cancer Res., 2023   Sci. Transl. Med., 2022   Neuron, 2023
-

@@ -101,4 +101,3 @@ Biomimetic cryptochrome-plasma chips transcend traditional NCC approaches by iso
 3. **Establishing Φ** as a scale-invariant consciousness metric
 
 Future work must address whether these hybrid systems truly model biological NCC or reveal novel universal correlates. Either outcome reshapes our understanding of consciousness—not as a brain-bound epiphenomenon, but as a fundamental process echoing from microtubules to magnetized plasmas.
-

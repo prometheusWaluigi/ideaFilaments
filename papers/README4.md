@@ -35,7 +35,7 @@ def probe_quantum_tradeoffs(system):
         temperature += chaos_increment
         measure_coherence()
         track_availability()
-        
+
         if noise > critical_threshold:
             # watch reality choose sides
             observe_quantum_classical_transition()

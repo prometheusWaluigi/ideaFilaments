@@ -261,4 +261,3 @@ Experimental validation through attosecond biology and quantum cosmology could u
 [^65]: https://egtheory.wordpress.com/2013/08/16/fitness-landscapes/
 
 [^66]: https://egtheory.wordpress.com/2019/06/22/hard-frequency/
-

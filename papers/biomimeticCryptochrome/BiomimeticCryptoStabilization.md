@@ -113,4 +113,3 @@ Stabilizing cryptochrome-plasma chips demands reimagining boundaries between qua
 - **2030**: Fully autonomous implants testing Orch OR predictions in vivo
 
 These advancements will not only enable rigorous NCC studies but also test the radical hypothesis that consciousness is a topological phase of matter—resonant from microtubules to magnetars.
-

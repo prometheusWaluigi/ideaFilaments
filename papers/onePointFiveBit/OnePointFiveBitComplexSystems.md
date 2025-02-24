@@ -174,4 +174,3 @@ Experimental validation could involve:
 - Neuromorphic chips implementing 1.58-bit social network algorithms
 
 As we extend the 1.5-bit principle to ever-more complex systems, we approach a unified theory of information optimization—a new lens for decoding reality’s deepest patterns.
-

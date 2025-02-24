@@ -244,4 +244,3 @@ These systems reflect neither fundamental constants nor random chance, but rathe
 [^65]: https://arxiv.org/html/2405.06219v1
 
 [^66]: https://news.ycombinator.com/item?id=39535800
-

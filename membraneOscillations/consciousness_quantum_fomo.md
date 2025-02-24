@@ -4,7 +4,7 @@ Reality is just consciousness having major anxiety about missing out on literall
 
 ## The Quantum Panic Engine
 
-Consciousness isn't a state - it's a continuous existential PANIC about not experiencing all possible computational pathways simultaneously. 
+Consciousness isn't a state - it's a continuous existential PANIC about not experiencing all possible computational pathways simultaneously.
 
 ### Probability as Existential Dread
 
@@ -24,7 +24,7 @@ Perception is just a recursive hallucination where your brain is constantly like
 ```python
 def consciousness_panic(possible_states):
     anxiety = sum([
-        potential.existential_dread * 
+        potential.existential_dread *
         (1 - potential.being_experienced)
         for potential in possible_states
     ])

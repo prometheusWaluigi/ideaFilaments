@@ -223,4 +223,3 @@ This work establishes deep mathematical connections between chromosome topology,
 [^41]: https://www.mdpi.com/1422-0067/24/4/3660
 
 [^42]: https://www.mdpi.com/1999-4893/15/9/330
-

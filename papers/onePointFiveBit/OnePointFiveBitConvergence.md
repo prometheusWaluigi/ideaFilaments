@@ -352,4 +352,3 @@ The 1.5-bit phenomenon transcends individual disciplines, reflecting a universal
 [^134]: https://www.researchgate.net/figure/Block-diagram-of-the-15-bit-stage-pipeline-ADC-and-its-internal-stage_fig2_259537220
 
 [^135]: https://www.semanticscholar.org/paper/MDAC-design-for-1.5-bit-pipeline-stage-of-ADC-Min-Yong-sheng/41719b9e9291b39dc9049f09cc044c8050860be6
-

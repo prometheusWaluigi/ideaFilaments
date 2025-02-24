@@ -6,14 +6,16 @@ from typing import Tuple, Dict, Optional, Union
 
 # Configure the logger for the module
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)  # Set to DEBUG to capture all debug messages, set to CRITICAL to reduce messages.
+logger.setLevel(
+    logging.DEBUG
+)  # Set to DEBUG to capture all debug messages, set to CRITICAL to reduce messages.
 
 # Create console handler with a higher log level
 ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
 
 # Create formatter and add it to the handler
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 ch.setFormatter(formatter)
 
 # Add the handler to the logger if not already added
@@ -39,12 +41,16 @@ class ComplexFunction(Function):
         Returns:
             Tensor: Complex tensor combining real and imaginary parts.
         """
-        logger.debug(f"ComplexFunction.forward called with real shape {real.shape}, "
-                     f"imag shape {imag.shape}, device {real.device}, dtype {real.dtype}")
+        logger.debug(
+            f"ComplexFunction.forward called with real shape {real.shape}, "
+            f"imag shape {imag.shape}, device {real.device}, dtype {real.dtype}"
+        )
         ctx.save_for_backward(real, imag)
         complex_tensor = torch.complex(real, imag)
-        logger.debug(f"ComplexFunction.forward output shape {complex_tensor.shape}, "
-                     f"device {complex_tensor.device}, dtype {complex_tensor.dtype}")
+        logger.debug(
+            f"ComplexFunction.forward output shape {complex_tensor.shape}, "
+            f"device {complex_tensor.device}, dtype {complex_tensor.dtype}"
+        )
         return complex_tensor
 
     @staticmethod
@@ -59,31 +65,37 @@ class ComplexFunction(Function):
             Tuple[Tensor, Tensor]: Gradients with respect to real and imaginary parts.
         """
         real, imag = ctx.saved_tensors
-        logger.debug(f"ComplexFunction.backward called with grad_output shape {grad_output.shape}, "
-                    f"device {grad_output.device}, dtype {grad_output.dtype}")
-        
+        logger.debug(
+            f"ComplexFunction.backward called with grad_output shape {grad_output.shape}, "
+            f"device {grad_output.device}, dtype {grad_output.dtype}"
+        )
+
         # Ensure gradients are computed for both real and imaginary parts
         grad_real = grad_output.real
         grad_imag = grad_output.imag
-        
+
         # If grad_output is not complex, use the same gradient for both parts
         if not grad_output.is_complex():
             grad_real = grad_output
             grad_imag = grad_output
 
-        logger.debug(f"ComplexFunction.backward returning grad_real shape {grad_real.shape}, "
-                    f"grad_imag shape {grad_imag.shape}")
+        logger.debug(
+            f"ComplexFunction.backward returning grad_real shape {grad_real.shape}, "
+            f"grad_imag shape {grad_imag.shape}"
+        )
         return grad_real, grad_imag
 
 
 class ComplexTensor:
-    def __init__(self, real: Tensor, imag: Optional[Tensor] = None, requires_grad: bool = True) -> None:
+    def __init__(
+        self, real: Tensor, imag: Optional[Tensor] = None, requires_grad: bool = True
+    ) -> None:
         """
         Initializes a ComplexTensor with real and imaginary parts.
 
         Args:
             real (Tensor): Real part of the complex tensor.
-            imag (Tensor, optional): Imaginary part of the complex tensor. 
+            imag (Tensor, optional): Imaginary part of the complex tensor.
                                     If not provided, defaults to a tensor of zeros.
             requires_grad (bool):  Whether the tensor requires gradient tracking. Defaults to True.
 
@@ -97,26 +109,34 @@ class ComplexTensor:
             raise TypeError("real must be a Tensor")
 
         self.real: Tensor = real.requires_grad_(requires_grad)
-        logger.debug(f"Real part initialized with shape {self.real.shape}, "
-                    f"device {self.real.device}, dtype {self.real.dtype}, "
-                    f"requires_grad={self.real.requires_grad}")
+        logger.debug(
+            f"Real part initialized with shape {self.real.shape}, "
+            f"device {self.real.device}, dtype {self.real.dtype}, "
+            f"requires_grad={self.real.requires_grad}"
+        )
 
         if imag is None:
             self.imag: Tensor = torch.zeros_like(real, requires_grad=requires_grad)
-            logger.debug(f"Imaginary part not provided. Initialized to zeros with shape {self.imag.shape}, "
-                        f"device {self.imag.device}, dtype {self.imag.dtype}, "
-                        f"requires_grad={self.imag.requires_grad}")
+            logger.debug(
+                f"Imaginary part not provided. Initialized to zeros with shape {self.imag.shape}, "
+                f"device {self.imag.device}, dtype {self.imag.dtype}, "
+                f"requires_grad={self.imag.requires_grad}"
+            )
         else:
             if not isinstance(imag, Tensor):
                 logger.error("Initialization failed: 'imag' must be a Tensor.")
                 raise TypeError("imag must be a Tensor")
             if imag.shape != real.shape:
-                logger.error("Initialization failed: 'real' and 'imag' must have the same shape.")
+                logger.error(
+                    "Initialization failed: 'real' and 'imag' must have the same shape."
+                )
                 raise ValueError("real and imag have different shapes")
             self.imag: Tensor = imag.requires_grad_(requires_grad)
-            logger.debug(f"Imaginary part initialized with shape {self.imag.shape}, "
-                        f"device {self.imag.device}, dtype {self.imag.dtype}, "
-                        f"requires_grad={self.imag.requires_grad}")
+            logger.debug(
+                f"Imaginary part initialized with shape {self.imag.shape}, "
+                f"device {self.imag.device}, dtype {self.imag.dtype}, "
+                f"requires_grad={self.imag.requires_grad}"
+            )
 
     def forward(self) -> Tensor:
         """
@@ -125,13 +145,15 @@ class ComplexTensor:
         Returns:
             Tensor: Complex tensor created from real and imaginary parts.
         """
-        logger.debug(f"ComplexTensor.forward called with real shape {self.real.shape}, "
-                     f"imag shape {self.imag.shape}")
+        logger.debug(
+            f"ComplexTensor.forward called with real shape {self.real.shape}, "
+            f"imag shape {self.imag.shape}"
+        )
         complex_tensor = ComplexFunction.apply(self.real, self.imag)
         logger.debug(f"ComplexTensor.forward output shape {complex_tensor.shape}")
         return complex_tensor
 
-    def __add__(self, other: 'ComplexTensor') -> 'ComplexTensor':
+    def __add__(self, other: "ComplexTensor") -> "ComplexTensor":
         """
         Defines addition operation for ComplexTensor.
 
@@ -144,20 +166,28 @@ class ComplexTensor:
         Raises:
             TypeError: If other is not a ComplexTensor instance.
         """
-        logger.debug(f"Adding ComplexTensor with shape {self.real.shape} to ComplexTensor with shape {other.real.shape}")
+        logger.debug(
+            f"Adding ComplexTensor with shape {self.real.shape} to ComplexTensor with shape {other.real.shape}"
+        )
         if not isinstance(other, ComplexTensor):
-            logger.error("Addition failed: Other operand is not a ComplexTensor instance.")
-            raise TypeError("Addition is only supported between ComplexTensor instances")
+            logger.error(
+                "Addition failed: Other operand is not a ComplexTensor instance."
+            )
+            raise TypeError(
+                "Addition is only supported between ComplexTensor instances"
+            )
         try:
             real_sum = self.real + other.real
             imag_sum = self.imag + other.imag
-            logger.debug(f"Addition result real shape {real_sum.shape}, imag shape {imag_sum.shape}")
+            logger.debug(
+                f"Addition result real shape {real_sum.shape}, imag shape {imag_sum.shape}"
+            )
             return ComplexTensor(real_sum, imag_sum)
         except RuntimeError as e:
             logger.error(f"Addition failed due to shape mismatch: {e}")
             raise
 
-    def __sub__(self, other: 'ComplexTensor') -> 'ComplexTensor':
+    def __sub__(self, other: "ComplexTensor") -> "ComplexTensor":
         """
         Defines subtraction operation for ComplexTensor.
 
@@ -170,20 +200,28 @@ class ComplexTensor:
         Raises:
             TypeError: If other is not a ComplexTensor instance.
         """
-        logger.debug(f"Subtracting ComplexTensor with shape {other.real.shape} from ComplexTensor with shape {self.real.shape}")
+        logger.debug(
+            f"Subtracting ComplexTensor with shape {other.real.shape} from ComplexTensor with shape {self.real.shape}"
+        )
         if not isinstance(other, ComplexTensor):
-            logger.error("Subtraction failed: Other operand is not a ComplexTensor instance.")
-            raise TypeError("Subtraction is only supported between ComplexTensor instances")
+            logger.error(
+                "Subtraction failed: Other operand is not a ComplexTensor instance."
+            )
+            raise TypeError(
+                "Subtraction is only supported between ComplexTensor instances"
+            )
         try:
             real_diff = self.real - other.real
             imag_diff = self.imag - other.imag
-            logger.debug(f"Subtraction result real shape {real_diff.shape}, imag shape {imag_diff.shape}")
+            logger.debug(
+                f"Subtraction result real shape {real_diff.shape}, imag shape {imag_diff.shape}"
+            )
             return ComplexTensor(real_diff, imag_diff)
         except RuntimeError as e:
             logger.error(f"Subtraction failed due to shape mismatch: {e}")
             raise
 
-    def __mul__(self, other: 'ComplexTensor') -> 'ComplexTensor':
+    def __mul__(self, other: "ComplexTensor") -> "ComplexTensor":
         """
         Defines multiplication operation for ComplexTensor.
 
@@ -196,23 +234,31 @@ class ComplexTensor:
         Raises:
             TypeError: If other is not a ComplexTensor instance.
         """
-        logger.debug(f"Multiplying ComplexTensor with shape {self.real.shape} by ComplexTensor with shape {other.real.shape}")
+        logger.debug(
+            f"Multiplying ComplexTensor with shape {self.real.shape} by ComplexTensor with shape {other.real.shape}"
+        )
         if not isinstance(other, ComplexTensor):
-            logger.error("Multiplication failed: Other operand is not a ComplexTensor instance.")
-            raise TypeError("Multiplication is only supported between ComplexTensor instances")
+            logger.error(
+                "Multiplication failed: Other operand is not a ComplexTensor instance."
+            )
+            raise TypeError(
+                "Multiplication is only supported between ComplexTensor instances"
+            )
         try:
             real_part = self.real * other.real - self.imag * other.imag
             imag_part = self.real * other.imag + self.imag * other.real
-            logger.debug(f"Multiplication result real shape {real_part.shape}, imag shape {imag_part.shape}")
+            logger.debug(
+                f"Multiplication result real shape {real_part.shape}, imag shape {imag_part.shape}"
+            )
             return ComplexTensor(real_part, imag_part)
         except RuntimeError as e:
             logger.error(f"Multiplication failed due to shape mismatch: {e}")
             raise
-    
+
     def __rmul__(self, other):
         return self.__mul__(other)
 
-    def __truediv__(self, other: 'ComplexTensor') -> 'ComplexTensor':
+    def __truediv__(self, other: "ComplexTensor") -> "ComplexTensor":
         """
         Defines division operation for ComplexTensor.
 
@@ -226,32 +272,46 @@ class ComplexTensor:
             TypeError: If other is not a ComplexTensor instance.
             ZeroDivisionError: If the denominator is zero.
         """
-        logger.debug(f"Dividing ComplexTensor with shape {self.real.shape} by ComplexTensor with shape {other.real.shape}")
+        logger.debug(
+            f"Dividing ComplexTensor with shape {self.real.shape} by ComplexTensor with shape {other.real.shape}"
+        )
         if not isinstance(other, ComplexTensor):
-            logger.error("Division failed: Other operand is not a ComplexTensor instance.")
-            raise TypeError("Division is only supported between ComplexTensor instances")
-        denominator = other.real ** 2 + other.imag ** 2
-        logger.debug(f"Denominator shape {denominator.shape}, any zeros: {torch.any(denominator == 0).item()}")
+            logger.error(
+                "Division failed: Other operand is not a ComplexTensor instance."
+            )
+            raise TypeError(
+                "Division is only supported between ComplexTensor instances"
+            )
+        denominator = other.real**2 + other.imag**2
+        logger.debug(
+            f"Denominator shape {denominator.shape}, any zeros: {torch.any(denominator == 0).item()}"
+        )
         if torch.any(denominator == 0):
-            logger.error("Division failed: Division by zero encountered in denominator.")
+            logger.error(
+                "Division failed: Division by zero encountered in denominator."
+            )
             raise ZeroDivisionError("Division by zero encountered in denominator")
         try:
             real = (self.real * other.real + self.imag * other.imag) / denominator
             imag = (self.imag * other.real - self.real * other.imag) / denominator
-            logger.debug(f"Division result real shape {real.shape}, imag shape {imag.shape}")
+            logger.debug(
+                f"Division result real shape {real.shape}, imag shape {imag.shape}"
+            )
             return ComplexTensor(real, imag)
         except RuntimeError as e:
             logger.error(f"Division failed due to shape mismatch: {e}")
             raise
 
-    def conj(self) -> 'ComplexTensor':
+    def conj(self) -> "ComplexTensor":
         """
         Returns the complex conjugate of the ComplexTensor.
 
         Returns:
             ComplexTensor: Conjugate of the original ComplexTensor.
         """
-        logger.debug(f"Computing conjugate of ComplexTensor with shape {self.real.shape}")
+        logger.debug(
+            f"Computing conjugate of ComplexTensor with shape {self.real.shape}"
+        )
         conjugate = ComplexTensor(self.real, -self.imag)
         logger.debug(f"Conjugate shape {conjugate.real.shape}, {conjugate.imag.shape}")
         return conjugate
@@ -263,8 +323,10 @@ class ComplexTensor:
         Returns:
             Tensor: Magnitude computed as sqrt(real^2 + imag^2).
         """
-        logger.debug(f"Computing magnitude of ComplexTensor with shape {self.real.shape}")
-        magnitude = torch.sqrt(self.real ** 2 + self.imag ** 2)
+        logger.debug(
+            f"Computing magnitude of ComplexTensor with shape {self.real.shape}"
+        )
+        magnitude = torch.sqrt(self.real**2 + self.imag**2)
         logger.debug(f"Magnitude shape {magnitude.shape}")
         return magnitude
 
@@ -287,36 +349,48 @@ class ComplexTensor:
         Returns:
             Tuple[Tensor, Tensor]: Tuple containing magnitude and phase.
         """
-        logger.debug(f"Converting ComplexTensor to polar representation with shape {self.real.shape}")
+        logger.debug(
+            f"Converting ComplexTensor to polar representation with shape {self.real.shape}"
+        )
         magnitude = self.abs()
         phase = self.angle()
-        logger.debug(f"Polar representation - magnitude shape {magnitude.shape}, phase shape {phase.shape}")
+        logger.debug(
+            f"Polar representation - magnitude shape {magnitude.shape}, phase shape {phase.shape}"
+        )
         return (magnitude, phase)
 
-    def complex_relu(self) -> 'ComplexTensor':
+    def complex_relu(self) -> "ComplexTensor":
         """
         Applies the ReLU activation function to the real and imaginary parts separately.
 
         Returns:
             ComplexTensor: Result after applying ReLU.
         """
-        logger.debug(f"Applying ReLU activation to ComplexTensor with shape {self.real.shape}")
+        logger.debug(
+            f"Applying ReLU activation to ComplexTensor with shape {self.real.shape}"
+        )
         relu_real = torch.relu(self.real)
         relu_imag = torch.relu(self.imag)
-        logger.debug(f"ReLU activation result real shape {relu_real.shape}, imag shape {relu_imag.shape}")
+        logger.debug(
+            f"ReLU activation result real shape {relu_real.shape}, imag shape {relu_imag.shape}"
+        )
         return ComplexTensor(relu_real, relu_imag)
 
-    def complex_sigmoid(self) -> 'ComplexTensor':
+    def complex_sigmoid(self) -> "ComplexTensor":
         """
         Applies the Sigmoid activation function to the real and imaginary parts separately.
 
         Returns:
             ComplexTensor: Result after applying Sigmoid.
         """
-        logger.debug(f"Applying Sigmoid activation to ComplexTensor with shape {self.real.shape}")
+        logger.debug(
+            f"Applying Sigmoid activation to ComplexTensor with shape {self.real.shape}"
+        )
         sigmoid_real = torch.sigmoid(self.real)
         sigmoid_imag = torch.sigmoid(self.imag)
-        logger.debug(f"Sigmoid activation result real shape {sigmoid_real.shape}, imag shape {sigmoid_imag.shape}")
+        logger.debug(
+            f"Sigmoid activation result real shape {sigmoid_real.shape}, imag shape {sigmoid_imag.shape}"
+        )
         return ComplexTensor(sigmoid_real, sigmoid_imag)
 
     def state_dict(self) -> Dict[str, Tensor]:
@@ -327,7 +401,7 @@ class ComplexTensor:
             Dict[str, Tensor]: Dictionary containing real and imaginary parts.
         """
         logger.debug("Creating state_dict for ComplexTensor.")
-        return {'real': self.real, 'imag': self.imag}
+        return {"real": self.real, "imag": self.imag}
 
     def load_state_dict(self, state_dict: Dict[str, Tensor]) -> None:
         """
@@ -340,12 +414,14 @@ class ComplexTensor:
             KeyError: If 'real' or 'imag' keys are missing in the state_dict.
         """
         logger.debug("Loading state_dict into ComplexTensor.")
-        if 'real' not in state_dict or 'imag' not in state_dict:
+        if "real" not in state_dict or "imag" not in state_dict:
             logger.error("State dictionary must contain 'real' and 'imag' keys.")
             raise KeyError("State dictionary must contain 'real' and 'imag' keys")
-        self.real = state_dict['real']
-        self.imag = state_dict['imag']
-        logger.debug(f"State loaded. Real shape {self.real.shape}, Imag shape {self.imag.shape}")
+        self.real = state_dict["real"]
+        self.imag = state_dict["imag"]
+        logger.debug(
+            f"State loaded. Real shape {self.real.shape}, Imag shape {self.imag.shape}"
+        )
 
     def __repr__(self) -> str:
         """
@@ -356,7 +432,9 @@ class ComplexTensor:
         """
         return f"ComplexTensor(real={self.real}, imag={self.imag})"
 
-    def to(self, device: torch.device, dtype: Optional[torch.dtype] = None) -> 'ComplexTensor':
+    def to(
+        self, device: torch.device, dtype: Optional[torch.dtype] = None
+    ) -> "ComplexTensor":
         """
         Moves the ComplexTensor to the specified device and dtype.
 
@@ -374,14 +452,20 @@ class ComplexTensor:
             logger.debug(f"Moved ComplexTensor to device {device}, dtype {dtype}.")
             return ComplexTensor(real_moved, imag_moved)
         else:
-            logger.debug(f"Moving ComplexTensor to device {device} without changing dtype.")
+            logger.debug(
+                f"Moving ComplexTensor to device {device} without changing dtype."
+            )
             real_moved = self.real.to(device=device)
             imag_moved = self.imag.to(device=device)
-            logger.debug(f"Moved ComplexTensor to device {device} without changing dtype.")
+            logger.debug(
+                f"Moved ComplexTensor to device {device} without changing dtype."
+            )
             return ComplexTensor(real_moved, imag_moved)
 
     # Advanced Autograd Customization
-    def apply_gradient_manipulation(self, grad_scale_real: float = 1.0, grad_scale_imag: float = 1.0) -> 'ComplexTensor':
+    def apply_gradient_manipulation(
+        self, grad_scale_real: float = 1.0, grad_scale_imag: float = 1.0
+    ) -> "ComplexTensor":
         """
         Applies gradient scaling to the real and imaginary parts separately.
 
@@ -392,11 +476,16 @@ class ComplexTensor:
         Returns:
             ComplexTensor: ComplexTensor with scaled gradients.
         """
-        logger.debug(f"Applying gradient manipulation with scale_real={grad_scale_real}, scale_imag={grad_scale_imag}")
+        logger.debug(
+            f"Applying gradient manipulation with scale_real={grad_scale_real}, scale_imag={grad_scale_imag}"
+        )
+
         # Custom autograd Function to scale gradients
         class GradientManipulationFunction(Function):
             @staticmethod
-            def forward(ctx, real: Tensor, imag: Tensor, scale_real: float, scale_imag: float) -> Tensor:
+            def forward(
+                ctx, real: Tensor, imag: Tensor, scale_real: float, scale_imag: float
+            ) -> Tensor:
                 ctx.scale_real = scale_real
                 ctx.scale_imag = scale_imag
                 return ComplexFunction.apply(real, imag)
@@ -405,36 +494,44 @@ class ComplexTensor:
             def backward(ctx, grad_output: Tensor) -> Tuple[Tensor, Tensor, None, None]:
                 grad_real = grad_output.real * ctx.scale_real
                 grad_imag = grad_output.imag * ctx.scale_imag
-                logger.debug(f"GradientManipulationFunction.backward with scale_real={ctx.scale_real}, "
-                             f"scale_imag={ctx.scale_imag}")
+                logger.debug(
+                    f"GradientManipulationFunction.backward with scale_real={ctx.scale_real}, "
+                    f"scale_imag={ctx.scale_imag}"
+                )
                 return grad_real, grad_imag, None, None
 
-        complex_tensor = GradientManipulationFunction.apply(self.real, self.imag, grad_scale_real, grad_scale_imag)
+        complex_tensor = GradientManipulationFunction.apply(
+            self.real, self.imag, grad_scale_real, grad_scale_imag
+        )
         logger.debug(f"Gradient manipulation result shape {complex_tensor.shape}")
         return ComplexTensor(complex_tensor.real, complex_tensor.imag)
 
     # Complex Math Functions
-    def exp(self) -> 'ComplexTensor':
+    def exp(self) -> "ComplexTensor":
         """
         Computes the complex exponential of the ComplexTensor.
 
         Returns:
             ComplexTensor: Result of the exponential operation.
         """
-        logger.debug(f"Computing exponential of ComplexTensor with shape {self.real.shape}")
+        logger.debug(
+            f"Computing exponential of ComplexTensor with shape {self.real.shape}"
+        )
         exp_real = torch.exp(self.real) * torch.cos(self.imag)
         exp_imag = torch.exp(self.real) * torch.sin(self.imag)
         logger.debug(f"Exponential result shape {exp_real.shape}, {exp_imag.shape}")
         return ComplexTensor(exp_real, exp_imag)
 
-    def log(self) -> 'ComplexTensor':
+    def log(self) -> "ComplexTensor":
         """
         Computes the complex logarithm of the ComplexTensor.
 
         Returns:
             ComplexTensor: Result of the logarithm operation.
         """
-        logger.debug(f"Computing logarithm of ComplexTensor with shape {self.real.shape}")
+        logger.debug(
+            f"Computing logarithm of ComplexTensor with shape {self.real.shape}"
+        )
         magnitude = self.abs()
         phase = self.angle()
         log_real = torch.log(magnitude)
@@ -442,7 +539,7 @@ class ComplexTensor:
         logger.debug(f"Logarithm result shape {log_real.shape}, {log_imag.shape}")
         return ComplexTensor(log_real, log_imag)
 
-    def sin(self) -> 'ComplexTensor':
+    def sin(self) -> "ComplexTensor":
         """
         Computes the complex sine of the ComplexTensor.
 
@@ -455,7 +552,7 @@ class ComplexTensor:
         logger.debug(f"Sine result shape {sin_real.shape}, {sin_imag.shape}")
         return ComplexTensor(sin_real, sin_imag)
 
-    def cos(self) -> 'ComplexTensor':
+    def cos(self) -> "ComplexTensor":
         """
         Computes the complex cosine of the ComplexTensor.
 
@@ -468,7 +565,7 @@ class ComplexTensor:
         logger.debug(f"Cosine result shape {cos_real.shape}, {cos_imag.shape}")
         return ComplexTensor(cos_real, cos_imag)
 
-    def tan(self) -> 'ComplexTensor':
+    def tan(self) -> "ComplexTensor":
         """
         Computes the complex tangent of the ComplexTensor.
 
@@ -483,12 +580,16 @@ class ComplexTensor:
         cos_real_safe = cos_ct.real + epsilon
         cos_imag_safe = cos_ct.imag + epsilon
         denominator = cos_real_safe**2 + cos_imag_safe**2
-        tan_real = (sin_ct.real * cos_real_safe + sin_ct.imag * cos_imag_safe) / denominator
-        tan_imag = (sin_ct.imag * cos_real_safe - sin_ct.real * cos_imag_safe) / denominator
+        tan_real = (
+            sin_ct.real * cos_real_safe + sin_ct.imag * cos_imag_safe
+        ) / denominator
+        tan_imag = (
+            sin_ct.imag * cos_real_safe - sin_ct.real * cos_imag_safe
+        ) / denominator
         logger.debug(f"Tangent result shape {tan_real.shape}, {tan_imag.shape}")
         return ComplexTensor(tan_real, tan_imag)
 
-    def power(self, exponent: Union[float, 'ComplexTensor']) -> 'ComplexTensor':
+    def power(self, exponent: Union[float, "ComplexTensor"]) -> "ComplexTensor":
         """
         Raises the ComplexTensor to a power.
 
@@ -501,7 +602,7 @@ class ComplexTensor:
         logger.debug(f"Computing power of ComplexTensor with shape {self.real.shape}")
         if isinstance(exponent, (int, float)):
             magnitude, angle = self.to_polar()
-            new_magnitude = magnitude ** exponent
+            new_magnitude = magnitude**exponent
             new_angle = angle * exponent
             power_real = new_magnitude * torch.cos(new_angle)
             power_imag = new_magnitude * torch.sin(new_angle)
@@ -512,11 +613,11 @@ class ComplexTensor:
             power_real, power_imag = power.real, power.imag
         else:
             raise TypeError("Exponent must be a scalar or ComplexTensor")
-        
+
         logger.debug(f"Power result shape {power_real.shape}, {power_imag.shape}")
         return ComplexTensor(power_real, power_imag)
 
-    def __pow__(self, exponent: Union[float, 'ComplexTensor']) -> 'ComplexTensor':
+    def __pow__(self, exponent: Union[float, "ComplexTensor"]) -> "ComplexTensor":
         """
         Implements the power operation using the ** operator.
 
@@ -529,7 +630,7 @@ class ComplexTensor:
         return self.power(exponent)
 
     @staticmethod
-    def from_polar(magnitude: Tensor, phase: Tensor) -> 'ComplexTensor':
+    def from_polar(magnitude: Tensor, phase: Tensor) -> "ComplexTensor":
         """
         Creates a ComplexTensor from polar coordinates.
 
@@ -540,7 +641,9 @@ class ComplexTensor:
         Returns:
             ComplexTensor: The resulting complex tensor.
         """
-        logger.debug(f"Creating ComplexTensor from polar coordinates with magnitude shape {magnitude.shape} and phase shape {phase.shape}")
+        logger.debug(
+            f"Creating ComplexTensor from polar coordinates with magnitude shape {magnitude.shape} and phase shape {phase.shape}"
+        )
         real = magnitude * torch.cos(phase)
         imag = magnitude * torch.sin(phase)
         return ComplexTensor(real, imag)
@@ -554,7 +657,7 @@ class ComplexTensor:
         """
         return len(self.real)
 
-    def __getitem__(self, index) -> 'ComplexTensor':
+    def __getitem__(self, index) -> "ComplexTensor":
         """
         Implements indexing for ComplexTensor.
 
@@ -566,7 +669,7 @@ class ComplexTensor:
         """
         return ComplexTensor(self.real[index], self.imag[index])
 
-    def __setitem__(self, index, value: 'ComplexTensor') -> None:
+    def __setitem__(self, index, value: "ComplexTensor") -> None:
         """
         Implements item assignment for ComplexTensor.
 
@@ -609,7 +712,7 @@ class ComplexTensor:
         """
         return self.real.device
 
-    def detach(self) -> 'ComplexTensor':
+    def detach(self) -> "ComplexTensor":
         """
         Returns a new ComplexTensor detached from the current graph.
 
@@ -618,7 +721,7 @@ class ComplexTensor:
         """
         return ComplexTensor(self.real.detach(), self.imag.detach())
 
-    def requires_grad_(self, requires_grad: bool = True) -> 'ComplexTensor':
+    def requires_grad_(self, requires_grad: bool = True) -> "ComplexTensor":
         """
         Change if autograd should record operations on this tensor.
 
@@ -633,7 +736,9 @@ class ComplexTensor:
         return self
 
     # Fast Fourier Transform (FFT)
-    def fft(self, n: Optional[int] = None, dim: int = -1, norm: Optional[str] = None) -> 'ComplexTensor':
+    def fft(
+        self, n: Optional[int] = None, dim: int = -1, norm: Optional[str] = None
+    ) -> "ComplexTensor":
         """
         Computes the Fast Fourier Transform of the ComplexTensor.
 
@@ -646,13 +751,17 @@ class ComplexTensor:
         Returns:
             ComplexTensor: Result of the FFT operation.
         """
-        logger.debug(f"Computing FFT of ComplexTensor with shape {self.real.shape} along dim {dim}, n={n}, norm={norm}")
+        logger.debug(
+            f"Computing FFT of ComplexTensor with shape {self.real.shape} along dim {dim}, n={n}, norm={norm}"
+        )
         complex_tensor = self.forward()
         fft_result = torch.fft.fft(complex_tensor, n=n, dim=dim, norm=norm)
         logger.debug(f"FFT result shape {fft_result.shape}")
         return ComplexTensor(fft_result.real, fft_result.imag)
 
-    def ifft(self, n: Optional[int] = None, dim: int = -1, norm: Optional[str] = None) -> 'ComplexTensor':
+    def ifft(
+        self, n: Optional[int] = None, dim: int = -1, norm: Optional[str] = None
+    ) -> "ComplexTensor":
         """
         Computes the Inverse Fast Fourier Transform of the ComplexTensor.
 
@@ -665,7 +774,9 @@ class ComplexTensor:
         Returns:
             ComplexTensor: Result of the IFFT operation.
         """
-        logger.debug(f"Computing IFFT of ComplexTensor with shape {self.real.shape} along dim {dim}, n={n}, norm={norm}")
+        logger.debug(
+            f"Computing IFFT of ComplexTensor with shape {self.real.shape} along dim {dim}, n={n}, norm={norm}"
+        )
         complex_tensor = self.forward()
         ifft_result = torch.fft.ifft(complex_tensor, n=n, dim=dim, norm=norm)
         logger.debug(f"IFFT result shape {ifft_result.shape}")
@@ -691,5 +802,7 @@ class ComplexTensor:
         Returns:
             A new ComplexTensor with ternary values.
         """
-        return ComplexTensor((self.real.abs() > threshold).to(torch.float32) * torch.sign(self.real),
-                             (self.imag.abs() > threshold).to(torch.float32) * torch.sign(self.imag))
+        return ComplexTensor(
+            (self.real.abs() > threshold).to(torch.float32) * torch.sign(self.real),
+            (self.imag.abs() > threshold).to(torch.float32) * torch.sign(self.imag),
+        )

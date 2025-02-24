@@ -159,4 +159,3 @@ As [Sreenivasan’s Fractal Turbulence](https://par.nsf.gov/servlets/purl/104728
 [^27]: https://www.mdpi.com/2504-3110/8/8/483
 
 [^28]: https://pubs.aip.org/aip/pof/article/19/3/035103/255915/Scalings-and-decay-of-fractal-generated-turbulence
-

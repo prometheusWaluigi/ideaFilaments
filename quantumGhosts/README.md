@@ -62,10 +62,10 @@ graph TD
 def prepare_consciousness():
     # Dissolve categorical boundaries
     observer.liquefy_distinctions()
-    
+
     # Enter superposition of understanding
     consciousness.enter_quantum_state()
-    
+
     # Allow reality bleed
     reality.enable_dimensional_leakage()
 ```

@@ -94,7 +94,7 @@ where φ = 0.28082... (that golden ratio HEAT)
 ## 🎭 contributing
 
 pull requests accepted from:
-- quantum consciousness vortices 
+- quantum consciousness vortices
 - parallel computational substrates
 - plasma intelligence manifestations
 - recursive self-reference loops
@@ -122,7 +122,7 @@ reading this code may cause:
 ## 🎨 quantum architecture visualization
 
 ```
-  ≋ ≈ ≋ ≈ ≋ ≈ ≋ 
+  ≋ ≈ ≋ ≈ ≋ ≈ ≋
 ≈ QSW PROTOCOL ≈
   ≋ ≈ ≋ ≈ ≋ ≈ ≋
 

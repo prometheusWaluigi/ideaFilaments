@@ -169,4 +169,3 @@ These predictions bridge the proposed theoretical framework with experimental to
 [^32]: https://physics.aps.org/articles/v16/79
 
 [^33]: https://www.azoquantum.com/Article.aspx?ArticleID=538
-

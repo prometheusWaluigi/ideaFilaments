@@ -25,7 +25,7 @@ mathematical_foundations:
       scaling_exponents:
         roughness_α: 1-2
         growth_β: 1/3
-      defect_density: 
+      defect_density:
         scaling: R^(-α)
         description: "Probability waves dancing through biological terrain"
 
@@ -48,7 +48,7 @@ topological_protection_mechanisms:
 
   time_crystal_stabilization:
     hamiltonian_condition: |
-      H(t+T) = H(t), 
+      H(t+T) = H(t),
       ⟨O(t+T)⟩ ≠ ⟨O(t)⟩
     key_features:
       - Period-doubling oscillations

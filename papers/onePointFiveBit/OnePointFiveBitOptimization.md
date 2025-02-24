@@ -239,4 +239,3 @@ The 1.5-bit principle transcends domains as a universal optimization strategy. B
 [^60]: https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1009052
 
 [^61]: https://www.biorxiv.org/content/10.1101/178418v4.full.pdf
-

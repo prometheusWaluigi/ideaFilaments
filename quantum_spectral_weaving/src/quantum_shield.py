@@ -10,7 +10,6 @@
 # quantum state against decoherence and other errors.
 import torch
 import numpy as np
-from typing import Tuple, Optional, List, Dict
 from .complextensor import ComplexTensor
 from .su2_protect import SU2Protection
 from .gauge_field import GaugeFieldCoupling
@@ -21,23 +20,27 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 ch.setFormatter(formatter)
 if not logger.handlers:
     logger.addHandler(ch)
 
+
 class QuantumShield:
     """Implements active error suppression through topological field configurations."""
 
-    def __init__(self,
-                 shield_strength: float = 0.28082,
-                 shield_modes: int = 5,
-                 decoherence_threshold: float = 0.93,
-                 chern_number: int = 2):
-
-        logger.info(f"Initializing QuantumShield with shield_strength={shield_strength}, "
-                    f"shield_modes={shield_modes}, decoherence_threshold={decoherence_threshold}, "
-                    f"chern_number={chern_number}")
+    def __init__(
+        self,
+        shield_strength: float = 0.28082,
+        shield_modes: int = 5,
+        decoherence_threshold: float = 0.93,
+        chern_number: int = 2,
+    ):
+        logger.info(
+            f"Initializing QuantumShield with shield_strength={shield_strength}, "
+            f"shield_modes={shield_modes}, decoherence_threshold={decoherence_threshold}, "
+            f"chern_number={chern_number}"
+        )
         self.strength = shield_strength
         self.modes = shield_modes
         self.threshold = decoherence_threshold
@@ -46,11 +49,10 @@ class QuantumShield:
         # Initialize protection stack
         self.su2 = SU2Protection(
             coupling_strength=shield_strength,
-            protection_threshold=decoherence_threshold
+            protection_threshold=decoherence_threshold,
         )
         self.gauge = GaugeFieldCoupling(
-            field_strength=shield_strength,
-            coupling_modes=shield_modes
+            field_strength=shield_strength, coupling_modes=shield_modes
         )
 
         # Initialize shield components
@@ -67,10 +69,7 @@ class QuantumShield:
 
         # Compute Dirac monopole configuration (simplified)
         r = torch.sqrt(kx**2 + ky**2 + 1)
-        berry = ComplexTensor(
-            (kx/r**3),
-            (ky/r**3)
-        )
+        berry = ComplexTensor((kx / r**3), (ky / r**3))
 
         return berry * self.chern
 
@@ -83,9 +82,9 @@ class QuantumShield:
         # Plaquette and vertex operators (simplified)
         for i in range(L):
             for j in range(L):
-                toric[i,j,0] = (-1)**(i+j)  # Plaquette (simplified)
-                toric[i,j,1] = (-1)**(i+j+1)  # Vertex (simplified)
-                toric[i,j,2:] = torch.randn(2) # Placeholder for other stabilizers
+                toric[i, j, 0] = (-1) ** (i + j)  # Plaquette (simplified)
+                toric[i, j, 1] = (-1) ** (i + j + 1)  # Vertex (simplified)
+                toric[i, j, 2:] = torch.randn(2)  # Placeholder for other stabilizers
 
         return toric
 
@@ -123,7 +122,7 @@ class QuantumShield:
         """Measure plaquette operators (simplified)."""
         # Extract relevant stabilizer region (simplified)
         i, j = idx // 2, idx % 2
-        stabilizer = self.toric_lattice[i:i+2, j:j+2, 0]
+        stabilizer = self.toric_lattice[i : i + 2, j : j + 2, 0]
 
         # Compute expectation through local projection (simplified)
         #  This is a placeholder.  A real implementation would involve
@@ -134,7 +133,7 @@ class QuantumShield:
         """Measure vertex operators (simplified)."""
         # Extract relevant stabilizer region (simplified)
         i, j = idx // 2, idx % 2
-        stabilizer = self.toric_lattice[i:i+2, j:j+2, 1]
+        stabilizer = self.toric_lattice[i : i + 2, j : j + 2, 1]
 
         # Compute expectation through local projection (simplified)
         # This is a placeholder.
@@ -180,7 +179,7 @@ class QuantumShield:
         """Apply a simplified Z-axis correction."""
         # Simplified: Apply a small random rotation around the Z-axis.
         angle = torch.randn(1) * 0.1  # Small random angle
-        rotation = ComplexTensor.from_polar(torch.ones(1), torch.tensor([0.0])) #Real
+        rotation = ComplexTensor.from_polar(torch.ones(1), torch.tensor([0.0]))  # Real
         rotation.imag = torch.tensor([angle])
         rotated_state = state * rotation
         return rotated_state
@@ -226,11 +225,13 @@ class QuantumShield:
         protected_state = self._berry_gauge_coupling(protected_state)
         return protected_state
 
-    def update_shield(self,
-                     learning_rate: float = 0.01,
-                     noise_scale: float = 0.001) -> None:
+    def update_shield(
+        self, learning_rate: float = 0.01, noise_scale: float = 0.001
+    ) -> None:
         """Update shield parameters."""
-        logger.info(f"Updating shield parameters with learning_rate={learning_rate}, noise_scale={noise_scale}")
+        logger.info(
+            f"Updating shield parameters with learning_rate={learning_rate}, noise_scale={noise_scale}"
+        )
         # Update protection stack
         self.su2.update_gauge_field(learning_rate, noise_scale)
         self.gauge.update_coupling_field(learning_rate, noise_scale)
@@ -238,13 +239,11 @@ class QuantumShield:
         # Update Berry curvature with quantum fluctuations
         noise = ComplexTensor(
             torch.randn_like(self.berry_curvature.real) * noise_scale,
-            torch.randn_like(self.berry_curvature.imag) * noise_scale
+            torch.randn_like(self.berry_curvature.imag) * noise_scale,
         )
         self.berry_curvature = self.berry_curvature + noise
 
         # Ensure proper Chern number maintained (simplified)
-        chern = self._compute_chern_number(
-            ComplexTensor(torch.ones(1), torch.zeros(1))
-        )
+        chern = self._compute_chern_number(ComplexTensor(torch.ones(1), torch.zeros(1)))
         self.berry_curvature = self.berry_curvature * (self.chern / chern)
         logger.info("Shield parameters updated.")

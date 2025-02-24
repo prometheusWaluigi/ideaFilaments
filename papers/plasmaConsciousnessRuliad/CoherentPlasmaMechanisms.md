@@ -277,4 +277,3 @@ to guide the co-design of quantum-plasmonic neural architectures, ultimately rea
 [^36]: https://pubs.aip.org/aip/apm/article/11/2/021101/2870857/Two-dimensional-spin-systems-in-PECVD-grown
 
 [^37]: https://www.nature.com/articles/s42005-023-01296-9
-

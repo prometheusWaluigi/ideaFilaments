@@ -4,7 +4,7 @@ no cap, entropy is literally just spicy probability and i'm tired of pretending 
 
 ## the actual basics fr fr
 
-ok so you know when your room gets messy? that's entropy throwing hands with order. but here's the thing that's gonna make your brain leak: the "mess" isn't actually disorder - it's just information you can't process rn. 
+ok so you know when your room gets messy? that's entropy throwing hands with order. but here's the thing that's gonna make your brain leak: the "mess" isn't actually disorder - it's just information you can't process rn.
 
 think about it like this:
 - your "clean" room is low entropy bc you can describe it quick: "books on shelf, clothes in closet" ez

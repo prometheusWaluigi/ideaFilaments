@@ -67,11 +67,11 @@ Current quantum systems operate as coprocessors in hybrid frameworks:
 
 <div align="center">
 
-| **Layer**          | **Quantum Role**                | **Classical Role**               |  
-|---------------------|----------------------------------|-----------------------------------|  
-| Data Ingestion      | Amplitude encoding via QRAM[^14] | Dimensionality reduction         |  
-| Model Training      | Parameterized quantum circuits  | Gradient descent optimization    |  
-| Inference           | Quantum state sampling          | Statistical post-processing       |  
+| **Layer**          | **Quantum Role**                | **Classical Role**               |
+|---------------------|----------------------------------|-----------------------------------|
+| Data Ingestion      | Amplitude encoding via QRAM[^14] | Dimensionality reduction         |
+| Model Training      | Parameterized quantum circuits  | Gradient descent optimization    |
+| Inference           | Quantum state sampling          | Statistical post-processing       |
 
 </div>
 **Case Study:** IBM's Quantum-HPC-AI triad reduces drug discovery timelines by 40% through:
@@ -259,4 +259,3 @@ While current limitations in error rates (10^-3) and coherence times (~100μs) n
 [^48]: https://travislscholten.substack.com/p/quantum-machine-learning-an-introduction
 
 [^49]: https://quantum-journal.org/papers/q-2023-03-02-936/
-

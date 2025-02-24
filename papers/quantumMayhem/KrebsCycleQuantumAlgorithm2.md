@@ -261,4 +261,3 @@ Future work must test **Bell inequality violations** in ETC complexes and engine
 [^52]: https://pubs.acs.org/doi/10.1021/acsengineeringau.1c00033
 
 [^53]: https://quinfog.hbar.es/research/quantum-simulation/
-

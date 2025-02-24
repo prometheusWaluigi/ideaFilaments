@@ -275,4 +275,3 @@ The challenges of quantum data encoding stem from fundamental quantum mechanics 
 [^69]: https://www.bluequbit.io/quantum-data-loading
 
 [^70]: https://quantumcomputing.stackexchange.com/questions/6242/most-efficient-way-for-general-state-generation
-

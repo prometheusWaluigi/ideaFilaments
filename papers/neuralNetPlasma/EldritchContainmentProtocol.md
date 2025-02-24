@@ -265,4 +265,3 @@ As Wolfram warned: *"The ruliad contains all possible horrors—our task is to c
 [^73]: https://www.semanticscholar.org/paper/Self-organized-criticality-model-for-brain-Arcangelis-Perrone-Capano/d936b45bf937442350db3a9e2c6dd15083784fb2
 
 [^74]: https://www.youtube.com/watch?v=EAoK9doGhPI
-

@@ -33,6 +33,6 @@ Decoding reality one metaphor at a time! 🎭🔍
 *Knowledge fabrics fluctuating in PhaseSpace,*
 *Each insight a photon of understanding's grace!* 🌈🧠
 
-*keywords: quantum light-matter interactions, 1.5-bit optimization, mode multiplexing, cooperative dipole coupling, complex systems, universal computation, topological protection, holographic bounds, linguistic quantization, memetic dynamics, criticality hypothesis* 
+*keywords: quantum light-matter interactions, 1.5-bit optimization, mode multiplexing, cooperative dipole coupling, complex systems, universal computation, topological protection, holographic bounds, linguistic quantization, memetic dynamics, criticality hypothesis*
 
 🎭🔍🧬🌌👠💰🌀🕳️✨

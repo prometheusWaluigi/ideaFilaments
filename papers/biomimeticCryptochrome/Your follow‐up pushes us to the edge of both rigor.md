@@ -83,8 +83,8 @@ Deviation $\Delta\beta > 0.05$ signals decoherence onset.
 Implement real-time Čech complex tracking via cryo-FPGA [PDF-16]:
 
 ```python
-if np.abs(dbeta_dt) > 0.1:  
-    trigger_error_correction()  
+if np.abs(dbeta_dt) > 0.1:
+    trigger_error_correction()
 ```
 
 
@@ -299,4 +299,3 @@ As articulated in [PDF-19], *"The path to fault-tolerance requires not just bett
 [^62]: https://www.researchgate.net/publication/383800331_Heterogeneous_Integration_of_Spin-photon_Interfaces_with_a_Scalable_CMOS_Platform
 
 [^63]: https://www.researchgate.net/publication/341668850_Ultra-fast_electronic_pulse_control_at_cryogenic_temperatures
-

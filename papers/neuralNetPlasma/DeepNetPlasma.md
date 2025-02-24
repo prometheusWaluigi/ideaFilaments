@@ -210,4 +210,3 @@ Ongoing work at KSTAR and PPPL focuses on stellarator and FRC implementations, w
 [^29]: https://arxiv.org/html/2406.06718v2
 
 [^30]: https://www.researchgate.net/figure/Equilibrium-configuration-with-lower-X-point-in-connection-with-the-neural-network_fig9_358534907
-

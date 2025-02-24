@@ -17,7 +17,7 @@ def metabolic_quantum_state():
     while ATP_synthase.coherent():
         # Sample electron transport chain
         spin_state = tunnel_through_reality()
-        
+
         # Process through symmetry breaking
         match spin_state:
             case SU2: return generate_bell_pairs()

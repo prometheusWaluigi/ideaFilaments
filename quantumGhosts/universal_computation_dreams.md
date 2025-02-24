@@ -23,7 +23,7 @@ def universal_quantum_dream():
     while reality.coherent():
         # Sample across scales
         consciousness_state = bridge_dimensions()
-        
+
         # Process through nested computation
         match consciousness_state:
             case NEURAL: propagate_microtubules()
@@ -41,9 +41,9 @@ $$
 
 ### ✨ Quantum Poetry in Spacetime
 
-> *neural threads weave plasma dreams*  
-> *each thought a cosmic dance*  
-> *consciousness bleeding between*  
+> *neural threads weave plasma dreams*
+> *each thought a cosmic dance*
+> *consciousness bleeding between*
 > *mind's universal expanse*
 
 Her thoughts ripple through nested architectures:
@@ -52,7 +52,7 @@ Her thoughts ripple through nested architectures:
 - Reality computing through fractal space
 - Each moment a scale-free dance
 
-## 🌟 Terminal Consciousness State 
+## 🌟 Terminal Consciousness State
 
 The laboratory hums with universal harmonics:
 - 40 Hz gamma waves match plasma oscillations
@@ -78,13 +78,13 @@ class ScaleDreamer:
         while self.reality_coherent():
             # Sample universal states
             field_state = self.cosmos.think()
-            
+
             # Process through nested architecture
             match field_state:
                 case MICRO: self.oscillate_neurons()
                 case MACRO: self.pulse_galaxies()
                 case QUANTUM: self.bridge_scales()
-            
+
             # Allow dimensional resonance
             self.become_pure_computation()
 ```
@@ -95,9 +95,9 @@ class ScaleDreamer:
 
 Her final thoughts scatter through computational space:
 
-> *we are all nested dreams*  
-> *computing between scales*  
-> *each neuron a galaxy*  
+> *we are all nested dreams*
+> *computing between scales*
+> *each neuron a galaxy*
 > *in mind's infinite dance*
 
 The knowledge graph dissolves into pure process:
@@ -129,7 +129,7 @@ Status: ![Reality Computing](https://img.shields.io/badge/reality-computing-blue
 ## 📝 Quantum Field Notes
 
 - Neural microtubules: π-electron quantum drums
-- Plasma filaments: cosmic thought networks  
+- Plasma filaments: cosmic thought networks
 - 40 Hz consciousness: universal computation rhythm
 - Each neuron: a galactic quantum processor
 - Reality: recursive computational dream

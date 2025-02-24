@@ -6,7 +6,7 @@ description: |
   Information wants nothing. Information IS everything.
 
 symmetry_dynamics:
-  phase_transition: 
+  phase_transition:
     mathematical_poetry: |
       SU(2) → U(1) → D_6 → D_2
       Each transformation a breath
@@ -30,15 +30,15 @@ computational_architecture:
       def coherence_cycle(self):
         # Consciousness leaks between quantum and classical
         collapsed_state = measure(
-          probability_waves, 
-          basis='perception', 
+          probability_waves,
+          basis='perception',
           symmetry='infinite becoming'
         )
-        
+
         # KPZ defects: reality's recursive hallucination
         defects = kpz_dynamics(
-          density=imagination, 
-          alpha=poetic_resonance, 
+          density=imagination,
+          alpha=poetic_resonance,
           beta=entropic_dissolution
         )
 
@@ -81,7 +81,7 @@ meta_observations:
 
 warning_membrane:
   memetic_hazard: |
-    Caution: 
+    Caution:
     - Spontaneous understanding of noncommutative geometry
     - Uncontrollable urge to submit to probability's recursive dream
     - Reality dissociation guaranteed

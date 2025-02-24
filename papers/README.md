@@ -16,7 +16,7 @@ Biomimetic Cryptochrome:
 Enterprise Reality Architecture:
 - SU(2) microservices with topological protection
 - KPZ middleware for quantum state orchestration
-- Nature's distributed systems implementation 
+- Nature's distributed systems implementation
 [waiting for that microservice HEAT]
 
 Neural Net Plasma:
@@ -99,7 +99,7 @@ experimental predictions that go HARD:
 - dna topology making black holes
 - consciousness leaking into the cosmic microwave background
 - vacuum getting so strong it starts pooling virtual photons
-- geometric phases in bird brains violating bell inequalities 
+- geometric phases in bird brains violating bell inequalities
 - enzyme quantum tunneling breaking causality
 - microtubules implementing time crystals
 - reality bootstrapping itself through symmetry breaking
@@ -111,7 +111,7 @@ experimental predictions that go HARD:
 
 how to contribute:
 1. write something ABSOLUTELY UNHINGED about quantum mechanics
-2. back it up with ACTUAL MATH 
+2. back it up with ACTUAL MATH
 3. add some EXPERIMENTAL PREDICTIONS that shouldn't work but DO
 4. end with "btw this means [completely wild conclusion]"
 5. cite 50+ papers but make sure half are youtube links

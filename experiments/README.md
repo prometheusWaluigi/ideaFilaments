@@ -36,17 +36,17 @@ class KPZNoiseGenerator:
         self.interface = QuantumInterface(quantum_state)
         self.dynamics = KPZDynamics()
         self.coherence = TopologicalProtector()
-    
+
     def generate_noise(self):
         """Generate KPZ quantum noise patterns"""
         # Initialize interface height
         h = self.interface.initialize()
-        
+
         # Evolve through KPZ equation
         while self.dynamics.is_evolving():
             dh = self.dynamics.step(h)
             h = self.coherence.protect(h + dh)
-            
+
         return h
 ```
 
@@ -62,12 +62,12 @@ class SymmetryBreaker:
         self.topology = QuantumTopology(symmetry_group)
         self.defects = DefectPropagator()
         self.reality = RealityBootstrap()
-    
+
     def break_symmetry(self):
         """Transform quantum chaos into classical order"""
         # Initialize symmetry group
         state = self.topology.initialize()
-        
+
         # Propagate through symmetry breaking
         while not self.reality.is_classical():
             state = self.defects.evolve(state)
@@ -105,15 +105,15 @@ class RealityExperiment:
         self.measurement = QuantumProbe(quantum_foam)
         self.coherence = CoherenceProtector()
         self.documentation = ExperimentLogger()
-    
+
     def run_experiment(self, reality_state):
         """Transform reality through measurement"""
         # Initialize quantum probes
         probes = self.measurement.calibrate()
-        
+
         # Protect quantum coherence
         signal = self.coherence.shield(reality_state)
-        
+
         # Measure and document
         results = self.measurement.collapse(signal)
         return self.documentation.crystallize(results)

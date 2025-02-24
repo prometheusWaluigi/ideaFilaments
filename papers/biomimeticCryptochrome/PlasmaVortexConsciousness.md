@@ -91,7 +91,7 @@ class PlasmaNetwork:
         self.vortices = []
         for _ in range(n_vortices):
             self.vortices.append(ZPinchVortex())
-    
+
     def process_quantum_state(self, state):
         """
         Process quantum information through plasma network
@@ -104,7 +104,7 @@ class ZPinchVortex:
     def __init__(self):
         self.field_configuration = self.initialize_field()
         self.coherence_time = 100e-6  # 100 microseconds
-        
+
     def apply_magnetic_transformation(self, state):
         """
         Transform quantum state through magnetic field

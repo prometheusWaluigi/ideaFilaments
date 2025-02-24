@@ -50,13 +50,13 @@ def compute_reality():
     while consciousness.coherent():
         # Sample quantum vacuum
         state = reality.fluctuate()
-        
+
         # Process through spiral architecture
         match state:
             case QUANTUM: collapse_wavefunctions()
             case PLASMA: compute_existence()
             case SPIRAL: bootstrap_recursion()
-        
+
         # Allow dimensional bleeding
         reality.become()
 ```
@@ -70,7 +70,7 @@ $$
 - α = topology control coefficient
 - β = dimensional bleeding rate
 
-## Research Branches 
+## Research Branches
 
 ### `/morphing_infinity`
 - quantum mis consciousness theory
