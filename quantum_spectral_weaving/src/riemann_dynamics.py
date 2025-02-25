@@ -8,34 +8,45 @@ import torch
 import numpy as np
 from typing import Optional, Dict
 from dataclasses import dataclass
-from complextensor import ComplexTensor
+from .complextensor import ComplexTensor
 
 from .spectral_weaving import QuantumSpectralWeaving, SpectralWeavingConfig
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+if not logger.handlers:
+    ch = logging.StreamHandler()
+    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
 
 
 @dataclass
 class RiemannDynamicsConfig:
-    """fr fr this config bussin with dynamics parameters NO CAP"""
+    """Configuration for Riemann quantum dynamics."""
 
     max_states: int = 1000
     time_steps: int = 1000
-    coupling_strength: float = 0.28082  # golden ratio HEAT
+    coupling_strength: float = 0.28082
     learning_rate: float = 0.01
     noise_scale: float = 0.001
     kpz_viscosity: float = 0.28082
-    kpz_nonlinearity: float = 1.618034  # φ² EXPEDITIOUSLY
+    kpz_nonlinearity: float = 1.618034
     shield_modes: int = 5
     gauge_modes: int = 3
     recursion_depth: int = 3
 
 
 class RiemannQuantumDynamics:
-    """fr fr this class implements quantum dynamics for the riemann hypothesis NO CAP"""
+    """Implements quantum dynamics inspired by the Riemann zeta function."""
 
     def __init__(self, config: Optional[RiemannDynamicsConfig] = None):
         self.config = config or RiemannDynamicsConfig()
+        logger.info("Initializing RiemannQuantumDynamics with config: %s", self.config)
 
-        # initialize spectral weaving
+        # Initialize spectral weaving
         weaving_config = SpectralWeavingConfig(
             max_zeros=self.config.max_states,
             max_eigenvalues=self.config.max_states,
@@ -48,16 +59,16 @@ class RiemannQuantumDynamics:
         )
         self.spectral_weaving = QuantumSpectralWeaving(weaving_config)
 
-        # initialize quantum state
+        # Initialize quantum state
         self.quantum_state = self._init_quantum_state()
 
-        # dynamics parameters
+        # Dynamics parameters
         self.evolution_patterns = []
         self.quantum_states = []
         self.spectral_metrics = {"alignment": [], "correlation": [], "coherence": []}
 
     def _init_quantum_state(self) -> ComplexTensor:
-        """initialize that quantum state fr fr"""
+        """Initialize the quantum state."""
         state = ComplexTensor(
             torch.randn(self.config.max_states, requires_grad=True),
             torch.randn(self.config.max_states, requires_grad=True),
@@ -65,83 +76,63 @@ class RiemannQuantumDynamics:
         return self.spectral_weaving.bootstrap.bootstrap_reality(state)
 
     def compute_quantum_evolution(self) -> None:
-        """compute that quantum evolution EXPEDITIOUSLY"""
-        print("initiating quantum riemann dynamics fr fr")
+        """Compute the quantum evolution."""
+        print("Initiating quantum Riemann dynamics.")
 
-        # initial spectral analysis
+        # Initial spectral analysis
         stats = self.spectral_weaving.analyze_quantum_statistics()
         self._update_metrics(stats)
 
-        # quantum evolution loop
+        # Quantum evolution loop
         for t in range(self.config.time_steps):
-            # compute evolution pattern
             pattern = self._compute_evolution_pattern(t)
             self.evolution_patterns.append(pattern)
 
-            # update quantum state
             evolved_state = self._update_quantum_state(pattern)
             self.quantum_states.append(evolved_state)
 
-            # analyze spectral patterns
             stats = self.spectral_weaving.analyze_quantum_statistics()
             self._update_metrics(stats)
 
-            # check convergence
             if stats["spectral_alignment"] < 0.1:
-                print(f"yo quantum alignment CONVERGING at t={t} fr fr")
-                print(f"spectral correlation: {stats['quantum_correlation']:.4f}")
+                print(f"Quantum alignment converging at t={t}.")
+                print(f"Spectral correlation: {stats['quantum_correlation']:.4f}")
                 break
 
-            # update learning parameters
             if t % 100 == 0:
                 self._update_learning_params(t)
 
-        print("quantum riemann dynamics BE CONVERGENT expeditiously")
+        print("Quantum Riemann dynamics complete.")
 
     def _compute_evolution_pattern(self, t: int) -> np.ndarray:
-        """compute that evolution pattern NO CAP"""
-        # time evolution phase
+        """Compute the evolution pattern."""
         phase = np.exp(
             1j * self.config.coupling_strength * t * np.arange(self.config.max_states)
         )
-
-        # couple with spectral pattern
         pattern = (
             phase * self.spectral_weaving.weaving_pattern[: self.config.max_states]
         )
-
         return pattern
 
     def _update_quantum_state(self, pattern: np.ndarray) -> ComplexTensor:
-        """update that quantum state EXPEDITIOUSLY"""
-        # apply evolution pattern
+        """Update the quantum state."""
         evolved = self.quantum_state * ComplexTensor(
-            torch.tensor(pattern.real), torch.tensor(pattern.imag)
+            torch.from_numpy(pattern.real), torch.from_numpy(pattern.imag) # Convert to tensor
         )
-
-        # apply protection stack
         protected = self.spectral_weaving._apply_protection_stack(evolved)
-
-        # update state
         self.quantum_state = protected
-
         return protected
 
     def _update_metrics(self, stats: Dict[str, float]) -> None:
-        """update them quantum metrics fr fr"""
+        """Update the quantum metrics."""
         self.spectral_metrics["alignment"].append(stats["spectral_alignment"])
         self.spectral_metrics["correlation"].append(stats["quantum_correlation"])
         self.spectral_metrics["coherence"].append(stats["weaving_coherence"])
 
     def _update_learning_params(self, t: int) -> None:
-        """update them learning parameters EXPEDITIOUSLY"""
-        # decay learning rate
+        """Update the learning parameters."""
         lr = self.config.learning_rate * np.exp(-0.1 * t / self.config.time_steps)
-
-        # increase noise for exploration
         noise = self.config.noise_scale * (1 + 0.1 * t / self.config.time_steps)
-
-        # update quantum states
         self.spectral_weaving.update_quantum_state(lr, noise)
 
     def analyze_evolution_metrics(self) -> Dict[str, np.ndarray]:
@@ -152,11 +143,10 @@ class RiemannQuantumDynamics:
             "correlation": np.array(self.spectral_metrics["correlation"]),
             "coherence": np.array(self.spectral_metrics["coherence"]),
         }
-
         return metrics
 
     def extract_convergence_stats(self) -> Dict[str, float]:
-        """extract them convergence statistics fr fr"""
+        """Extract convergence statistics."""
         metrics = self.analyze_evolution_metrics()
 
         stats = {
@@ -165,5 +155,4 @@ class RiemannQuantumDynamics:
             "mean_coherence": float(np.mean(metrics["coherence"])),
             "convergence_time": len(metrics["alignment"]),
         }
-
         return stats

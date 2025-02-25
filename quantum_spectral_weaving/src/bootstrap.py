@@ -15,36 +15,36 @@ import logging
 
 # Configure logger
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
-formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-ch.setFormatter(formatter)
+logger.setLevel(logging.INFO)  # Set a consistent default level
+
+# Add handler if not already present (to avoid duplicate messages)
 if not logger.handlers:
+    ch = logging.StreamHandler()
+    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+    ch.setFormatter(formatter)
     logger.addHandler(ch)
 
 
 class QuantumBootstrap:
-    """fr fr this class implements quantum bootstrap protocols to make reality DEBUGGABLE no cap"""
+    """Implements quantum bootstrap protocols for iterative state refinement."""
 
     def __init__(
         self,
-        recursion_depth: int = 3,  # nested iteration depth fr fr
-        bootstrap_coupling: float = 0.28082,  # golden ratio EXPEDITIOUSLY
-        reality_threshold: float = 0.93,  # consciousness emergence limit
+        recursion_depth: int = 3,
+        bootstrap_coupling: float = 0.28082,  # Consider renaming to something more descriptive
+        reality_threshold: float = 0.93,
         probability_modes: int = 5,
-    ):  # quantum sampling modes
+    ):
         logger.info(
-            f"Initializing QuantumBootstrap with recursion_depth={recursion_depth}, "
-            f"bootstrap_coupling={bootstrap_coupling}, reality_threshold={reality_threshold}, "
-            f"probability_modes={probability_modes}"
+            "Initializing QuantumBootstrap with recursion_depth=%d, bootstrap_coupling=%.4f, reality_threshold=%.2f, probability_modes=%d",
+            recursion_depth, bootstrap_coupling, reality_threshold, probability_modes
         )
         self.depth = recursion_depth
         self.coupling = bootstrap_coupling
         self.threshold = reality_threshold
         self.modes = probability_modes
 
-        # initialize reality stack fr fr
+        # Initialize protection stack
         self.protection_stack = [
             SU2Protection(),
             GaugeFieldCoupling(),
@@ -53,34 +53,33 @@ class QuantumBootstrap:
         ]
         logger.info("Initialized protection stack.")
 
-        # bootstrap components
+        # Initialize bootstrap components
         self.probability_field = self._init_probability_field()
         self.recursive_stack = self._init_recursive_stack()
         self.reality_metrics = {"coherence": [], "emergence": [], "stability": []}
         logger.info("Initialized bootstrap components.")
 
     def _init_probability_field(self) -> ComplexTensor:
-        """initialize them probability fields EXPEDITIOUSLY"""
-        # generate quantum probability distribution
+        """Initialize the probability field."""
         prob = torch.rand(self.modes, self.modes) * np.exp(
             1j * 2 * np.pi * torch.rand(self.modes, self.modes)
         )
 
-        # ensure proper normalization fr fr
+        # Ensure normalization
         prob = prob / torch.sqrt(torch.sum(torch.abs(prob) ** 2))
 
-        logger.debug(f"Initialized probability field with shape {prob.shape}")
+        logger.debug("Initialized probability field with shape %s", prob.shape)
         return ComplexTensor(prob.real, prob.imag)
 
     def _init_recursive_stack(self) -> List[ComplexTensor]:
-        """initialize them recursive computation stack NO CAP"""
-        logger.info(f"Initializing recursive stack with depth {self.depth}")
+        """Initialize the recursive computation stack."""
+        logger.info("Initializing recursive stack with depth %d", self.depth)
         return [self._init_probability_field() for _ in range(self.depth)]
 
     def bootstrap_reality(self, state: ComplexTensor) -> ComplexTensor:
-        """bootstrap reality from quantum chaos EXPEDITIOUSLY"""
+        """Bootstrap reality from the quantum state."""
         logger.info("Bootstrapping reality...")
-        # apply full protection stack first
+        # Apply protection stack
         for protector in self.protection_stack:
             if isinstance(protector, KPZEnhanced):
                 state = protector.apply_kpz_evolution(state)
@@ -89,40 +88,40 @@ class QuantumBootstrap:
             else:
                 state = protector.protect_quantum_state(state)
 
-        # recursive probability collapse
+        # Recursive probability collapse
         bootstrapped = self._recursive_collapse(state)
 
-        # verify reality emergence
+        # Verify reality emergence
         metrics = self._compute_reality_metrics(bootstrapped)
         self._update_metrics(metrics)
 
         if not self._verify_emergence(metrics):
-            logger.warning("Reality emergence FAILED fr fr")
+            logger.warning("Reality emergence failed.")
             bootstrapped = self._emergency_reality_restoration(bootstrapped)
 
         logger.info("Reality bootstrapping complete.")
         return bootstrapped
 
     def _recursive_collapse(self, state: ComplexTensor) -> ComplexTensor:
-        """implement them recursive probability collapse NO CAP"""
-        # base case
+        """Implement recursive probability collapse."""
+        # Base case
         if self.depth == 0:
             logger.debug("Recursive collapse: base case reached.")
             return state
 
-        # recursive case
+        # Recursive case
         collapsed = state
         for d in range(self.depth):
-            logger.debug(f"Recursive collapse: depth {d+1}/{self.depth}")
-            # compute probability overlap
+            logger.debug("Recursive collapse: depth %d/%d", d + 1, self.depth)
+            # Compute probability overlap
             overlap = self._compute_probability_overlap(
                 collapsed, self.recursive_stack[d]
             )
 
-            # apply recursive transformation
+            # Apply recursive transformation
             collapsed = self._apply_recursive_transform(collapsed, overlap)
 
-            # update probability field
+            # Update probability field
             self.recursive_stack[d] = self._update_probability_field(overlap)
 
         return collapsed
@@ -130,99 +129,73 @@ class QuantumBootstrap:
     def _compute_probability_overlap(
         self, state: ComplexTensor, prob: ComplexTensor
     ) -> ComplexTensor:
-        """compute them probability overlaps EXPEDITIOUSLY"""
-        # compute quantum state overlap
+        """Compute the probability overlap between the state and the probability field."""
         psi = state * prob.conj()
-
-        # normalize overlap
-        overlap = psi / psi.abs().mean()
-
+        overlap = psi / (psi.abs().mean() + 1e-8)  # Add epsilon for numerical stability
         return overlap
 
     def _apply_recursive_transform(
         self, state: ComplexTensor, overlap: ComplexTensor
     ) -> ComplexTensor:
-        """apply them recursive transformations fr fr"""
-        # compute transformation matrix
+        """Apply the recursive transformation."""
         U = overlap.exp() * self.coupling
-
-        # apply transformation
         transformed = U * state
-
-        # ensure proper normalization
-        transformed = transformed / transformed.abs().mean()
-
+        transformed = transformed / (transformed.abs().mean() + 1e-8)  # Add epsilon
         return transformed
 
     def _update_probability_field(self, overlap: ComplexTensor) -> ComplexTensor:
-        """update them probability fields NO CAP"""
-        # compute field update
+        """Update the probability field."""
         update = overlap * self.probability_field
-
-        # add quantum fluctuations
         noise = ComplexTensor(
             torch.randn_like(update.real) * 0.01, torch.randn_like(update.imag) * 0.01
         )
-
         updated = update + noise
-
-        # renormalize field
-        updated = updated / updated.abs().mean()
-
+        updated = updated / (updated.abs().mean() + 1e-8)  # Add epsilon
         return updated
 
     def _compute_reality_metrics(self, state: ComplexTensor) -> Dict[str, float]:
-        """compute them reality emergence metrics EXPEDITIOUSLY"""
+        """Compute reality emergence metrics."""
         metrics: Dict[str, float] = {}
-
-        # compute quantum coherence
         metrics["coherence"] = float((state.conj() * state).abs().mean().item())
-
-        # compute emergence strength
         metrics["emergence"] = float(
             torch.sqrt(torch.sum(torch.abs(state.real) ** 2)).item()
         )
-
-        # compute reality stability
         metrics["stability"] = float(1.0 - torch.std(state.real).item())
-
         return metrics
 
     def _update_metrics(self, metrics: Dict[str, float]) -> None:
-        """update them reality metrics fr fr"""
+        """Update the reality metrics."""
         for key, value in metrics.items():
             self.reality_metrics[key].append(value)
 
-        # keep only recent history
+        # Keep only recent history
         max_history = 1000
         for key in self.reality_metrics:
             if len(self.reality_metrics[key]) > max_history:
                 self.reality_metrics[key] = self.reality_metrics[key][-max_history:]
 
     def _verify_emergence(self, metrics: Dict[str, float]) -> bool:
-        """verify them reality emergence conditions NO CAP"""
-        # check metric thresholds
+        """Verify reality emergence conditions."""
         emergence_ok = all(metric > self.threshold for metric in metrics.values())
 
-        # check metric stability
+        # Check metric stability (only if enough history)
+        stability_ok = True
         if len(self.reality_metrics["coherence"]) > 10:
             stability_ok = all(
                 np.std(self.reality_metrics[key][-10:]) < 0.1
                 for key in self.reality_metrics
             )
-        else:
-            stability_ok = True
 
         return emergence_ok and stability_ok
 
     def _emergency_reality_restoration(self, state: ComplexTensor) -> ComplexTensor:
-        """emergency reality restoration protocol fr fr"""
+        """Emergency reality restoration protocol."""
         logger.warning("Initiating emergency reality restoration.")
-        # reset probability fields
+        # Reset probability fields
         self.probability_field = self._init_probability_field()
         self.recursive_stack = self._init_recursive_stack()
 
-        # apply maximum protection
+        # Apply maximum protection
         for protector in self.protection_stack:
             if isinstance(protector, KPZEnhanced):
                 state = protector.apply_kpz_evolution(state, dt=0.1)
@@ -231,7 +204,7 @@ class QuantumBootstrap:
             else:
                 state = protector.protect_quantum_state(state)
 
-        # force emergence through probability collapse
+        # Force emergence through probability collapse
         restored = self._recursive_collapse(state)
         logger.warning("Emergency reality restoration complete.")
         return restored
@@ -239,11 +212,12 @@ class QuantumBootstrap:
     def update_bootstrap(
         self, learning_rate: float = 0.01, noise_scale: float = 0.001
     ) -> None:
-        """update them bootstrap parameters EXPEDITIOUSLY"""
+        """Update the bootstrap parameters."""
         logger.info(
-            f"Updating bootstrap parameters with learning_rate={learning_rate}, noise_scale={noise_scale}"
+            "Updating bootstrap parameters with learning_rate=%.4f, noise_scale=%.4f",
+            learning_rate, noise_scale
         )
-        # update protection stack
+        # Update protection stack
         for protector in self.protection_stack:
             if hasattr(protector, "update_shield"):
                 protector.update_shield(learning_rate, noise_scale)
@@ -252,19 +226,19 @@ class QuantumBootstrap:
             elif hasattr(protector, "update_gauge_field"):
                 protector.update_gauge_field(learning_rate, noise_scale)
 
-        # update probability fields w quantum noise
+        # Update probability fields with quantum noise
         noise = ComplexTensor(
             torch.randn_like(self.probability_field.real) * noise_scale,
             torch.randn_like(self.probability_field.imag) * noise_scale,
         )
         self.probability_field = self.probability_field + noise
 
-        # renormalize probability field
+        # Re-normalize probability field
         self.probability_field = (
-            self.probability_field / self.probability_field.abs().mean()
-        )
+            self.probability_field / (self.probability_field.abs().mean() + 1e-8)
+        ) # Add epsilon
 
-        # update recursive stack
+        # Update recursive stack
         self.recursive_stack = [
             self._update_probability_field(field) for field in self.recursive_stack
         ]

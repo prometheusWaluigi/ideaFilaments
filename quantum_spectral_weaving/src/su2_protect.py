@@ -5,9 +5,9 @@ import logging
 
 # Configure logger
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
+ch.setLevel(logging.INFO)
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 ch.setFormatter(formatter)
 if not logger.handlers:
@@ -24,132 +24,86 @@ class SU2Protection:
         protection_threshold: float = 0.93,
     ):
         logger.info(
-            f"Initializing SU2Protection with coupling_strength={coupling_strength}, "
-            f"gauge_field_dim={gauge_field_dim}, protection_threshold={protection_threshold}"
+            "Initializing SU2Protection with coupling_strength=%.4f, gauge_field_dim=%d, protection_threshold=%.2f",
+            coupling_strength, gauge_field_dim, protection_threshold
         )
-        # Initialize Pauli matrices
-        self.sigma_x = ComplexTensor(
-            torch.tensor([[0.0, 1.0], [1.0, 0.0]]),
-            torch.tensor([[0.0, 0.0], [0.0, 0.0]]),
-        )
-        self.sigma_y = ComplexTensor(
-            torch.tensor([[0.0, 0.0], [0.0, 0.0]]),
-            torch.tensor([[0.0, -1.0], [1.0, 0.0]]),
-        )
-        self.sigma_z = ComplexTensor(
-            torch.tensor([[1.0, 0.0], [0.0, -1.0]]),
-            torch.tensor([[0.0, 0.0], [0.0, 0.0]]),
-        )
-
-        # Group parameters
         self.coupling = coupling_strength
         self.dim = gauge_field_dim
         self.threshold = protection_threshold
 
-        # Initialize gauge fields
-        self.gauge_field = self._initialize_gauge_field()
-        logger.info("Initialized SU2Protection.")
+        self.sigma_x = ComplexTensor(
+            torch.tensor([[0.0, 1.0], [1.0, 0.0]]), torch.tensor([[0.0, 0.0], [0.0, 0.0]])
+        )
+        self.sigma_y = ComplexTensor(
+            torch.tensor([[0.0, 0.0], [0.0, 0.0]]), torch.tensor([[0.0, -1.0], [1.0, 0.0]])
+        )
+        self.sigma_z = ComplexTensor(
+            torch.tensor([[1.0, 0.0], [0.0, -1.0]]), torch.tensor([[0.0, 0.0], [0.0, 0.0]])
+        )
 
-    def _initialize_gauge_field(self) -> ComplexTensor:
-        """Initialize gauge fields."""
-        # Construct SU(2) generators through Lie algebra
-        generators = [self.sigma_x, self.sigma_y, self.sigma_z]
+        self.gauge_field = self._init_gauge_field()
+        logger.info("Initialized SU(2) gauge field.")
 
-        # Generate random coefficients for gauge field
-        coeffs = torch.randn(self.dim, 3)
-
-        # Create gauge field as linear combination of generators
-        field = ComplexTensor(torch.zeros(2, 2), torch.zeros(2, 2))
-        for i in range(self.dim):
-            for j in range(3):
-                field = field + coeffs[i, j] * generators[j]
-
-        logger.debug(f"Initialized gauge field with shape {field.real.shape}")
-        return field
+    def _init_gauge_field(self) -> ComplexTensor:
+        """Initialize the SU(2) gauge field."""
+        field = ComplexTensor(
+            torch.randn(self.dim, self.dim, requires_grad=True),
+            torch.randn(self.dim, self.dim, requires_grad=True),
+        )
+        projected = self._project_to_lie_algebra(field)
+        return projected * self.coupling
 
     def protect_quantum_state(self, state: ComplexTensor) -> ComplexTensor:
-        """Protect quantum state through SU(2) gauge transformation."""
-        logger.info("Protecting quantum state with SU(2) gauge transformation.")
-        # Compute SU(2) transformation matrix
-        U = self._compute_transformation_matrix()
+        """Protect the quantum state using the SU(2) gauge field."""
+        logger.info("Applying SU(2) gauge field protection.")
+        U = self._compute_gauge_transformation()
+        protected_state = U * state
 
-        # Apply gauge protection
-        protected = self._apply_gauge_protection(state, U)
+        if self._check_coherence(protected_state) < self.threshold:
+            logger.warning("Coherence below threshold. Restoring.")
+            protected_state = self._restore_coherence(protected_state)
 
-        # Verify quantum coherence
-        coherence = self._compute_coherence(protected)
-        if coherence < self.threshold:
-            logger.warning(f"Quantum coherence below threshold: {coherence}")
-            protected = self._restore_coherence(protected)
-        logger.info("Quantum state protection complete.")
-        return protected
+        logger.info("SU(2) protection applied.")
+        return protected_state
 
-    def _compute_transformation_matrix(self) -> ComplexTensor:
-        """Compute the SU(2) transformation matrix."""
-        # Exponentiate gauge field to get unitary matrix
-        U = self.gauge_field.exp()
-
-        # Normalize to ensure unitarity
-        U = U * (1.0 / U.abs().mean())
-
+    def _compute_gauge_transformation(self) -> ComplexTensor:
+        """Compute the SU(2) gauge transformation."""
+        exponent = (
+            self.gauge_field * self.sigma_x
+            + self.gauge_field * self.sigma_y
+            + self.gauge_field * self.sigma_z
+        )
+        U = exponent.expm()  # Use expm for matrix exponential
         return U
-
-    def _apply_gauge_protection(
-        self, state: ComplexTensor, U: ComplexTensor
-    ) -> ComplexTensor:
-        """Apply gauge protection transformations."""
-        # Transform state through gauge field
-        protected = U * state
-
-        # Apply coupling strength
-        protected = protected * self.coupling
-
-        return protected
-
-    def _compute_coherence(self, state: ComplexTensor) -> float:
-        """Compute the quantum coherence metric."""
-        # Compute state purity through density matrix
-        rho = state * state.conj()
-        purity = (rho * rho).abs().mean().item()
-
-        # Normalize to [0, 1] range
-        coherence = np.sqrt(purity)
-
-        return float(coherence)
 
     def update_gauge_field(
         self, grad_scale: float = 0.01, noise_scale: float = 0.001
     ) -> None:
-        """Update gauge fields with quantum fluctuations."""
+        """Update the gauge field."""
         logger.info(
-            f"Updating gauge field with grad_scale={grad_scale}, noise_scale={noise_scale}"
+            "Updating gauge field with grad_scale=%.4f, noise_scale=%.4f",
+            grad_scale, noise_scale
         )
-        # Add quantum noise to gauge field
         noise = ComplexTensor(
             torch.randn_like(self.gauge_field.real) * noise_scale,
             torch.randn_like(self.gauge_field.imag) * noise_scale,
         )
 
-        # Update field with gradient descent
         self.gauge_field = self.gauge_field + noise
-
-        # Project back to Lie algebra
         self.gauge_field = self._project_to_lie_algebra(self.gauge_field)
-
-        # Rescale coupling strength
         self.gauge_field = self.gauge_field * grad_scale
         logger.info("Gauge field updated.")
 
     def _project_to_lie_algebra(self, field: ComplexTensor) -> ComplexTensor:
         """Project the gauge field back to the Lie algebra."""
-        # Simplified projection:  Take the anti-hermitian part.
         anti_hermitian_part = (field - field.conj()) / 2
         return anti_hermitian_part
 
+    def _check_coherence(self, state: ComplexTensor) -> float:
+        """Check the coherence of the quantum state (simplified)."""
+        coherence = state.abs().mean()
+        return float(coherence.item())
+
     def _restore_coherence(self, state: ComplexTensor) -> ComplexTensor:
         """Restore coherence if it falls below the threshold."""
-        # Simplified: Re-normalize the state.  This is a very basic
-        # form of coherence restoration.  A more complete implementation
-        # would likely involve applying a unitary operation designed to
-        # correct the specific type of decoherence.
-        return state / state.abs().mean()
+        return state / (state.abs().mean() + 1e-8) # Add epsilon

@@ -3,7 +3,7 @@ from typing import List, Optional
 import networkx as nx
 import numpy as np
 
-from ..core.celestial_point import CelestialPoint  # ADDED THIS IMPORT FR FR
+from ..core.celestial_point import CelestialPoint
 from .base_pattern import BasePattern
 
 
@@ -15,8 +15,10 @@ class ArnoldWebPattern(BasePattern):
     ):  # perturbation strength bc we CAREFUL
         super().__init__(points)
         self.eps = epsilon
-        self._cached_web = None
-        self._cached_whiskers = None  # heteroclinic tangle GANG
+        self._cached_web: Optional[nx.Graph] = None
+        self._cached_whiskers: Optional[
+            List[np.ndarray]
+        ] = None  # heteroclinic tangle GANG
 
     def check_pattern(self) -> bool:
         """verify arnold web existence EXPEDITIOUSLY"""
@@ -101,6 +103,19 @@ class ArnoldWebPattern(BasePattern):
 
         return True
 
+    def _check_web_connectivity(self, web: nx.Graph) -> bool:
+        """verify web connectivity ALGEBRAICALLY"""
+        if web is None:
+            return False
+
+        # check basic connectivity
+        if not nx.is_connected(web):
+            return False
+
+        # need at least one cycle for resonance web
+        cycles = nx.cycle_basis(web)
+        return len(cycles) > 0
+
     def compute_melnikov_potential(self) -> np.ndarray:
         """compute that melnikov potential CAREFULLY"""
         if len(self.points) < 2:
@@ -133,8 +148,8 @@ class ArnoldWebPattern(BasePattern):
 
         angles = []
         for p in self.points:
-            # compute stable/unstable directions
             try:
+                # compute stable/unstable directions
                 stable = self._compute_stable_manifold(p)
                 unstable = self._compute_unstable_manifold(p)
 
@@ -180,14 +195,14 @@ class ArnoldWebPattern(BasePattern):
     def _linearized_dynamics(self, pos: np.ndarray) -> np.ndarray:
         """compute linearized dynamics RIGOROUSLY"""
         # basic hamiltonian matrix
-        n = len(pos)
-        A = np.zeros((2 * n, 2 * n))
+        dim = len(pos)  # using dim bc we RESPECT DIMENSIONALITY
+        A = np.zeros((2 * dim, 2 * dim))
 
         # kinetic terms
-        A[:n, n:] = np.eye(n)
+        A[:dim, dim:] = np.eye(dim)
 
         # potential terms (basic approximation)
-        A[n:, :n] = -np.eye(n) - self.eps * np.cos(pos)
+        A[dim:, :dim] = -np.eye(dim) - self.eps * np.cos(pos)
 
         return A
 
@@ -198,7 +213,7 @@ class ChaoticTransportPattern(BasePattern):
     def __init__(self, points: List[CelestialPoint], diffusion_threshold: float = 0.1):
         super().__init__(points)
         self.D_thresh = diffusion_threshold
-        self._cached_transport = None
+        self._cached_transport: Optional[np.ndarray] = None
 
     def check_pattern(self) -> bool:
         """verify chaotic transport EXPEDITIOUSLY"""

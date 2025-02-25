@@ -6,9 +6,9 @@ import logging
 
 # Configure logger
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
+ch.setLevel(logging.INFO)
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 ch.setFormatter(formatter)
 if not logger.handlers:
@@ -16,19 +16,19 @@ if not logger.handlers:
 
 
 class KPZEnhanced:
-    """fr fr this class implements enhanced KPZ dynamics for quantum state protection EXPEDITIOUSLY"""
+    """Implements enhanced KPZ dynamics for quantum state protection."""
 
     def __init__(
         self,
-        nu: float = 0.28082,  # viscosity coefficient BUSSIN
-        lambda_param: float = 1.618034,  # nonlinear coupling (golden ratio²)
-        eta_strength: float = 0.93,  # noise coupling threshold
-        roughness_alpha: float = 0.5,  # KPZ universality fr fr
-        growth_beta: float = 0.33,
-    ):  # growth exponent NO CAP
+        nu: float = 0.28082,  # Viscosity coefficient
+        lambda_param: float = 1.618034,  # Nonlinear coupling (golden ratio squared)
+        eta_strength: float = 0.93,  # Noise coupling threshold
+        roughness_alpha: float = 0.5,  # KPZ universality class parameter
+        growth_beta: float = 0.33,  # Growth exponent
+    ):
         logger.info(
-            f"Initializing KPZEnhanced with nu={nu}, lambda_param={lambda_param}, "
-            f"eta_strength={eta_strength}, roughness_alpha={roughness_alpha}, growth_beta={growth_beta}"
+            "Initializing KPZEnhanced with nu=%.5f, lambda_param=%.6f, eta_strength=%.2f, roughness_alpha=%.2f, growth_beta=%.2f",
+            nu, lambda_param, eta_strength, roughness_alpha, growth_beta
         )
         self.nu = nu
         self.lambda_param = lambda_param
@@ -36,22 +36,21 @@ class KPZEnhanced:
         self.alpha = roughness_alpha
         self.beta = growth_beta
 
-        # initialize protection stack EXPEDITIOUSLY
+        # Initialize protection stack
         self.shield = QuantumShield()
 
-        # initialize KPZ interface
+        # Initialize KPZ interface
         self.height_field = self._init_height_field()
         self.noise_field = self._init_noise_field()
         self.momentum_field = self._init_momentum_field()
         logger.info("Initialized KPZ interface.")
 
     def _init_height_field(self) -> ComplexTensor:
-        """initialize them height field fr fr"""
-        # generate interface with KPZ scaling
-        L = 64  # system size
+        """Initialize the height field."""
+        L = 64  # System size
         h = torch.randn(L, L) * self.alpha
 
-        # add large scale structure expeditiously
+        # Add large-scale structure
         x = torch.linspace(0, 2 * np.pi, L)
         X, Y = torch.meshgrid(x, x)
         h += torch.sin(X) * torch.cos(Y) * self.lambda_param
@@ -59,15 +58,14 @@ class KPZEnhanced:
         return ComplexTensor(h, torch.zeros_like(h))
 
     def _init_noise_field(self) -> ComplexTensor:
-        """initialize them noise field NO CAP"""
-        # generate correlated noise with KPZ stats
+        """Initialize the noise field."""
         L = 64
         k = torch.fft.fftfreq(L)[None, :] * 2 * np.pi
         kx, ky = torch.meshgrid(k, k)
         k2 = kx * kx + ky * ky
 
-        # noise spectrum following KPZ scaling
-        Sk = 1.0 / (1.0 + k2 ** (self.alpha + 0.5))
+        # Noise spectrum following KPZ scaling
+        Sk = 1.0 / (1.0 + k2 ** (self.alpha + 0.5) + 1e-8) # Add epsilon
         noise = torch.fft.ifft2(
             torch.sqrt(Sk) * torch.exp(2j * np.pi * torch.rand(L, L))
         )
@@ -75,66 +73,51 @@ class KPZEnhanced:
         return ComplexTensor(noise.real, noise.imag)
 
     def _init_momentum_field(self) -> ComplexTensor:
-        """initialize them momentum field EXPEDITIOUSLY"""
-        # conjugate field to height
+        """Initialize the momentum field."""
         L = 64
         p = torch.randn(L, L) * self.beta
-
-        # ensure correct scaling relation
-        p = p * torch.sqrt(self.lambda_param / self.nu)
+        p = p * torch.sqrt(self.lambda_param / (self.nu + 1e-8)) # Add epsilon
 
         return ComplexTensor(p, torch.zeros_like(p))
 
     def apply_kpz_evolution(
         self, state: ComplexTensor, dt: float = 0.01
     ) -> ComplexTensor:
-        """evolve that quantum state through KPZ dynamics fr fr"""
-        logger.info(f"Applying KPZ evolution with dt={dt}")
-        # apply shield protection first
+        """Evolve the quantum state through KPZ dynamics."""
+        logger.info("Applying KPZ evolution with dt=%.3f", dt)
         protected = self.shield.activate_shield(state)
-
-        # compute KPZ evolution
         evolved = self._compute_kpz_step(protected, dt)
 
-        # ensure roughness scaling maintained
         if not self._verify_kpz_scaling(evolved):
-            logger.warning("KPZ scaling violated fr fr")
+            logger.warning("KPZ scaling violated.")
             evolved = self._restore_scaling(evolved)
+
         logger.info("KPZ evolution complete.")
         return evolved
 
     def _compute_kpz_step(self, state: ComplexTensor, dt: float) -> ComplexTensor:
-        """compute them KPZ evolution steps EXPEDITIOUSLY"""
-        # compute spatial derivatives
+        """Compute the KPZ evolution step."""
         grad_h = self._compute_gradient(self.height_field)
         laplacian_h = self._compute_laplacian(self.height_field)
 
-        # KPZ evolution terms
         diffusion = self.nu * laplacian_h
         nonlinear = 0.5 * self.lambda_param * (grad_h * grad_h)
         noise = self.eta * self.noise_field
 
-        # update height field
         dh = (diffusion + nonlinear + noise) * dt
-        # Use .detach() to avoid in-place modification
-        self.height_field = self.height_field + dh
+        self.height_field = self.height_field + dh # .detach() is not needed here
 
-        # couple quantum state to interface expeditiously
         evolved = self._couple_to_interface(state)
-
         return evolved
 
     def _compute_gradient(self, field: ComplexTensor) -> ComplexTensor:
-        """compute them spatial gradients fr fr"""
-        # finite difference derivatives
+        """Compute the spatial gradient."""
         dx = torch.roll(field.real, -1, dims=0) - torch.roll(field.real, 1, dims=0)
         dy = torch.roll(field.real, -1, dims=1) - torch.roll(field.real, 1, dims=1)
-
         return ComplexTensor(dx, dy)
 
     def _compute_laplacian(self, field: ComplexTensor) -> ComplexTensor:
-        """compute that laplacian operator EXPEDITIOUSLY"""
-        # 5-point stencil
+        """Compute the Laplacian operator."""
         lap = (
             torch.roll(field.real, -1, dims=0)
             + torch.roll(field.real, 1, dims=0)
@@ -142,63 +125,51 @@ class KPZEnhanced:
             + torch.roll(field.real, 1, dims=1)
             - 4 * field.real
         )
-
         return ComplexTensor(lap, torch.zeros_like(lap))
 
     def _couple_to_interface(self, state: ComplexTensor) -> ComplexTensor:
-        """couple them quantum states to KPZ interface NO CAP"""
-        # compute geometric coupling
+        """Couple the quantum state to the KPZ interface."""
         phase = torch.exp(1j * self.height_field.real * self.lambda_param)
-        # Corrected: Use ComplexTensor for phase
-        coupled = state * ComplexTensor(phase.real, phase.imag)
+        coupled = state * ComplexTensor(phase.real, phase.imag)  # Use ComplexTensor
 
-        # add momentum coupling
         p_coupling = torch.exp(1j * self.momentum_field.real * self.eta)
-        # Corrected: Use ComplexTensor for p_coupling
-        coupled = coupled * ComplexTensor(p_coupling.real, p_coupling.imag)
+        coupled = coupled * ComplexTensor(p_coupling.real, p_coupling.imag) # Use ComplexTensor
 
         return coupled
 
     def _verify_kpz_scaling(self, state: ComplexTensor) -> bool:
         """Verify KPZ scaling properties (simplified)."""
-        # Placeholder: Returns True
+        # Placeholder:  A real implementation would involve calculating
+        # the structure factor and checking its scaling behavior.
         return True
 
     def _restore_scaling(self, state: ComplexTensor) -> ComplexTensor:
-        """restore them KPZ scaling relations EXPEDITIOUSLY"""
-        # compute current roughness
+        """Restore KPZ scaling relations."""
         width = torch.std(state.real)
-        target = self.alpha * torch.sqrt(len(state.real))
+        target = self.alpha * torch.sqrt(torch.tensor(len(state.real))) # Convert len to tensor
+        scaled = state * (target / (width + 1e-8)) # Add epsilon
 
-        # rescale state
-        scaled = state * (target / width)
-
-        # update height field. Use .detach()
-        self.height_field = self.height_field * (target / width)
-
+        self.height_field = self.height_field * (target / (width + 1e-8)) # Add epsilon, and .detach() is not needed
         return scaled
 
     def update_kpz_params(
         self, learning_rate: float = 0.01, noise_scale: float = 0.001
     ) -> None:
-        """update them KPZ parameters fr fr"""
+        """Update the KPZ parameters."""
         logger.info(
-            f"Updating KPZ parameters with learning_rate={learning_rate}, noise_scale={noise_scale}"
+            "Updating KPZ parameters with learning_rate=%.4f, noise_scale=%.4f",
+            learning_rate, noise_scale
         )
-        # update protection stack
         self.shield.update_shield(learning_rate, noise_scale)
-
-        # update noise field expeditiously
         self.noise_field = self._init_noise_field()
 
-        # add quantum fluctuations to momentum
         noise = ComplexTensor(
             torch.randn_like(self.momentum_field.real) * noise_scale,
             torch.randn_like(self.momentum_field.imag) * noise_scale,
         )
         self.momentum_field = self.momentum_field + noise
 
-        # ensure KPZ scaling maintained
         if not self._verify_kpz_scaling(self.height_field):
             self.height_field = self._restore_scaling(self.height_field)
+
         logger.info("KPZ parameters updated.")

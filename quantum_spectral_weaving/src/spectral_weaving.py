@@ -3,6 +3,7 @@ import numpy as np
 from typing import Optional, Dict
 from dataclasses import dataclass
 from complextensor import ComplexTensor
+import logging
 
 from .gauge_field import GaugeFieldCoupling
 from .kpz_enhanced import KPZEnhanced
@@ -10,19 +11,28 @@ from .quantum_shield import QuantumShield
 from .su2_protect import SU2Protection
 from .bootstrap import QuantumBootstrap
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+if not logger.handlers:
+    ch = logging.StreamHandler()
+    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+
 
 @dataclass
 class SpectralWeavingConfig:
-    """fr fr this config bussin with quantum parameters NO CAP"""
+    """Configuration for quantum spectral weaving."""
 
     max_zeros: int = 1000
     max_eigenvalues: int = 1000
-    coupling_strength: float = 0.28082  # golden ratio HEAT
+    coupling_strength: float = 0.28082
     protection_threshold: float = 0.93
     recursion_depth: int = 3
     weaving_modes: int = 5
     kpz_viscosity: float = 0.28082
-    kpz_nonlinearity: float = 1.618034  # φ² fr fr
+    kpz_nonlinearity: float = 1.618034
     shield_modes: int = 5
     gauge_modes: int = 3
 

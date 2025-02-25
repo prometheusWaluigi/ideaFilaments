@@ -1,3 +1,29 @@
+Metadata-Version: 2.2
+Name: quantum_spectral_weaving
+Version: 0.1.0
+Summary: fr fr this package implements quantum spectral weaving for the riemann hypothesis NO CAP
+Home-page: https://github.com/prometheusWaluigi/ideaFilaments
+Author: prometheusWaluigi
+Author-email: quantum@weaving.fr.fr
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Scientific/Engineering :: Physics
+Description-Content-Type: text/markdown
+Requires-Dist: torch>=1.9.0
+Requires-Dist: numpy>=1.19.2
+Requires-Dist: scipy>=1.7.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: summary
+
 # Quantum Spectral Weaving
 
 *Exploring quantum dynamics inspired by the Riemann Hypothesis and topological protection.*
@@ -10,32 +36,9 @@ This repository implements a quantum simulation framework exploring concepts ins
 
 ## Installation
 
-1.  **Install Poetry:** If you don't have Poetry installed, follow the instructions on the official website: [https://python-poetry.org/docs/](https://python-poetry.org/docs/)
-
-2.  **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/prometheusWaluigi/ideaFilaments.git
-    cd ideaFilaments/quantum_spectral_weaving
-    ```
-3. **Install ComplexTensor:**
-    ```bash
-    cd ..
-    pip install -e ComplexTensor/
-    cd quantum_spectral_weaving
-    ```
-
-4.  **Install dependencies and create the virtual environment:**
-
-    ```bash
-    poetry install
-    ```
-
-5.  **Activate the virtual environment:**
-
-    ```bash
-    poetry shell
-    ```
+```bash
+pip install git+https://github.com/prometheusWaluigi/ideaFilaments.git#subdirectory=quantum_spectral_weaving
+```
 
 ## Usage
 
@@ -97,6 +100,12 @@ print("Convergence Statistics:", convergence_stats)
 ## Running Tests
 
 ```bash
+cd quantum_spectral_weaving
+python -m unittest discover tests
+```
+or
+```bash
+cd quantum_spectral_weaving
 pytest tests/ -v
 ```
 
@@ -123,11 +132,14 @@ pytest tests/ -v
 -   `tests/`: Unit tests.
     -   `test_quantum_stack.py`: Combined and improved tests.
 -   `README.md`: This file.
-- `pyproject.toml`: Poetry project configuration.
+- `setup.py`: setuptools configuration
+- `setup_quantum_env.bat`: Batch script to create a Conda environment.
+- `setup_env.ps1`: PowerShell script to create a Conda environment.
+- `setup_oneapi.ps1`: PowerShell script to set up the environment with Intel oneAPI.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details (you'll need to create a `LICENSE` file).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details (you'll need to create a LICENSE file).
 
 ## Status
 
