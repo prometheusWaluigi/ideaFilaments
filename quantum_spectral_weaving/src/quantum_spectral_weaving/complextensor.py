@@ -3,6 +3,7 @@ import logging
 from torch import Tensor
 from torch.autograd import Function
 from typing import Tuple, Dict, Optional, Union
+import numpy as np
 
 # Configure the logger for the module
 logger = logging.getLogger(__name__)
@@ -30,59 +31,40 @@ class ComplexFunction(Function):
     """
 
     @staticmethod
-    def forward(ctx, real: Tensor, imag: Tensor) -> Tensor:
+    def forward(
+        ctx: "ComplexTensorBackward", input: "ComplexTensor"
+    ) -> "ComplexTensor":
         """
-        Forward pass for creating a complex tensor from real and imaginary parts.
+        Forward pass for complex tensor operations.
 
         Args:
-            real (Tensor): Real part of the complex tensor.
-            imag (Tensor): Imaginary part of the complex tensor.
+            ctx: Context object for storing information for backward pass.
+            real: Real part of the complex tensor.
+            imag: Imaginary part of the complex tensor.
 
         Returns:
-            Tensor: Complex tensor combining real and imaginary parts.
+            ComplexTensor: A new ComplexTensor instance.
         """
-        logger.debug(
-            f"ComplexFunction.forward called with real shape {real.shape}, "
-            f"imag shape {imag.shape}, device {real.device}, dtype {real.dtype}"
+        logger.debug(f"Forward pass with input shape {input.real.shape}")
+        return ComplexTensor(
+            input.real.clone(), input.imag.clone(), requires_grad=True
         )
-        ctx.save_for_backward(real, imag)
-        complex_tensor = torch.complex(real, imag)
-        logger.debug(
-            f"ComplexFunction.forward output shape {complex_tensor.shape}, "
-            f"device {complex_tensor.device}, dtype {complex_tensor.dtype}"
-        )
-        return complex_tensor
 
     @staticmethod
-    def backward(ctx, grad_output: Tensor) -> Tuple[Tensor, Tensor]:
+    def backward(
+        ctx: "ComplexTensorBackward", grad_real: Tensor, grad_imag: Tensor
+    ) -> Tuple[Optional[Tensor], Optional[Tensor]]:
         """
-        Backward pass for ComplexFunction. Computes gradients for real and imaginary parts.
+        Backward pass for complex tensor operations.
 
         Args:
-            grad_output (Tensor): Gradient of the loss with respect to the output.
+            ctx: Context object with saved information.
+            grad_output: Gradient of the output.
 
         Returns:
-            Tuple[Tensor, Tensor]: Gradients with respect to real and imaginary parts.
+            Tuple[Tensor, Tensor]: Gradients of the real and imaginary parts.
         """
-        real, imag = ctx.saved_tensors
-        logger.debug(
-            f"ComplexFunction.backward called with grad_output shape {grad_output.shape}, "
-            f"device {grad_output.device}, dtype {grad_output.dtype}"
-        )
-
-        # Ensure gradients are computed for both real and imaginary parts
-        grad_real = grad_output.real
-        grad_imag = grad_output.imag
-
-        # If grad_output is not complex, use the same gradient for both parts
-        if not grad_output.is_complex():
-            grad_real = grad_output
-            grad_imag = grad_output
-
-        logger.debug(
-            f"ComplexFunction.backward returning grad_real shape {grad_real.shape}, "
-            f"grad_imag shape {grad_imag.shape}"
-        )
+        logger.debug(f"Backward pass with grad_real shape {grad_real.shape}")
         return grad_real, grad_imag
 
 
@@ -149,23 +131,14 @@ class ComplexTensor:
             f"ComplexTensor.forward called with real shape {self.real.shape}, "
             f"imag shape {self.imag.shape}"
         )
-        complex_tensor = ComplexFunction.apply(self.real, self.imag)
+        complex_tensor = ComplexFunction.apply(self)
         logger.debug(f"ComplexTensor.forward output shape {complex_tensor.shape}")
         return complex_tensor
 
-    def __add__(self, other: "ComplexTensor") -> "ComplexTensor":
-        """
-        Defines addition operation for ComplexTensor.
-
-        Args:
-            other (ComplexTensor): Another ComplexTensor instance to add.
-
-        Returns:
-            ComplexTensor: Result of the addition.
-
-        Raises:
-            TypeError: If other is not a ComplexTensor instance.
-        """
+    def __add__(self, other: Union["ComplexTensor", int, float]) -> "ComplexTensor":
+        """Defines addition for ComplexTensor."""
+        if isinstance(other, (int, float)):  # Handle scalar addition
+            other = ComplexTensor(torch.tensor(float(other)), torch.tensor(0.0))
         logger.debug(
             f"Adding ComplexTensor with shape {self.real.shape} to ComplexTensor with shape {other.real.shape}"
         )
@@ -187,19 +160,14 @@ class ComplexTensor:
             logger.error(f"Addition failed due to shape mismatch: {e}")
             raise
 
-    def __sub__(self, other: "ComplexTensor") -> "ComplexTensor":
-        """
-        Defines subtraction operation for ComplexTensor.
+    def __radd__(self, other: Union["ComplexTensor", int, float]) -> "ComplexTensor":
+        """Defines addition for ComplexTensor."""
+        return self.__add__(other)
 
-        Args:
-            other (ComplexTensor): Another ComplexTensor instance to subtract.
-
-        Returns:
-            ComplexTensor: Result of the subtraction.
-
-        Raises:
-            TypeError: If other is not a ComplexTensor instance.
-        """
+    def __sub__(self, other: Union["ComplexTensor", int, float]) -> "ComplexTensor":
+        """Defines subtraction for ComplexTensor."""
+        if isinstance(other, (int, float)):  # Handle scalar subtraction
+            other = ComplexTensor(torch.tensor(float(other)), torch.tensor(0.0))
         logger.debug(
             f"Subtracting ComplexTensor with shape {other.real.shape} from ComplexTensor with shape {self.real.shape}"
         )
@@ -221,19 +189,16 @@ class ComplexTensor:
             logger.error(f"Subtraction failed due to shape mismatch: {e}")
             raise
 
-    def __mul__(self, other: "ComplexTensor") -> "ComplexTensor":
-        """
-        Defines multiplication operation for ComplexTensor.
+    def __rsub__(self, other: Union["ComplexTensor", int, float]) -> "ComplexTensor":
+        """Defines subtraction for ComplexTensor."""
+        if isinstance(other, (int, float)):
+            other = ComplexTensor(torch.tensor(float(other)), torch.tensor(0.0))
+        return other.__sub__(self)
 
-        Args:
-            other (ComplexTensor): Another ComplexTensor instance to multiply.
-
-        Returns:
-            ComplexTensor: Result of the multiplication.
-
-        Raises:
-            TypeError: If other is not a ComplexTensor instance.
-        """
+    def __mul__(self, other: Union["ComplexTensor", int, float]) -> "ComplexTensor":
+        """Defines multiplication for ComplexTensor."""
+        if isinstance(other, (int, float)):  # Handle scalar multiplication
+            other = ComplexTensor(torch.tensor(float(other)), torch.tensor(0.0))
         logger.debug(
             f"Multiplying ComplexTensor with shape {self.real.shape} by ComplexTensor with shape {other.real.shape}"
         )
@@ -255,23 +220,14 @@ class ComplexTensor:
             logger.error(f"Multiplication failed due to shape mismatch: {e}")
             raise
 
-    def __rmul__(self, other):
+    def __rmul__(self, other: Union["ComplexTensor", int, float]) -> "ComplexTensor":
+        """Defines multiplication for ComplexTensor."""
         return self.__mul__(other)
 
-    def __truediv__(self, other: "ComplexTensor") -> "ComplexTensor":
-        """
-        Defines division operation for ComplexTensor.
-
-        Args:
-            other (ComplexTensor): Another ComplexTensor instance to divide by.
-
-        Returns:
-            ComplexTensor: Result of the division.
-
-        Raises:
-            TypeError: If other is not a ComplexTensor instance.
-            ZeroDivisionError: If the denominator is zero.
-        """
+    def __truediv__(self, other: Union["ComplexTensor", int, float]) -> "ComplexTensor":
+        """Defines division for ComplexTensor."""
+        if isinstance(other, (int, float)):  # Handle scalar division
+            other = ComplexTensor(torch.tensor(float(other)), torch.tensor(0.0))
         logger.debug(
             f"Dividing ComplexTensor with shape {self.real.shape} by ComplexTensor with shape {other.real.shape}"
         )
@@ -301,6 +257,12 @@ class ComplexTensor:
         except RuntimeError as e:
             logger.error(f"Division failed due to shape mismatch: {e}")
             raise
+
+    def __rtruediv__(self, other: Union["ComplexTensor", int, float]) -> "ComplexTensor":
+        """Defines division for ComplexTensor."""
+        if isinstance(other, (int, float)):
+            other = ComplexTensor(torch.tensor(float(other)), torch.tensor(0.0))
+        return other.__truediv__(self)
 
     def conj(self) -> "ComplexTensor":
         """
@@ -488,7 +450,7 @@ class ComplexTensor:
             ) -> Tensor:
                 ctx.scale_real = scale_real
                 ctx.scale_imag = scale_imag
-                return ComplexFunction.apply(real, imag)
+                return ComplexFunction.apply(ComplexTensor(real, imag))
 
             @staticmethod
             def backward(ctx, grad_output: Tensor) -> Tuple[Tensor, Tensor, None, None]:
@@ -504,7 +466,7 @@ class ComplexTensor:
             self.real, self.imag, grad_scale_real, grad_scale_imag
         )
         logger.debug(f"Gradient manipulation result shape {complex_tensor.shape}")
-        return ComplexTensor(complex_tensor.real, complex_tensor.imag)
+        return complex_tensor
 
     # Complex Math Functions
     def exp(self) -> "ComplexTensor":
@@ -630,22 +592,13 @@ class ComplexTensor:
         return self.power(exponent)
 
     @staticmethod
-    def from_polar(magnitude: Tensor, phase: Tensor) -> "ComplexTensor":
-        """
-        Creates a ComplexTensor from polar coordinates.
-
-        Args:
-            magnitude (Tensor): The magnitude of the complex numbers.
-            phase (Tensor): The phase of the complex numbers in radians.
-
-        Returns:
-            ComplexTensor: The resulting complex tensor.
-        """
+    def from_polar(r: Tensor, theta: Tensor) -> "ComplexTensor":
+        """Create a ComplexTensor from polar coordinates."""
         logger.debug(
-            f"Creating ComplexTensor from polar coordinates with magnitude shape {magnitude.shape} and phase shape {phase.shape}"
+            f"Creating ComplexTensor from polar coordinates with magnitude shape {r.shape} and phase shape {theta.shape}"
         )
-        real = magnitude * torch.cos(phase)
-        imag = magnitude * torch.sin(phase)
+        real = r * torch.tensor(np.cos(theta.cpu().numpy())).float() # Convert to float32
+        imag = r * torch.tensor(np.sin(theta.cpu().numpy())).float() # Convert to float32
         return ComplexTensor(real, imag)
 
     def __len__(self) -> int:
@@ -806,3 +759,35 @@ class ComplexTensor:
             (self.real.abs() > threshold).to(torch.float32) * torch.sign(self.real),
             (self.imag.abs() > threshold).to(torch.float32) * torch.sign(self.imag),
         )
+
+    def expm(self) -> "ComplexTensor":
+        """
+        Computes the matrix exponential of a ComplexTensor.
+
+        Returns:
+            ComplexTensor: The matrix exponential.
+        """
+        logger.debug(f"Computing matrix exponential of ComplexTensor with shape {self.real.shape}")
+        # Combine real and imaginary parts into a single complex tensor for torch.matrix_exp
+        complex_matrix = torch.complex(self.real, self.imag)
+        exp_matrix = torch.matrix_exp(complex_matrix)
+        return ComplexTensor(exp_matrix.real, exp_matrix.imag)
+
+    def __matmul__(self, other: "ComplexTensor") -> "ComplexTensor":
+        """
+        Defines matrix multiplication for ComplexTensor using the @ operator.
+
+        Args:
+            other (ComplexTensor): The other ComplexTensor to multiply with.
+
+        Returns:
+            ComplexTensor: The result of the matrix multiplication.
+        """
+        logger.debug(
+            f"Performing matrix multiplication of ComplexTensor with shape {self.real.shape} and ComplexTensor with shape {other.real.shape}"
+        )
+        # Convert to complex tensors and use torch.matmul
+        complex_self = torch.complex(self.real, self.imag)
+        complex_other = torch.complex(other.real, other.imag)
+        result = torch.matmul(complex_self, complex_other)
+        return ComplexTensor(result.real, result.imag)

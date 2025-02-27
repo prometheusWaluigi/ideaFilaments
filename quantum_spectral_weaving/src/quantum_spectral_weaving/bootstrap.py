@@ -56,7 +56,7 @@ class QuantumBootstrap:
         # Initialize bootstrap components
         self.probability_field = self._init_probability_field()
         self.recursive_stack = self._init_recursive_stack()
-        self.reality_metrics = {"coherence": [], "emergence": [], "stability": []}
+        self.reality_metrics: Dict[str, List[float]] = {"coherence": [], "emergence": [], "stability": []}
         logger.info("Initialized bootstrap components.")
 
     def _init_probability_field(self) -> ComplexTensor:

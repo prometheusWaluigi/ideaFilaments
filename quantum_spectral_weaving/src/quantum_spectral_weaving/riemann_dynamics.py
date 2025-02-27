@@ -1,12 +1,6 @@
-# This module handles the quantum dynamics related to the Riemann zeta
-# function.  The connection to the Riemann Hypothesis is *conceptual*;
-# this code does not directly prove or disprove the hypothesis.  Instead,
-# it uses the non-trivial zeros of the zeta function as inspiration for
-# generating a quantum system with potentially interesting spectral
-# properties.
 import torch
 import numpy as np
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 from dataclasses import dataclass
 from .complextensor import ComplexTensor
 
@@ -37,6 +31,47 @@ class RiemannDynamicsConfig:
     shield_modes: int = 5
     gauge_modes: int = 3
     recursion_depth: int = 3
+    initial_t: float = 14.13472514  # First non-trivial zero
+
+
+class RiemannManifold:
+    """Represents the manifold of Riemann zeta function zeros (or a simulation thereof)."""
+
+    def __init__(self, max_zeros: int, initial_t: float):
+        self.max_zeros = max_zeros
+        self.zeros: List[float] = [initial_t]  # Start with the first non-trivial zero
+        self.initial_t = initial_t
+        self._next_t = initial_t
+
+    def get_zeros(self) -> np.ndarray:
+        """Returns the current zeros as a NumPy array."""
+        return np.array(self.zeros)
+
+    def add_zero(self, t: float) -> None:
+        """Adds a new zero to the manifold."""
+        if len(self.zeros) < self.max_zeros:
+            self.zeros.append(t)
+            self.zeros.sort()  # Keep zeros sorted
+            self._next_t = t + 1.0 #Suggest next t value
+        else:
+            logger.warning("Maximum number of zeros reached.")
+
+    def update_zero(self, index: int, new_t: float) -> None:
+        """Updates the value of an existing zero."""
+        if 0 <= index < len(self.zeros):
+            self.zeros[index] = new_t
+            self.zeros.sort()
+        else:
+            logger.error("Invalid zero index for update.")
+
+    def get_next_candidate_t(self) -> float:
+        """Provides a candidate for the next zero's imaginary part."""
+        return self._next_t
+
+    def clear(self) -> None:
+        """Resets the manifold to its initial state."""
+        self.zeros = [self.initial_t]
+        self._next_t = self.initial_t
 
 
 class RiemannQuantumDynamics:
@@ -61,6 +96,11 @@ class RiemannQuantumDynamics:
 
         # Initialize quantum state
         self.quantum_state = self._init_quantum_state()
+
+        # Initialize Riemann manifold
+        self.riemann_manifold = RiemannManifold(
+            max_zeros=self.config.max_states, initial_t=self.config.initial_t
+        )
 
         # Dynamics parameters
         self.evolution_patterns = []
@@ -91,6 +131,19 @@ class RiemannQuantumDynamics:
             evolved_state = self._update_quantum_state(pattern)
             self.quantum_states.append(evolved_state)
 
+            # --- Interact with the Riemann Manifold ---
+            candidate_t = self.riemann_manifold.get_next_candidate_t()
+            # In a more sophisticated implementation, you'd use the quantum
+            # state and a zeta-function-like calculation to determine whether
+            # 'candidate_t' is a good approximation of a zero.  For this
+            # example, we'll just add zeros based on a simple condition.
+            if (
+                len(self.riemann_manifold.get_zeros()) < self.config.max_states
+                and t % 100 == 0
+            ):  # Add a zero every 100 steps
+                self.riemann_manifold.add_zero(candidate_t)
+                logger.info(f"Added zero at t={candidate_t:.4f}")
+
             stats = self.spectral_weaving.analyze_quantum_statistics()
             self._update_metrics(stats)
 
@@ -103,21 +156,27 @@ class RiemannQuantumDynamics:
                 self._update_learning_params(t)
 
         print("Quantum Riemann dynamics complete.")
+        print(f"Final zeros: {self.riemann_manifold.get_zeros()}")
 
     def _compute_evolution_pattern(self, t: int) -> np.ndarray:
-        """Compute the evolution pattern."""
-        phase = np.exp(
-            1j * self.config.coupling_strength * t * np.arange(self.config.max_states)
-        )
-        pattern = (
-            phase * self.spectral_weaving.weaving_pattern[: self.config.max_states]
-        )
+        """Compute the evolution pattern, incorporating zeros from the manifold."""
+        zeros = self.riemann_manifold.get_zeros()
+        # Use available zeros, padding with zeros if necessary
+        num_zeros = len(zeros)
+        if num_zeros < self.config.max_states:
+            padding = np.zeros(self.config.max_states - num_zeros)
+            zeros = np.concatenate([zeros, padding])
+        elif num_zeros > self.config.max_states:
+            zeros = zeros[:self.config.max_states]
+
+        phase = np.exp(1j * self.config.coupling_strength * t * zeros)
+        pattern = phase * self.spectral_weaving.weaving_pattern[: self.config.max_states]  # Use available zeros.
         return pattern
 
     def _update_quantum_state(self, pattern: np.ndarray) -> ComplexTensor:
         """Update the quantum state."""
         evolved = self.quantum_state * ComplexTensor(
-            torch.from_numpy(pattern.real), torch.from_numpy(pattern.imag) # Convert to tensor
+            torch.from_numpy(pattern.real), torch.from_numpy(pattern.imag)
         )
         protected = self.spectral_weaving._apply_protection_stack(evolved)
         self.quantum_state = protected

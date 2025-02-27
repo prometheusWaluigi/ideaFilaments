@@ -2,7 +2,7 @@ import torch
 import numpy as np
 from typing import Optional, Dict
 from dataclasses import dataclass
-from complextensor import ComplexTensor
+from .complextensor import ComplexTensor
 import logging
 
 from .gauge_field import GaugeFieldCoupling

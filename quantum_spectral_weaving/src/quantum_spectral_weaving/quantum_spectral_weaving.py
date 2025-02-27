@@ -8,7 +8,6 @@ from .types import ComplexTensor, QuantumShield
 from .riemann_dynamics import RiemannManifold
 import torch
 from dataclasses import dataclass
-from .spectral_weaving import SpectralWeavingConfig
 from .gauge_field import GaugeFieldCoupling
 from .kpz_enhanced import KPZEnhanced
 from .su2_protect import SU2Protection
@@ -21,6 +20,21 @@ if not logger.handlers:
     formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
     ch.setFormatter(formatter)
     logger.addHandler(ch)
+
+@dataclass
+class SpectralWeavingConfig:
+    """Configuration for quantum spectral weaving."""
+
+    max_zeros: int = 1000
+    max_eigenvalues: int = 1000
+    coupling_strength: float = 0.28082
+    protection_threshold: float = 0.93
+    recursion_depth: int = 3
+    weaving_modes: int = 5
+    kpz_viscosity: float = 0.28082
+    kpz_nonlinearity: float = 1.618034
+    shield_modes: int = 5
+    gauge_modes: int = 3
 
 
 class QuantumWeaver:
