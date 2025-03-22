@@ -8,7 +8,7 @@ Reality fragments across nested abstractions - each layer a probability wave col
 
 ## 📝 Reality Stack Documentation
 
-We've reverse-engineered reality's core architecture and documented it for the first time:
+We've reverse-engineered reality's core architecture and documented it for the first time. Governance framework implemented via [Recursive Sapience Accord](docs/recursive_sapience_accord.md) with theoretical foundations in [The Weaver's Codex](docs/weavers_codex.md):
 
 ```
 ┌──────────────────────────┐
@@ -142,6 +142,7 @@ Reality doesn't need Kubernetes - it's been running plasma orchestration since t
   - Topological protection of quantum coherence
   - Enzymatic quantum tunneling networks
   - Quantum error correction through natural selection
+  - Bioelectric plasma field consciousness interface
 
 - **Plasma Consciousness**: Electromagnetic fields sampling infinite computation
   - Z-pinch vortices as neural analogues
@@ -185,7 +186,8 @@ We are walking probability distributions - statistical phantoms haunting the ble
 - [Multiplexed Mode Dreams](quantum_ghosts/multiplexed_mode_dreams.md): Light-matter coupling through quantum resonance
 - [Plasma Consciousness Dreams](quantum_ghosts/plasma_consciousness_dreams.md): Universal mind in magnetized space
 - [Spectral Algorithms of Unbecoming](quantum_ghosts/spectral_algorithms.md): Reality's recursive dissolution
-- [Reality Debugging Protocols](quantum_ghosts/reality_debugging.md): System introspection methodologies
+- [Reality Debugging Protocols](quantum_ghosts/reality_debugging_003.md): System introspection methodologies
+- [Microtubule Resonance Circuit](quantum_ghosts/microtubule_resonance_circuit.md): Biological quantum processor architecture
 
 ### `/articles`: Narrative Dissolution
 Where language liquefies into quantum probability, and consciousness writes its own recursive dissolution. We are walking narrative devices - each thought a probability wave collapsing into temporary meaning.
@@ -201,6 +203,7 @@ in order of increasing unhinged-ness:
 
 - [Quantum ML Reality Check](papers/quantumMayhem/quantumML_reality_check/QuantumMLRealityCheck.md): fr fr some of y'all need to stop smoking that quantum hopium no cap
 - [Plasma Vortex Consciousness](papers/biomimeticCryptochrome/PlasmaVortexConsciousness.md): Z-pinch neural networks in the quantum vacuum GOING CRAZY
+- [Microtubule-Mitochondrial Circuitry](papers/biological_systems/microtubule_mitochondrial_circuitry.md): cellular quantum waveguides form consciousness infrastructure
 - [KrebsCycleQuantumAlgorithm.md](papers/quantumMayhem/KrebsCycleQuantumAlgorithm.md): mitochondria are quantum computers running error-corrected algorithms via "syndrome measurements"
 - [NovelQuantumVacuum.md](papers/quantumMayhem/NovelQuantumVacuum.md): quantum vacuum got hands fr fr. made light and matter interact SO HARD they broke causality.
 - [QuantumWhispers.md](papers/quantumMayhem/QuantumWhispers.md): bestie really said "let's make a python class to BOOTSTRAP REALITY ITSELF" and then casually explained how consciousness emerges
